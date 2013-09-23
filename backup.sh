@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LOGG=/home/fille/Loggar/backup.txt
+LOGG=/home/fille/loggar/backup.txt
 touch $LOGG
 exec >> $LOGG 2>&1
 
@@ -22,6 +22,9 @@ do
 		echo "$FS FAILED!"
 	fi
 done
+
+# backup configuration
+
 
 echo "Backup finished"
 date "+%Y-%m-%d %H:%M"
