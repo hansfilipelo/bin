@@ -62,11 +62,13 @@ echo "------------------------------"
 
 # Uploads keys to ixtab and sets safe permissions
 scp ~/authorized_keys $USERNAME@$SERVER:
-ssh $USERNAME@$SERVER "mkdir -p ~/.ssh"
-ssh $USERNAME@$SERVER "touch ~/authorized_keys"
-ssh $USERNAME@$SERVER "cat ~/authorized_keys >> ~/.ssh/authorized_keys"
-ssh $USERNAME@$SERVER "rm ~/authorized_keys"
-ssh $USERNAME@$SERVER "chmod 700 ./.ssh/authorized_keys"
+ssh $USERNAME@$SERVER << ENDSSH
+mkdir -p ~/.ssh
+touch ~/authorized_keys
+cat ~/authorized_keys >> ~/.ssh/authorized_keys
+rm ~/authorized_keys
+chmod 700 ./.ssh/authorized_keys
+ENDSSH
 
 echo "------------------------------"
 
