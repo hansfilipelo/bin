@@ -6,5 +6,5 @@
 #  Created by Hans-Filip Elo on 2013-10-29.
 #
 
-umount ~/Documents/TDDC76_labbar
-rm -r ~/Documents/TDDC76_labbar
+umount ~/Desktop/TDDC76_labbar
+rm -r ~/Desktop/TDDC76_labbar
