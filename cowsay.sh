@@ -17,4 +17,6 @@ randomfileindex=$((RANDOM%${#files[@]}+0))
 randomcowfile=${files[$randomfileindex]}
 
 # remove -o from next line if you don't want offensive fortune :P
-fortune -os | cowsay -f $randomcowfile | lolcat --spread 2.0
+fortune -os | cowsay -f $randomcowfile
+# Don't do lolcat
+# lolcat --spread 2.0
