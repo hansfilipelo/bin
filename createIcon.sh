@@ -6,13 +6,15 @@
 #  Created by Hans-Filip Elo on 2013-12-02.
 #
 
-if [ $1 -z || $1 -eq "help" ]
+if [ -z "$1" -o "$1" == "help" ]
 then
-    echo "Usage: "
-    echo "  createIcon.sh FILE.png"
-    echo " "
-    echo "FILE has to be a PNG at 1024x1024."
-    exit
+	echo " "
+    	echo "Usage: "
+    	echo "  createIcon.sh FILE.png"
+    	echo " "
+    	echo "FILE has to be a PNG at 1024x1024."
+	echo " "
+    	exit
 fi
 
 INFILE=$1
@@ -42,4 +44,4 @@ sips --resampleWidth 32 $INFILE --out $DIR/icon_16x16.png
 iconutil -c icns $DIR
 
 # Remove files not needed
-rm $DIR
+rm -r $DIR
