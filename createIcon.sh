@@ -18,7 +18,8 @@ then
 fi
 
 INFILE=$1
-DIR=Icon.iconset
+TEMP="${INFILE//.png/}"
+DIR=$TEMP.iconset
 
 mkdir $DIR
 
