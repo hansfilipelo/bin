@@ -6,13 +6,13 @@
 #  Created by Hans-Filip Elo on 2013-12-02.
 #
 
-if [ -z "$1" -o "$1" == "help" ]
+if [ -z "$1" -o "$1" == "--help" -o "$1" == "-h" ]
 then
 	echo " "
     	echo "Usage: "
     	echo "  createIcon.sh FILE.png"
     	echo " "
-    	echo "FILE has to be a PNG at 1024x1024."
+    	echo "FILE has to be a square formed PNG."
 	echo " "
     	exit
 fi
@@ -24,7 +24,7 @@ DIR=$TEMP.iconset
 mkdir $DIR
 
 # Create necessary PNG-files
-cp $INFILE $DIR/icon_512x512@2x.png
+sips --resampleWidth 1024 $INFILE --out $INFILE $DIR/icon_512x512@2x.png
 
 sips --resampleWidth 512 $INFILE --out $DIR/icon_512x512.png
 sips --resampleWidth 512 $INFILE --out $DIR/icon_256x256@2x.png
