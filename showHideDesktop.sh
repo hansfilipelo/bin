@@ -16,7 +16,7 @@ then
 		killall Finder
 	fi
 else
-	defaults write com.apple.finder CreateDesktop -bool true
+	defaults write com.apple.finder CreateDesktop -bool false
 	killall Finder
 fi
 
