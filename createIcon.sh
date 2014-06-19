@@ -24,7 +24,7 @@ DIR=$TEMP.iconset
 mkdir $DIR
 
 # Create necessary PNG-files
-sips --resampleWidth 1024 $INFILE --out $INFILE $DIR/icon_512x512@2x.png
+sips --resampleWidth 1024 $INFILE --out $DIR/icon_512x512@2x.png
 
 sips --resampleWidth 512 $INFILE --out $DIR/icon_512x512.png
 sips --resampleWidth 512 $INFILE --out $DIR/icon_256x256@2x.png
