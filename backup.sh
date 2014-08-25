@@ -2,7 +2,11 @@
 
 LOGG=/home/fille/loggar/backup.txt
 touch $LOGG
-exec >> $LOGG 2>&1
+
+TMP=/tmp/tmplog.txt
+touch $TMP
+
+exec >> $TMP 2>&1
 
 # cd to script dir
 DIR=$( cd "$( dirname "$0" )" && pwd )
@@ -35,4 +39,8 @@ done
 echo "Backup finished"
 date "+%Y-%m-%d %H:%M"
 echo "-------------------------------------"
+
+cat $TMP | mail -s "Backup report from lagret" hansfilipelo@gmail.com
+cat $TMP >> $LOGG
+rm $TMP
 
