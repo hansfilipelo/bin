@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# Setting path to PlexConnect
+PLEXCONNECT=/usr/bin/PlexConnect/PlexConnect.py
+
+if [ $1 == start ]
+then
+	echo "Starting PlexConnect"
+	tmux new-session -d -s plexconnect "$PLEXCONNECT"
+	if [ $? == 0 ]
+	then
+		echo "------------"
+		echo "PlexConnect successfully started."
+		exit 0
+	else
+		echo "------------"
+		echo "PlexConnect failed to start!"
+		exit 1
+	fi
+elif [ $1 == stop ]
+then
+	echo "Stopping PlexConnect"
+	tmux kill-session -t plexconnect
+	if [ $? == 0 ]
+	then
+		echo "------------"
+		echo "PlexConnect successfully stopped."
+		exit 0
+	else
+		echo "------------"
+		echo "PlexConnect failed to stop!"
+		exit 1
+	fi
+else
+	echo ""
+        echo "	Usage: $0 {status|start|stop|restart}"
+        exit 1
+fi
+
