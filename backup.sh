@@ -58,6 +58,6 @@ service transmission-daemon start
 
 
 cat $TMP >> "$LOGGFOLDER/$LOGG"
-cat $TMP | mail -s "Backup report from lagret" hansfilipelo@gmail.com
+cat $TMP | mail -s "Backup report from $(echo $(hostname))" hansfilipelo@gmail.com
 rm $TMP
 
