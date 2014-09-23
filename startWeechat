@@ -5,12 +5,12 @@ session=fille
 case "$1" in
   start)
     # Start session
-    runuser -l $session -c "tmux new-session -d -s $session"
+    sudo -u $session tmux new-session -d -s $session
     # Start weechat
-    runuser -l $session -c "tmux new-window 'weechat'"
+    sudo -u $session tmux new-window 'weechat'
     ;;
   stop)
-    runuser -l $session -c "tmux kill-session -t $session"  
+    sudo -u $session tmux kill-session -t $session
   ;;
   *)
     echo "Usage: /etc/init.d/blah {start|stop}"

@@ -1,0 +1,943 @@
+2014-09-03 13:08:29	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-03 13:08:29	--	irc: connected to irc.quakenet.org/6667 (83.140.172.212)
+2014-09-03 13:08:29	--	*** Looking up your hostname
+2014-09-03 13:08:29	--	*** Checking Ident
+2014-09-03 13:08:29	--	*** Found your hostname
+2014-09-03 13:08:38	--	*** No ident response
+2014-09-03 13:08:38	--	Welcome to the QuakeNet IRC Network, fille
+2014-09-03 13:08:38	--	Your host is port80c.se.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-03 13:08:38	--	This server was created Wed Apr 23 2014 at 01:59:23 CEST
+2014-09-03 13:08:38	--	port80c.se.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-03 13:08:38	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-03 13:08:38	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-03 13:08:38	--	There are 21 users and 37997 invisible on 40 servers
+2014-09-03 13:08:38	--	70 :operator(s) online
+2014-09-03 13:08:38	--	2 :unknown connection(s)
+2014-09-03 13:08:38	--	28204 :channels formed
+2014-09-03 13:08:38	--	I have 4859 clients and 1 servers
+2014-09-03 13:08:38	--	port80c.se.quakenet.org (port80c.se.quakenet.org): Highest connection count: 5558 (5557 clients)
+2014-09-03 13:08:38	--	- port80c.se.quakenet.org Message of the Day -
+2014-09-03 13:08:38	--	- 2014-5-7 15:47
+2014-09-03 13:08:38	--	- .........................................................................
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...           You are connected to the QuakeNet IRC Network           ...
+2014-09-03 13:08:38	--	- ...                     via port80c.se.quakenet.org.                  ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...                     port80c.se.quakenet.org                       ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...        i t ' s         g o o d         t o         b 0 r k        ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...       For information about this server's host please visit       ...
+2014-09-03 13:08:38	--	- ...                        the website below:                         ...
+2014-09-03 13:08:38	--	- ...                      http://www.phonera.se/                       ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...          For information about this network please visit          ...
+2014-09-03 13:08:38	--	- ...                        the website below:                         ...
+2014-09-03 13:08:38	--	- ...                     http://www.quakenet.org/                      ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...   This server accepts IPv6 connections on the following ports:    ...
+2014-09-03 13:08:38	--	- ...                        6667, 6668 & 6669                          ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...  By connecting to this network you give us permission to probe    ...
+2014-09-03 13:08:38	--	- ... your machine for open proxies/wingates. You also agree to adhere  ...
+2014-09-03 13:08:38	--	- ...                      by the following rules:                      ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...      o No flooding (including flood/clonebots).                   ...
+2014-09-03 13:08:38	--	- ...      o No distribution of copyrighted material or pornography.    ...
+2014-09-03 13:08:38	--	- ...      o No multiplayer gaming cheat channels.                      ...
+2014-09-03 13:08:38	--	- ...      o No clones. http://www.quakenet.org/faq/faq.php?c=128       ...
+2014-09-03 13:08:38	--	- ...      o No channel takeovers.                                      ...
+2014-09-03 13:08:38	--	- ...      o No attempts to disrupt network services.                   ...
+2014-09-03 13:08:38	--	- ...      o No racism and/or Nazism.                                   ...
+2014-09-03 13:08:38	--	- ...      o No spamming and/or advertising.                            ...
+2014-09-03 13:08:38	--	- ...      o No hacking (including Virus/Trojan distribution).          ...
+2014-09-03 13:08:38	--	- ...      o No actions we, the operators, regard as abuse.             ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...           For more details of the network's terms of service      ...
+2014-09-03 13:08:38	--	- ...                  please visit the website below:                  ...
+2014-09-03 13:08:38	--	- ...                   http://www.quakenet.org/rules/                  ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...       Violation of the network's rules will result in kills       ...
+2014-09-03 13:08:38	--	- ...              and possible network-wide access bans.               ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...      o Server Admins:                                             ...
+2014-09-03 13:08:38	--	- ...                     _nalle              stevoo                    ...
+2014-09-03 13:08:38	--	- ...             (E-mail: append @quakenet.org to above.)              ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...      Many common problems are explained on the website below:     ...
+2014-09-03 13:08:38	--	- ...                    http://www.quakenet.org/faq/                   ...
+2014-09-03 13:08:38	--	- ...     If you have a general enquiry not answered by this website    ...
+2014-09-03 13:08:38	--	- ...     please visit #help. If you *require* an IRC operator please   ...
+2014-09-03 13:08:38	--	- ...      visit #feds.                                                 ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ...   The use of this server & network is a privilege, not a right.   ...
+2014-09-03 13:08:38	--	- ...      The network operators may deny network access to anyone,     ...
+2014-09-03 13:08:38	--	- ...              for any reason, at their sole discretion.            ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- ... IRC is a free media, therefore the operators of this network take ...
+2014-09-03 13:08:38	--	- ...    no responsibility whatsoever for the opinions expressed or     ...
+2014-09-03 13:08:38	--	- ...   the actions taken by users. Absolutely no warranty is either    ...
+2014-09-03 13:08:38	--	- ...                      expressed or implied.                        ...
+2014-09-03 13:08:38	--	- ...                                                                   ...
+2014-09-03 13:08:38	--	- .........................................................................
+2014-09-03 13:08:38	--	End of /MOTD command.
+2014-09-03 13:08:38	--	port80c.se.quakenet.org (port80c.se.quakenet.org): on 1 ca 1(4) ft 20(20)
+2014-09-03 13:08:38	--	User mode for fille is [+i]
+2014-09-03 13:08:38	--	User mode [+i] by fille
+2014-09-03 13:08:56	--	irc: disconnected from server
+2014-09-03 13:09:44	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-03 13:09:44	--	irc: connected to irc.quakenet.org/6667 (158.38.8.251)
+2014-09-03 13:09:44	--	*** Looking up your hostname
+2014-09-03 13:09:44	--	*** Checking Ident
+2014-09-03 13:09:44	--	*** Found your hostname
+2014-09-03 13:09:53	--	*** No ident response
+2014-09-03 13:09:53	--	Welcome to the QuakeNet IRC Network, parker
+2014-09-03 13:09:53	--	Your host is underworld1.no.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-03 13:09:53	--	This server was created Wed Oct 19 2011 at 20:12:21 CEST
+2014-09-03 13:09:53	--	underworld1.no.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-03 13:09:53	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-03 13:09:53	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-03 13:09:53	--	There are 24 users and 38037 invisible on 40 servers
+2014-09-03 13:09:53	--	70 :operator(s) online
+2014-09-03 13:09:53	--	5 :unknown connection(s)
+2014-09-03 13:09:53	--	28196 :channels formed
+2014-09-03 13:09:53	--	I have 2919 clients and 1 servers
+2014-09-03 13:09:53	--	underworld1.no.quakenet.org (underworld1.no.quakenet.org): Highest connection count: 5838 (5837 clients)
+2014-09-03 13:09:53	--	- underworld1.no.quakenet.org Message of the Day -
+2014-09-03 13:09:53	--	- 2013-5-24 22:05
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	-            Welcome to the QuakeNet IRC Network!     __     __
+2014-09-03 13:09:53	--	- .--.--.-----.--|  |.-----.----.--.--.--.-----.----.|  |.--|  |
+2014-09-03 13:09:53	--	- |  |  |     |  _  ||  -__|   _|  |  |  |  _  |   _||  ||  _  |
+2014-09-03 13:09:53	--	- |_____|__|__|_____||_____|__| |________|_____|__|  |__||_____|
+2014-09-03 13:09:53	--	-     U N D E R W O R L D . N O . Q U A K E N E T . O R G
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- This server is hosted by Underworld <www.underworld.no> in
+2014-09-03 13:09:53	--	- cooperation with UNINETT, The Norwegian research network.
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	-   [ Disclaimer ]
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- IRC is a free media, the operators of this network take no
+2014-09-03 13:09:53	--	- responsibility whatsoever for opinions expressed or actions
+2014-09-03 13:09:53	--	- taken by users.
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- By connecting to this server you give us the right to
+2014-09-03 13:09:53	--	- probe your machine for open proxies/wingates.
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	-   [ Staff ]
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- Administrator  ::  Hardy     <hardy(a)underworld.no>
+2014-09-03 13:09:53	--	- Operator       ::  akai       <akai(a)underworld.no>
+2014-09-03 13:09:53	--	- Operator       ::  Microbe <microbe(a)underworld.no>
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	-   [ Rules ]
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- This network may NOT be used for:
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- * Flooding (including flood/clonebots).
+2014-09-03 13:09:53	--	- * Distribution of copyrighted material (eg, warez, mp3,
+2014-09-03 13:09:53	--	-   movies) or pornography.
+2014-09-03 13:09:53	--	- * Channels dedicated to cheats designed to cause unfair
+2014-09-03 13:09:53	--	-   advantage in multiplayer games.
+2014-09-03 13:09:53	--	- * Clones. Please contact info@quakenet.org if you require
+2014-09-03 13:09:53	--	-   more than five clients (LAN parties, bots, etc).
+2014-09-03 13:09:53	--	- * Attempts to takeover existing channels or network services.
+2014-09-03 13:09:53	--	- * Racism and/or Nazism.
+2014-09-03 13:09:53	--	- * Spamming and/or advertising.
+2014-09-03 13:09:53	--	- * Hacking (including Virus/Trojan distribution).
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- Continued use of this server indicates acceptance of these
+2014-09-03 13:09:53	--	- conditions.
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	-   [ Information & Help ]
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- Quakenet web page     ::  http://www.quakenet.org
+2014-09-03 13:09:53	--	- Quakenet help page    ::  http://www.quakenet.org/faq
+2014-09-03 13:09:53	--	- Quakenet servers      ::  http://www.quakenet.org/servers
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- Network Channel       ::  #feds
+2014-09-03 13:09:53	--	- Help Channel          ::  #help
+2014-09-03 13:09:53	--	- Server Channel        ::  #underworld
+2014-09-03 13:09:53	--	- Norwegian Channel     ::  #Norge
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- You can contact the staff on <quakenet-staff(a)underworld.no>
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	- This network has channel services. Consult the webpage above
+2014-09-03 13:09:53	--	- to find information on how to use and obtain these services.
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	-   [ Have a nice stay! ]
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	-
+2014-09-03 13:09:53	--	End of /MOTD command.
+2014-09-03 13:09:53	--	underworld1.no.quakenet.org (underworld1.no.quakenet.org): on 1 ca 1(4) ft 20(20)
+2014-09-03 13:09:53	--	User mode for parker is [+i]
+2014-09-03 13:09:53	--	User mode [+i] by parker
+2014-09-03 13:34:17	--	irc: disconnected from server
+2014-09-03 13:35:27	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-03 13:35:27	--	irc: connected to irc.quakenet.org/6667 (77.80.253.131)
+2014-09-03 13:35:27	--	*** Looking up your hostname
+2014-09-03 13:35:27	--	*** Checking Ident
+2014-09-03 13:35:27	--	*** Found your hostname
+2014-09-03 13:35:36	--	*** No ident response
+2014-09-03 13:35:36	--	Welcome to the QuakeNet IRC Network, parker
+2014-09-03 13:35:36	--	Your host is dreamhack.se.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-03 13:35:36	--	This server was created Fri Jun 22 2012 at 20:47:31 CEST
+2014-09-03 13:35:36	--	dreamhack.se.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-03 13:35:36	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-03 13:35:36	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-03 13:35:36	--	There are 19 users and 38328 invisible on 40 servers
+2014-09-03 13:35:36	--	71 :operator(s) online
+2014-09-03 13:35:36	--	28291 :channels formed
+2014-09-03 13:35:36	--	I have 4891 clients and 1 servers
+2014-09-03 13:35:36	--	dreamhack.se.quakenet.org (dreamhack.se.quakenet.org): Highest connection count: 5551 (5550 clients)
+2014-09-03 13:35:36	--	- dreamhack.se.quakenet.org Message of the Day -
+2014-09-03 13:35:36	--	- 2013-7-25 16:09
+2014-09-03 13:35:36	--	-    _____                             _______              __
+2014-09-03 13:35:36	--	-   |     \.----.-----.---.-.--------.|   |   |.---.-.----.|  |--.
+2014-09-03 13:35:36	--	-   |  --  |   _|  -__|  _  |        ||       ||  _  |  __||    <
+2014-09-03 13:35:36	--	-   |_____/|__| |_____|___._|__|__|__||___|___||___._|____||__|__|
+2014-09-03 13:35:36	--	-                 DREAMHACK . SE . QUAKENET . ORG
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   You're now connected to a server hosted by DreamHack with
+2014-09-03 13:35:36	--	-   sponsored bandwidth by TeliaSonera (AS3301)
+2014-09-03 13:35:36	--	-   located in Stockholm, Sweden.
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-                         = DISCLAIMER =
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   IRC is a free media, the operators of this network take no
+2014-09-03 13:35:36	--	-   responsibility whatsoever for opinions expressed or actions
+2014-09-03 13:35:36	--	-   taken by users.
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   By connecting to this server you give us the right to
+2014-09-03 13:35:36	--	-   probe your machine for open proxies/wingates.
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   This network may NOT be used for:
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   * Flooding (including flood/clonebots).
+2014-09-03 13:35:36	--	-   * Distribution of copyrighted material (eg, warez, mp3,
+2014-09-03 13:35:36	--	-     movies) or pornography.
+2014-09-03 13:35:36	--	-   * Channels dedicated to cheats designed to cause unfair
+2014-09-03 13:35:36	--	-     advantage in multiplayer games.
+2014-09-03 13:35:36	--	-   * Clones. Please contact info@quakenet.org if you require
+2014-09-03 13:35:36	--	-     more than five clients (LAN parties, bots, etc).
+2014-09-03 13:35:36	--	-   * Attempts to takeover existing channels or network services.
+2014-09-03 13:35:36	--	-   * Racism and/or Nazism.
+2014-09-03 13:35:36	--	-   * Spamming and/or advertising.
+2014-09-03 13:35:36	--	-   * Hacking (including Virus/Trojan distribution).
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   Continued use of this server indicates acceptance of these
+2014-09-03 13:35:36	--	-   conditions.
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-                         = STAFF =
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   Admin -->     suom1              <suom1@dreamhack.se>
+2014-09-03 13:35:36	--	-                 jmh                <jmh@quakenet.org>
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   Oper  -->     shroud, qip, sel, sorcerer
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-                         = INFORMATION =
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   Quakenet web page                       http://www.quakenet.org
+2014-09-03 13:35:36	--	-   Quakenet help page                  http://www.quakenet.org/faq
+2014-09-03 13:35:36	--	-   Quakenet servers                      http://staff.quakenet.org
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   Network Channel                                           #feds
+2014-09-03 13:35:36	--	-   Help Channel                                              #help
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   You can contact the staff on <irc@dreamhack.se>
+2014-09-03 13:35:36	--	-
+2014-09-03 13:35:36	--	-   This network has channel services. Consult the webpage above
+2014-09-03 13:35:36	--	-   to find information on how to use and obtain these services.
+2014-09-03 13:35:36	--	End of /MOTD command.
+2014-09-03 13:35:36	--	dreamhack.se.quakenet.org (dreamhack.se.quakenet.org): on 1 ca 1(4) ft 20(20)
+2014-09-03 13:35:36	--	User mode for parker is [+i]
+2014-09-03 13:35:36	--	User mode [+i] by parker
+2014-09-04 06:58:13	--	irc: disconnected from server
+2014-09-04 13:56:11	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-04 13:56:11	--	irc: connected to irc.quakenet.org/6667 (83.140.172.211)
+2014-09-04 13:56:11	--	*** Looking up your hostname
+2014-09-04 13:56:11	--	*** Checking Ident
+2014-09-04 13:56:11	--	*** Found your hostname
+2014-09-04 13:56:19	--	*** No ident response
+2014-09-04 13:56:19	--	Welcome to the QuakeNet IRC Network, parker
+2014-09-04 13:56:19	--	Your host is port80b.se.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-04 13:56:19	--	This server was created Wed Apr 23 2014 at 01:59:59 CEST
+2014-09-04 13:56:19	--	port80b.se.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-04 13:56:19	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-04 13:56:19	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-04 13:56:19	--	There are 20 users and 38564 invisible on 39 servers
+2014-09-04 13:56:19	--	71 :operator(s) online
+2014-09-04 13:56:19	--	1 :unknown connection(s)
+2014-09-04 13:56:19	--	28255 :channels formed
+2014-09-04 13:56:19	--	I have 5389 clients and 1 servers
+2014-09-04 13:56:19	--	port80b.se.quakenet.org (port80b.se.quakenet.org): Highest connection count: 6117 (6116 clients)
+2014-09-04 13:56:19	--	- port80b.se.quakenet.org Message of the Day -
+2014-09-04 13:56:19	--	- 2014-5-7 15:49
+2014-09-04 13:56:19	--	- .........................................................................
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...           You are connected to the QuakeNet IRC Network           ...
+2014-09-04 13:56:19	--	- ...                     via port80b.se.quakenet.org.                  ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...                     port80b.se.quakenet.org                       ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...        i t ' s         g o o d         t o         b 0 r k        ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...       For information about this server's host please visit       ...
+2014-09-04 13:56:19	--	- ...                        the website below:                         ...
+2014-09-04 13:56:19	--	- ...                      http://www.phonera.se/                       ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...          For information about this network please visit          ...
+2014-09-04 13:56:19	--	- ...                        the website below:                         ...
+2014-09-04 13:56:19	--	- ...                     http://www.quakenet.org/                      ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...   This server accepts IPv6 connections on the following ports:    ...
+2014-09-04 13:56:19	--	- ...                        6667, 6668 & 6669                          ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...  By connecting to this network you give us permission to probe    ...
+2014-09-04 13:56:19	--	- ... your machine for open proxies/wingates. You also agree to adhere  ...
+2014-09-04 13:56:19	--	- ...                      by the following rules:                      ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...      o No flooding (including flood/clonebots).                   ...
+2014-09-04 13:56:19	--	- ...      o No distribution of copyrighted material or pornography.    ...
+2014-09-04 13:56:19	--	- ...      o No multiplayer gaming cheat channels.                      ...
+2014-09-04 13:56:19	--	- ...      o No clones. http://www.quakenet.org/faq/faq.php?c=128       ...
+2014-09-04 13:56:19	--	- ...      o No channel takeovers.                                      ...
+2014-09-04 13:56:19	--	- ...      o No attempts to disrupt network services.                   ...
+2014-09-04 13:56:19	--	- ...      o No racism and/or Nazism.                                   ...
+2014-09-04 13:56:19	--	- ...      o No spamming and/or advertising.                            ...
+2014-09-04 13:56:19	--	- ...      o No hacking (including Virus/Trojan distribution).          ...
+2014-09-04 13:56:19	--	- ...      o No actions we, the operators, regard as abuse.             ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...           For more details of the network's terms of service      ...
+2014-09-04 13:56:19	--	- ...                  please visit the website below:                  ...
+2014-09-04 13:56:19	--	- ...                   http://www.quakenet.org/rules/                  ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...       Violation of the network's rules will result in kills       ...
+2014-09-04 13:56:19	--	- ...              and possible network-wide access bans.               ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...      o Server Admins:                                             ...
+2014-09-04 13:56:19	--	- ...                     _nalle              stevoo                    ...
+2014-09-04 13:56:19	--	- ...             (E-mail: append @quakenet.org to above.)              ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...      Many common problems are explained on the website below:     ...
+2014-09-04 13:56:19	--	- ...                    http://www.quakenet.org/faq/                   ...
+2014-09-04 13:56:19	--	- ...     If you have a general enquiry not answered by this website    ...
+2014-09-04 13:56:19	--	- ...     please visit #help. If you *require* an IRC operator please   ...
+2014-09-04 13:56:19	--	- ...      visit #feds.                                                 ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ...   The use of this server & network is a privilege, not a right.   ...
+2014-09-04 13:56:19	--	- ...      The network operators may deny network access to anyone,     ...
+2014-09-04 13:56:19	--	- ...              for any reason, at their sole discretion.            ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- ... IRC is a free media, therefore the operators of this network take ...
+2014-09-04 13:56:19	--	- ...    no responsibility whatsoever for the opinions expressed or     ...
+2014-09-04 13:56:19	--	- ...   the actions taken by users. Absolutely no warranty is either    ...
+2014-09-04 13:56:19	--	- ...                      expressed or implied.                        ...
+2014-09-04 13:56:19	--	- ...                                                                   ...
+2014-09-04 13:56:19	--	- .........................................................................
+2014-09-04 13:56:19	--	End of /MOTD command.
+2014-09-04 13:56:19	--	port80b.se.quakenet.org (port80b.se.quakenet.org): on 1 ca 1(4) ft 20(20)
+2014-09-04 13:56:19	--	User mode for parker is [+i]
+2014-09-04 13:56:19	--	User mode [+i] by parker
+2014-09-04 19:53:43	--	irc: disconnected from server
+2014-09-04 19:53:48	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-04 19:53:48	--	irc: connected to irc.quakenet.org/6667 (208.64.121.85)
+2014-09-04 19:53:48	--	*** Looking up your hostname
+2014-09-04 19:53:49	--	*** Checking Ident
+2014-09-04 19:53:49	--	irc: nickname "parker" is already in use, trying nickname "cyd_parker"
+2014-09-04 19:53:49	--	*** Found your hostname
+2014-09-04 19:53:57	--	*** No ident response
+2014-09-04 19:54:48	=!=	irc: connection timeout (message 001 not received)
+2014-09-04 19:54:48	--	irc: disconnected from server
+2014-09-04 19:54:48	--	irc: reconnecting to server in 10 seconds
+2014-09-04 19:54:58	--	irc: reconnecting to server...
+2014-09-04 19:54:58	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-04 19:54:58	--	irc: connected to irc.quakenet.org/6667 (66.225.225.66)
+2014-09-04 19:54:58	--	*** Looking up your hostname
+2014-09-04 19:54:58	--	*** Checking Ident
+2014-09-04 19:54:59	--	*** Found your hostname
+2014-09-04 19:55:07	--	*** No ident response
+2014-09-04 19:55:07	--	Welcome to the QuakeNet IRC Network, cyd_parker
+2014-09-04 19:55:07	--	Your host is servercentral.il.us.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-04 19:55:07	--	This server was created Mon Oct 6 2008 at 13:36:33 CDT
+2014-09-04 19:55:07	--	servercentral.il.us.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-04 19:55:07	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-04 19:55:07	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-04 19:55:07	--	There are 22 users and 43368 invisible on 39 servers
+2014-09-04 19:55:07	--	71 :operator(s) online
+2014-09-04 19:55:07	--	3 :unknown connection(s)
+2014-09-04 19:55:07	--	29459 :channels formed
+2014-09-04 19:55:07	--	I have 4154 clients and 1 servers
+2014-09-04 19:55:07	--	servercentral.il.us.quakenet.org (servercentral.il.us.quakenet.org): Highest connection count: 5934 (5933 clients)
+2014-09-04 19:55:07	--	- servercentral.il.us.quakenet.org Message of the Day -
+2014-09-04 19:55:07	--	- 2008-9-29 18:33
+2014-09-04 19:55:07	--	- welcome to..                            _            _
+2014-09-04 19:55:07	--	-      ___ ___ _ ___ _____ _ _ __ ___ _ _| |_ _ _ __ _| |
+2014-09-04 19:55:07	--	- * * (_-</ -_) '_\ V / -_) '_/ _/ -_) ' \  _| '_/ _` | | * *
+2014-09-04 19:55:07	--	-  *  /__/\___|_|  \_/\___|_| \__\___|_||_\__|_| \__,_|_|  *
+2014-09-04 19:55:07	--	- 
+2014-09-04 19:55:07	--	-      ...::[[ servercentral.il.us.quakenet.org ]]::...
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- This IRC Server is operated by The Server Central Network
+2014-09-04 19:55:07	--	-   o Listening on ports: 5555, 6660 - 6669, 7000, 8080 o
+2014-09-04 19:55:07	--	-        o Visit us @ http://www.servercentral.net/ o
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- --- Server Rules -----------------------------------------
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	-   o No Flooding       o No DoS bots         o No Warez
+2014-09-04 19:55:07	--	-   o No Clones         o No Spamming         o No XDCCs
+2014-09-04 19:55:07	--	-   o No Takeovers      o No Phishing         o No Whiners
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- --- Server Staff -----------------------------------------
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	-   o Administrator   *doug               [douglas/@/boldt.us]
+2014-09-04 19:55:07	--	-   o Operator        *netmunky          [gavin/@/subnets.org]
+2014-09-04 19:55:07	--	-   o Operator        *SyncError  [syncerror/@/idsoftware.com]
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- --- Network Information ----------------------------------
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	-   o Quakenet  +-  http://www.quakenet.org/
+2014-09-04 19:55:07	--	-   o #Feds     +-  Closed Oper Channel (#help for access)
+2014-09-04 19:55:07	--	-   o #Help     +-  General Help (Quakenet public channel)
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- --- Local Information ------------------------------------
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	-   o #servercentral  +- Public ServerCentral Help Channel.
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- --- Recommended Channels ---------------------------------
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	-   #idsoftware  +- id Software's Public Discussion Channel.
+2014-09-04 19:55:07	--	-   #q4max  +- Support for the popular 1v1 quake4 mod.
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- --- Recommended Sites ------------------------------------
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	-   o http://irchelp.org/      o http://searchirc.com/
+2014-09-04 19:55:07	--	-   o http://idsoftware.com/   o http://irc-junkie.org/
+2014-09-04 19:55:07	--	-   o http://irssi.org/        o http://irc.netsplit.de/
+2014-09-04 19:55:07	--	-   o http://q4max.com/        o http://gamersreports.com/
+2014-09-04 19:55:07	--	-   o http://wingsix.com/      o http://reverse.net/
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- --- Disclaimer -------------------------------------------
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- This server's staff and Server Central Network are *NOT*
+2014-09-04 19:55:07	--	- responsible for the data that passes through this server.
+2014-09-04 19:55:07	--	- Use of this server is a *privilege* which may be revoked
+2014-09-04 19:55:07	--	- any time and for any reason by the Quakenet IRCop Staff.
+2014-09-04 19:55:07	--	-
+2014-09-04 19:55:07	--	- ----------------------------------------------------------
+2014-09-04 19:55:07	--	End of /MOTD command.
+2014-09-04 19:55:07	--	servercentral.il.us.quakenet.org (servercentral.il.us.quakenet.org): on 2 ca 1(4) ft 20(20)
+2014-09-04 19:55:07	--	User mode for cyd_parker is [+i]
+2014-09-04 19:55:07	--	User mode [+i] by cyd_parker
+2014-09-06 03:01:15	=!=	Closing Link: parker by servercentral.il.us.quakenet.org (Ping timeout)
+2014-09-06 03:01:15	--	irc: disconnected from server
+2014-09-06 03:01:15	--	irc: reconnecting to server in 10 seconds
+2014-09-06 03:01:25	--	irc: reconnecting to server...
+2014-09-06 03:01:25	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-06 03:01:25	--	irc: connected to irc.quakenet.org/6667 (208.64.121.85)
+2014-09-06 03:01:25	--	*** Looking up your hostname
+2014-09-06 03:01:26	--	*** Checking Ident
+2014-09-06 03:01:26	--	*** Found your hostname
+2014-09-06 03:01:34	--	*** No ident response
+2014-09-06 03:02:25	=!=	irc: connection timeout (message 001 not received)
+2014-09-06 03:02:25	--	irc: disconnected from server
+2014-09-06 03:02:25	--	irc: reconnecting to server in 20 seconds
+2014-09-06 03:02:45	--	irc: reconnecting to server...
+2014-09-06 03:02:45	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-06 03:02:45	--	irc: connected to irc.quakenet.org/6667 (77.80.253.131)
+2014-09-06 03:02:45	--	*** Looking up your hostname
+2014-09-06 03:02:45	--	*** Checking Ident
+2014-09-06 03:02:45	--	*** Found your hostname
+2014-09-06 03:02:53	--	*** No ident response
+2014-09-06 03:02:53	--	Welcome to the QuakeNet IRC Network, parker
+2014-09-06 03:02:53	--	Your host is dreamhack.se.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-06 03:02:53	--	This server was created Fri Jun 22 2012 at 20:47:31 CEST
+2014-09-06 03:02:53	--	dreamhack.se.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-06 03:02:53	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-06 03:02:53	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-06 03:02:53	--	There are 25 users and 36439 invisible on 39 servers
+2014-09-06 03:02:53	--	70 :operator(s) online
+2014-09-06 03:02:53	--	6 :unknown connection(s)
+2014-09-06 03:02:53	--	27823 :channels formed
+2014-09-06 03:02:53	--	I have 5162 clients and 1 servers
+2014-09-06 03:02:53	--	dreamhack.se.quakenet.org (dreamhack.se.quakenet.org): Highest connection count: 6112 (6111 clients)
+2014-09-06 03:02:53	--	- dreamhack.se.quakenet.org Message of the Day -
+2014-09-06 03:02:53	--	- 2013-7-25 16:09
+2014-09-06 03:02:53	--	-    _____                             _______              __
+2014-09-06 03:02:53	--	-   |     \.----.-----.---.-.--------.|   |   |.---.-.----.|  |--.
+2014-09-06 03:02:53	--	-   |  --  |   _|  -__|  _  |        ||       ||  _  |  __||    <
+2014-09-06 03:02:53	--	-   |_____/|__| |_____|___._|__|__|__||___|___||___._|____||__|__|
+2014-09-06 03:02:53	--	-                 DREAMHACK . SE . QUAKENET . ORG
+2014-09-06 03:02:53	--	-
+2014-09-06 03:02:53	--	-   You're now connected to a server hosted by DreamHack with
+2014-09-06 03:02:53	--	-   sponsored bandwidth by TeliaSonera (AS3301)
+2014-09-06 03:02:53	--	-   located in Stockholm, Sweden.
+2014-09-06 03:02:53	--	-
+2014-09-06 03:02:53	--	-                         = DISCLAIMER =
+2014-09-06 03:02:53	--	-
+2014-09-06 03:02:53	--	-   IRC is a free media, the operators of this network take no
+2014-09-06 03:02:53	--	-   responsibility whatsoever for opinions expressed or actions
+2014-09-06 03:02:53	--	-   taken by users.
+2014-09-06 03:02:53	--	-
+2014-09-06 03:02:53	--	-   By connecting to this server you give us the right to
+2014-09-06 03:02:53	--	-   probe your machine for open proxies/wingates.
+2014-09-06 03:02:53	--	-
+2014-09-06 03:02:53	--	-   This network may NOT be used for:
+2014-09-06 03:02:53	--	-
+2014-09-06 03:02:53	--	-   * Flooding (including flood/clonebots).
+2014-09-06 03:02:53	--	-   * Distribution of copyrighted material (eg, warez, mp3,
+2014-09-06 03:02:53	--	-     movies) or pornography.
+2014-09-06 03:02:53	--	-   * Channels dedicated to cheats designed to cause unfair
+2014-09-06 03:02:54	--	-     advantage in multiplayer games.
+2014-09-06 03:02:54	--	-   * Clones. Please contact info@quakenet.org if you require
+2014-09-06 03:02:54	--	-     more than five clients (LAN parties, bots, etc).
+2014-09-06 03:02:54	--	-   * Attempts to takeover existing channels or network services.
+2014-09-06 03:02:54	--	-   * Racism and/or Nazism.
+2014-09-06 03:02:54	--	-   * Spamming and/or advertising.
+2014-09-06 03:02:54	--	-   * Hacking (including Virus/Trojan distribution).
+2014-09-06 03:02:54	--	-
+2014-09-06 03:02:54	--	-   Continued use of this server indicates acceptance of these
+2014-09-06 03:02:54	--	-   conditions.
+2014-09-06 03:02:54	--	-
+2014-09-06 03:02:54	--	-                         = STAFF =
+2014-09-06 03:02:54	--	-
+2014-09-06 03:02:54	--	-   Admin -->     suom1              <suom1@dreamhack.se>
+2014-09-06 03:02:54	--	-                 jmh                <jmh@quakenet.org>
+2014-09-06 03:02:54	--	-
+2014-09-06 03:02:54	--	-   Oper  -->     shroud, qip, sel, sorcerer
+2014-09-06 03:02:54	--	-
+2014-09-06 03:02:54	--	-                         = INFORMATION =
+2014-09-06 03:02:54	--	-
+2014-09-06 03:02:54	--	-   Quakenet web page                       http://www.quakenet.org
+2014-09-06 03:02:54	--	-   Quakenet help page                  http://www.quakenet.org/faq
+2014-09-06 03:02:54	--	-   Quakenet servers                      http://staff.quakenet.org
+2014-09-06 03:02:54	--	-
+2014-09-06 03:02:54	--	-   Network Channel                                           #feds
+2014-09-06 03:02:54	--	-   Help Channel                                              #help
+2014-09-06 03:02:54	--	-
+2014-09-06 03:02:54	--	-   You can contact the staff on <irc@dreamhack.se>
+2014-09-06 03:02:54	--	-
+2014-09-06 03:02:54	--	-   This network has channel services. Consult the webpage above
+2014-09-06 03:02:54	--	-   to find information on how to use and obtain these services.
+2014-09-06 03:02:54	--	End of /MOTD command.
+2014-09-06 03:02:54	--	dreamhack.se.quakenet.org (dreamhack.se.quakenet.org): on 1 ca 1(4) ft 20(20)
+2014-09-06 03:02:54	--	User mode for parker is [+i]
+2014-09-06 03:02:54	--	User mode [+i] by parker
+2014-09-17 22:00:42	--	N (control@services.uk.quakenet.org): (Broadcast) Quake Live has just been released on Steam! To celebrate this occasion and chat with the community and developers come and join us in #QuakeLive - more information also available on http://store.steampowered.com/app/282440/ and www.quakelive.com
+2014-09-20 23:53:56	=!=	Closing Link: parker by dreamhack.se.quakenet.org (Ping timeout)
+2014-09-20 23:53:56	--	irc: disconnected from server
+2014-09-20 23:53:56	--	irc: reconnecting to server in 10 seconds
+2014-09-20 23:54:06	--	irc: reconnecting to server...
+2014-09-20 23:54:06	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-20 23:54:06	--	irc: connected to irc.quakenet.org/6667 (83.140.172.212)
+2014-09-20 23:54:06	--	*** Looking up your hostname
+2014-09-20 23:54:06	--	*** Checking Ident
+2014-09-20 23:54:06	--	*** Found your hostname
+2014-09-20 23:54:15	--	*** No ident response
+2014-09-20 23:54:15	--	Welcome to the QuakeNet IRC Network, parker
+2014-09-20 23:54:15	--	Your host is port80c.se.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-20 23:54:15	--	This server was created Wed Apr 23 2014 at 01:59:23 CEST
+2014-09-20 23:54:15	--	port80c.se.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-20 23:54:15	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-20 23:54:15	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-20 23:54:15	--	There are 32 users and 41025 invisible on 40 servers
+2014-09-20 23:54:15	--	65 :operator(s) online
+2014-09-20 23:54:15	--	13 :unknown connection(s)
+2014-09-20 23:54:15	--	28718 :channels formed
+2014-09-20 23:54:15	--	I have 5437 clients and 1 servers
+2014-09-20 23:54:15	--	port80c.se.quakenet.org (port80c.se.quakenet.org): Highest connection count: 6090 (6089 clients)
+2014-09-20 23:54:15	--	- port80c.se.quakenet.org Message of the Day -
+2014-09-20 23:54:15	--	- 2014-5-7 15:47
+2014-09-20 23:54:15	--	- .........................................................................
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...           You are connected to the QuakeNet IRC Network           ...
+2014-09-20 23:54:15	--	- ...                     via port80c.se.quakenet.org.                  ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...                     port80c.se.quakenet.org                       ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...        i t ' s         g o o d         t o         b 0 r k        ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...       For information about this server's host please visit       ...
+2014-09-20 23:54:15	--	- ...                        the website below:                         ...
+2014-09-20 23:54:15	--	- ...                      http://www.phonera.se/                       ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...          For information about this network please visit          ...
+2014-09-20 23:54:15	--	- ...                        the website below:                         ...
+2014-09-20 23:54:15	--	- ...                     http://www.quakenet.org/                      ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...   This server accepts IPv6 connections on the following ports:    ...
+2014-09-20 23:54:15	--	- ...                        6667, 6668 & 6669                          ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...  By connecting to this network you give us permission to probe    ...
+2014-09-20 23:54:15	--	- ... your machine for open proxies/wingates. You also agree to adhere  ...
+2014-09-20 23:54:15	--	- ...                      by the following rules:                      ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...      o No flooding (including flood/clonebots).                   ...
+2014-09-20 23:54:15	--	- ...      o No distribution of copyrighted material or pornography.    ...
+2014-09-20 23:54:15	--	- ...      o No multiplayer gaming cheat channels.                      ...
+2014-09-20 23:54:15	--	- ...      o No clones. http://www.quakenet.org/faq/faq.php?c=128       ...
+2014-09-20 23:54:15	--	- ...      o No channel takeovers.                                      ...
+2014-09-20 23:54:15	--	- ...      o No attempts to disrupt network services.                   ...
+2014-09-20 23:54:15	--	- ...      o No racism and/or Nazism.                                   ...
+2014-09-20 23:54:15	--	- ...      o No spamming and/or advertising.                            ...
+2014-09-20 23:54:15	--	- ...      o No hacking (including Virus/Trojan distribution).          ...
+2014-09-20 23:54:15	--	- ...      o No actions we, the operators, regard as abuse.             ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...           For more details of the network's terms of service      ...
+2014-09-20 23:54:15	--	- ...                  please visit the website below:                  ...
+2014-09-20 23:54:15	--	- ...                   http://www.quakenet.org/rules/                  ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...       Violation of the network's rules will result in kills       ...
+2014-09-20 23:54:15	--	- ...              and possible network-wide access bans.               ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...      o Server Admins:                                             ...
+2014-09-20 23:54:15	--	- ...                     _nalle              stevoo                    ...
+2014-09-20 23:54:15	--	- ...             (E-mail: append @quakenet.org to above.)              ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...      Many common problems are explained on the website below:     ...
+2014-09-20 23:54:15	--	- ...                    http://www.quakenet.org/faq/                   ...
+2014-09-20 23:54:15	--	- ...     If you have a general enquiry not answered by this website    ...
+2014-09-20 23:54:15	--	- ...     please visit #help. If you *require* an IRC operator please   ...
+2014-09-20 23:54:15	--	- ...      visit #feds.                                                 ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ...   The use of this server & network is a privilege, not a right.   ...
+2014-09-20 23:54:15	--	- ...      The network operators may deny network access to anyone,     ...
+2014-09-20 23:54:15	--	- ...              for any reason, at their sole discretion.            ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- ... IRC is a free media, therefore the operators of this network take ...
+2014-09-20 23:54:15	--	- ...    no responsibility whatsoever for the opinions expressed or     ...
+2014-09-20 23:54:15	--	- ...   the actions taken by users. Absolutely no warranty is either    ...
+2014-09-20 23:54:15	--	- ...                      expressed or implied.                        ...
+2014-09-20 23:54:15	--	- ...                                                                   ...
+2014-09-20 23:54:15	--	- .........................................................................
+2014-09-20 23:54:15	--	End of /MOTD command.
+2014-09-20 23:54:15	--	port80c.se.quakenet.org (port80c.se.quakenet.org): on 1 ca 1(4) ft 20(20)
+2014-09-20 23:54:15	--	User mode for parker is [+i]
+2014-09-20 23:54:15	--	User mode [+i] by parker
+2014-09-21 23:18:15	=!=	Closing Link: parker by port80c.se.quakenet.org (Ping timeout)
+2014-09-21 23:18:15	--	irc: disconnected from server
+2014-09-21 23:18:15	--	irc: reconnecting to server in 10 seconds
+2014-09-21 23:18:25	--	irc: reconnecting to server...
+2014-09-21 23:18:25	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-21 23:18:25	--	irc: connected to irc.quakenet.org/6667 (128.39.65.226)
+2014-09-21 23:18:25	--	*** Looking up your hostname
+2014-09-21 23:18:25	--	*** Checking Ident
+2014-09-21 23:18:25	--	*** Found your hostname
+2014-09-21 23:18:33	--	*** No ident response
+2014-09-21 23:18:33	--	Welcome to the QuakeNet IRC Network, parker
+2014-09-21 23:18:33	--	Your host is underworld2.no.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-21 23:18:33	--	This server was created Fri May 24 2013 at 22:12:24 CEST
+2014-09-21 23:18:33	--	underworld2.no.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-21 23:18:33	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-21 23:18:33	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-21 23:18:33	--	There are 64 users and 23332 invisible on 33 servers
+2014-09-21 23:18:33	--	49 :operator(s) online
+2014-09-21 23:18:33	--	45 :unknown connection(s)
+2014-09-21 23:18:33	--	24261 :channels formed
+2014-09-21 23:18:33	--	I have 3135 clients and 1 servers
+2014-09-21 23:18:33	--	underworld2.no.quakenet.org (underworld2.no.quakenet.org): Highest connection count: 3136 (3135 clients)
+2014-09-21 23:18:33	--	- underworld2.no.quakenet.org Message of the Day -
+2014-09-21 23:18:33	--	- 2013-5-24 22:06
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	-            Welcome to the QuakeNet IRC Network!     __     __
+2014-09-21 23:18:33	--	- .--.--.-----.--|  |.-----.----.--.--.--.-----.----.|  |.--|  |
+2014-09-21 23:18:33	--	- |  |  |     |  _  ||  -__|   _|  |  |  |  _  |   _||  ||  _  |
+2014-09-21 23:18:33	--	- |_____|__|__|_____||_____|__| |________|_____|__|  |__||_____|
+2014-09-21 23:18:33	--	-     U N D E R W O R L D . N O . Q U A K E N E T . O R G
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- This server is hosted by Underworld <www.underworld.no> in
+2014-09-21 23:18:33	--	- cooperation with UNINETT, The Norwegian research network.
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	-   [ Disclaimer ]
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- IRC is a free media, the operators of this network take no
+2014-09-21 23:18:33	--	- responsibility whatsoever for opinions expressed or actions
+2014-09-21 23:18:33	--	- taken by users.
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- By connecting to this server you give us the right to
+2014-09-21 23:18:33	--	- probe your machine for open proxies/wingates.
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	-   [ Staff ]
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- Administrator  ::  Hardy     <hardy(a)underworld.no>
+2014-09-21 23:18:33	--	- Operator       ::  akai       <akai(a)underworld.no>
+2014-09-21 23:18:33	--	- Operator       ::  Microbe <microbe(a)underworld.no
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	-   [ Rules ]
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- This network may NOT be used for:
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- * Flooding (including flood/clonebots).
+2014-09-21 23:18:33	--	- * Distribution of copyrighted material (eg, warez, mp3,
+2014-09-21 23:18:33	--	-   movies) or pornography.
+2014-09-21 23:18:33	--	- * Channels dedicated to cheats designed to cause unfair
+2014-09-21 23:18:33	--	-   advantage in multiplayer games.
+2014-09-21 23:18:33	--	- * Clones. Please contact info@quakenet.org if you require
+2014-09-21 23:18:33	--	-   more than five clients (LAN parties, bots, etc).
+2014-09-21 23:18:33	--	- * Attempts to takeover existing channels or network services.
+2014-09-21 23:18:33	--	- * Racism and/or Nazism.
+2014-09-21 23:18:33	--	- * Spamming and/or advertising.
+2014-09-21 23:18:33	--	- * Hacking (including Virus/Trojan distribution).
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- Continued use of this server indicates acceptance of these
+2014-09-21 23:18:33	--	- conditions.
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	-   [ Information & Help ]
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- Quakenet web page     ::  http://www.quakenet.org
+2014-09-21 23:18:33	--	- Quakenet help page    ::  http://www.quakenet.org/faq
+2014-09-21 23:18:33	--	- Quakenet servers      ::  http://www.quakenet.org/Servers
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- Network Channel       ::  #feds
+2014-09-21 23:18:33	--	- Help Channel          ::  #help
+2014-09-21 23:18:33	--	- Server Channel        ::  #underworld
+2014-09-21 23:18:33	--	- Norwegian Channel     ::  #Norge
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- You can contact the staff on <quakenet-staff(a)underworld.no>
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	- This network has channel services. Consult the webpage above
+2014-09-21 23:18:33	--	- to find information on how to use and obtain these services.
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	-   [ Have a nice stay! ]
+2014-09-21 23:18:33	--	-
+2014-09-21 23:18:33	--	End of /MOTD command.
+2014-09-21 23:18:33	--	underworld2.no.quakenet.org (underworld2.no.quakenet.org): on 1 ca 2(4) ft 20(20)
+2014-09-21 23:18:33	--	User mode for parker is [+i]
+2014-09-21 23:18:33	--	User mode [+i] by parker
+2014-09-23 06:51:30	--	irc: disconnected from server
+2014-09-23 11:13:34	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-23 11:13:34	--	irc: connected to irc.quakenet.org/6667 (83.140.172.210)
+2014-09-23 11:13:34	--	*** Looking up your hostname
+2014-09-23 11:13:34	--	*** Checking Ident
+2014-09-23 11:13:34	--	*** Found your hostname
+2014-09-23 11:13:42	--	*** No ident response
+2014-09-23 11:13:42	--	Welcome to the QuakeNet IRC Network, parker
+2014-09-23 11:13:42	--	Your host is port80a.se.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-23 11:13:42	--	This server was created Wed Apr 23 2014 at 01:59:22 CEST
+2014-09-23 11:13:42	--	port80a.se.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-23 11:13:42	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-23 11:13:42	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-23 11:13:42	--	There are 22 users and 36841 invisible on 40 servers
+2014-09-23 11:13:42	--	64 :operator(s) online
+2014-09-23 11:13:42	--	3 :unknown connection(s)
+2014-09-23 11:13:42	--	27852 :channels formed
+2014-09-23 11:13:42	--	I have 4323 clients and 1 servers
+2014-09-23 11:13:42	--	port80a.se.quakenet.org (port80a.se.quakenet.org): Highest connection count: 6108 (6107 clients)
+2014-09-23 11:13:42	--	- port80a.se.quakenet.org Message of the Day -
+2014-09-23 11:13:42	--	- 2014-5-7 15:48
+2014-09-23 11:13:42	--	- .........................................................................
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...           You are connected to the QuakeNet IRC Network           ...
+2014-09-23 11:13:42	--	- ...                     via port80a.se.quakenet.org.                  ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...                     port80a.se.quakenet.org                       ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...        i t ' s         g o o d         t o         b 0 r k        ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...       For information about this server's host please visit       ...
+2014-09-23 11:13:42	--	- ...                        the website below:                         ...
+2014-09-23 11:13:42	--	- ...                      http://www.phonera.se/                       ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...          For information about this network please visit          ...
+2014-09-23 11:13:42	--	- ...                        the website below:                         ...
+2014-09-23 11:13:42	--	- ...                     http://www.quakenet.org/                      ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...   This server accepts IPv6 connections on the following ports:    ...
+2014-09-23 11:13:42	--	- ...                        6667, 6668 & 6669                          ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...  By connecting to this network you give us permission to probe    ...
+2014-09-23 11:13:42	--	- ... your machine for open proxies/wingates. You also agree to adhere  ...
+2014-09-23 11:13:42	--	- ...                      by the following rules:                      ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...      o No flooding (including flood/clonebots).                   ...
+2014-09-23 11:13:42	--	- ...      o No distribution of copyrighted material or pornography.    ...
+2014-09-23 11:13:42	--	- ...      o No multiplayer gaming cheat channels.                      ...
+2014-09-23 11:13:42	--	- ...      o No clones. http://www.quakenet.org/faq/faq.php?c=128       ...
+2014-09-23 11:13:42	--	- ...      o No channel takeovers.                                      ...
+2014-09-23 11:13:42	--	- ...      o No attempts to disrupt network services.                   ...
+2014-09-23 11:13:42	--	- ...      o No racism and/or Nazism.                                   ...
+2014-09-23 11:13:42	--	- ...      o No spamming and/or advertising.                            ...
+2014-09-23 11:13:42	--	- ...      o No hacking (including Virus/Trojan distribution).          ...
+2014-09-23 11:13:42	--	- ...      o No actions we, the operators, regard as abuse.             ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...           For more details of the network's terms of service      ...
+2014-09-23 11:13:42	--	- ...                  please visit the website below:                  ...
+2014-09-23 11:13:42	--	- ...                   http://www.quakenet.org/rules/                  ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...       Violation of the network's rules will result in kills       ...
+2014-09-23 11:13:42	--	- ...              and possible network-wide access bans.               ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...      o Server Admins:                                             ...
+2014-09-23 11:13:42	--	- ...                     _nalle              stevoo                    ...
+2014-09-23 11:13:42	--	- ...             (E-mail: append @quakenet.org to above.)              ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...      Many common problems are explained on the website below:     ...
+2014-09-23 11:13:42	--	- ...                    http://www.quakenet.org/faq/                   ...
+2014-09-23 11:13:42	--	- ...     If you have a general enquiry not answered by this website    ...
+2014-09-23 11:13:42	--	- ...     please visit #help. If you *require* an IRC operator please   ...
+2014-09-23 11:13:42	--	- ...      visit #feds.                                                 ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ...   The use of this server & network is a privilege, not a right.   ...
+2014-09-23 11:13:42	--	- ...      The network operators may deny network access to anyone,     ...
+2014-09-23 11:13:42	--	- ...              for any reason, at their sole discretion.            ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- ... IRC is a free media, therefore the operators of this network take ...
+2014-09-23 11:13:42	--	- ...    no responsibility whatsoever for the opinions expressed or     ...
+2014-09-23 11:13:42	--	- ...   the actions taken by users. Absolutely no warranty is either    ...
+2014-09-23 11:13:42	--	- ...                      expressed or implied.                        ...
+2014-09-23 11:13:42	--	- ...                                                                   ...
+2014-09-23 11:13:42	--	- .........................................................................
+2014-09-23 11:13:42	--	End of /MOTD command.
+2014-09-23 11:13:42	--	port80a.se.quakenet.org (port80a.se.quakenet.org): on 1 ca 1(4) ft 20(20)
+2014-09-23 11:13:42	--	User mode for parker is [+i]
+2014-09-23 11:13:42	--	User mode [+i] by parker
+2014-09-23 11:17:24	--	irc: disconnected from server
+2014-09-23 11:30:14	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-23 11:30:14	--	irc: connected to irc.quakenet.org/6667 (128.39.65.226)
+2014-09-23 11:30:14	--	*** Looking up your hostname
+2014-09-23 11:30:14	--	*** Checking Ident
+2014-09-23 11:30:14	--	*** Found your hostname
+2014-09-23 11:30:23	--	*** No ident response
+2014-09-23 11:30:23	--	Welcome to the QuakeNet IRC Network, parker
+2014-09-23 11:30:23	--	Your host is underworld2.no.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-23 11:30:23	--	This server was created Fri May 24 2013 at 22:12:24 CEST
+2014-09-23 11:30:23	--	underworld2.no.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-23 11:30:23	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-23 11:30:23	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-23 11:30:23	--	There are 23 users and 37311 invisible on 40 servers
+2014-09-23 11:30:23	--	64 :operator(s) online
+2014-09-23 11:30:23	--	4 :unknown connection(s)
+2014-09-23 11:30:23	--	27902 :channels formed
+2014-09-23 11:30:23	--	I have 3188 clients and 1 servers
+2014-09-23 11:30:23	--	underworld2.no.quakenet.org (underworld2.no.quakenet.org): Highest connection count: 4042 (4041 clients)
+2014-09-23 11:30:23	--	- underworld2.no.quakenet.org Message of the Day -
+2014-09-23 11:30:23	--	- 2013-5-24 22:06
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	-            Welcome to the QuakeNet IRC Network!     __     __
+2014-09-23 11:30:23	--	- .--.--.-----.--|  |.-----.----.--.--.--.-----.----.|  |.--|  |
+2014-09-23 11:30:23	--	- |  |  |     |  _  ||  -__|   _|  |  |  |  _  |   _||  ||  _  |
+2014-09-23 11:30:23	--	- |_____|__|__|_____||_____|__| |________|_____|__|  |__||_____|
+2014-09-23 11:30:23	--	-     U N D E R W O R L D . N O . Q U A K E N E T . O R G
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- This server is hosted by Underworld <www.underworld.no> in
+2014-09-23 11:30:23	--	- cooperation with UNINETT, The Norwegian research network.
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	-   [ Disclaimer ]
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- IRC is a free media, the operators of this network take no
+2014-09-23 11:30:23	--	- responsibility whatsoever for opinions expressed or actions
+2014-09-23 11:30:23	--	- taken by users.
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- By connecting to this server you give us the right to
+2014-09-23 11:30:23	--	- probe your machine for open proxies/wingates.
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	-   [ Staff ]
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- Administrator  ::  Hardy     <hardy(a)underworld.no>
+2014-09-23 11:30:23	--	- Operator       ::  akai       <akai(a)underworld.no>
+2014-09-23 11:30:23	--	- Operator       ::  Microbe <microbe(a)underworld.no
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	-   [ Rules ]
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- This network may NOT be used for:
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- * Flooding (including flood/clonebots).
+2014-09-23 11:30:23	--	- * Distribution of copyrighted material (eg, warez, mp3,
+2014-09-23 11:30:23	--	-   movies) or pornography.
+2014-09-23 11:30:23	--	- * Channels dedicated to cheats designed to cause unfair
+2014-09-23 11:30:23	--	-   advantage in multiplayer games.
+2014-09-23 11:30:23	--	- * Clones. Please contact info@quakenet.org if you require
+2014-09-23 11:30:23	--	-   more than five clients (LAN parties, bots, etc).
+2014-09-23 11:30:23	--	- * Attempts to takeover existing channels or network services.
+2014-09-23 11:30:23	--	- * Racism and/or Nazism.
+2014-09-23 11:30:23	--	- * Spamming and/or advertising.
+2014-09-23 11:30:23	--	- * Hacking (including Virus/Trojan distribution).
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- Continued use of this server indicates acceptance of these
+2014-09-23 11:30:23	--	- conditions.
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	-   [ Information & Help ]
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- Quakenet web page     ::  http://www.quakenet.org
+2014-09-23 11:30:23	--	- Quakenet help page    ::  http://www.quakenet.org/faq
+2014-09-23 11:30:23	--	- Quakenet servers      ::  http://www.quakenet.org/Servers
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- Network Channel       ::  #feds
+2014-09-23 11:30:23	--	- Help Channel          ::  #help
+2014-09-23 11:30:23	--	- Server Channel        ::  #underworld
+2014-09-23 11:30:23	--	- Norwegian Channel     ::  #Norge
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- You can contact the staff on <quakenet-staff(a)underworld.no>
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	- This network has channel services. Consult the webpage above
+2014-09-23 11:30:23	--	- to find information on how to use and obtain these services.
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	-   [ Have a nice stay! ]
+2014-09-23 11:30:23	--	-
+2014-09-23 11:30:23	--	End of /MOTD command.
+2014-09-23 11:30:23	--	underworld2.no.quakenet.org (underworld2.no.quakenet.org): on 1 ca 1(4) ft 20(20)
+2014-09-23 11:30:23	--	User mode for parker is [+i]
+2014-09-23 11:30:23	--	User mode [+i] by parker
+2014-09-23 11:30:31	--	irc: disconnected from server
+2014-09-23 11:30:40	--	irc: connecting to server irc.quakenet.org/6667...
+2014-09-23 11:30:40	--	irc: connected to irc.quakenet.org/6667 (158.38.8.251)
+2014-09-23 11:30:40	--	*** Looking up your hostname
+2014-09-23 11:30:40	--	*** Checking Ident
+2014-09-23 11:30:40	--	*** Found your hostname
+2014-09-23 11:30:49	--	*** No ident response
+2014-09-23 11:30:49	--	Welcome to the QuakeNet IRC Network, parker
+2014-09-23 11:30:49	--	Your host is underworld1.no.quakenet.org, running version u2.10.12.10+snircd(1.3.4a)
+2014-09-23 11:30:49	--	This server was created Wed Oct 19 2011 at 20:12:21 CEST
+2014-09-23 11:30:49	--	underworld1.no.quakenet.org u2.10.12.10+snircd(1.3.4a) dioswkgxRXInP biklmnopstvrDcCNuMT bklov
+2014-09-23 11:30:49	--	WHOX WALLCHOPS WALLVOICES USERIP CPRIVMSG CNOTICE SILENCE=15 MODES=6 MAXCHANNELS=20 MAXBANS=45 NICKLEN=15 :are supported by this server
+2014-09-23 11:30:49	--	MAXNICKLEN=15 TOPICLEN=250 AWAYLEN=160 KICKLEN=250 CHANNELLEN=200 MAXCHANNELLEN=200 CHANTYPES=#& PREFIX=(ov)@+ STATUSMSG=@+ CHANMODES=b,k,l,imnpstrDducCNMT CASEMAPPING=rfc1459 NETWORK=QuakeNet :are supported by this server
+2014-09-23 11:30:49	--	There are 25 users and 37340 invisible on 40 servers
+2014-09-23 11:30:49	--	64 :operator(s) online
+2014-09-23 11:30:49	--	6 :unknown connection(s)
+2014-09-23 11:30:49	--	27912 :channels formed
+2014-09-23 11:30:49	--	I have 3931 clients and 1 servers
+2014-09-23 11:30:49	--	underworld1.no.quakenet.org (underworld1.no.quakenet.org): Highest connection count: 5838 (5837 clients)
+2014-09-23 11:30:49	--	- underworld1.no.quakenet.org Message of the Day -
+2014-09-23 11:30:49	--	- 2013-5-24 22:05
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	-            Welcome to the QuakeNet IRC Network!     __     __
+2014-09-23 11:30:49	--	- .--.--.-----.--|  |.-----.----.--.--.--.-----.----.|  |.--|  |
+2014-09-23 11:30:49	--	- |  |  |     |  _  ||  -__|   _|  |  |  |  _  |   _||  ||  _  |
+2014-09-23 11:30:49	--	- |_____|__|__|_____||_____|__| |________|_____|__|  |__||_____|
+2014-09-23 11:30:49	--	-     U N D E R W O R L D . N O . Q U A K E N E T . O R G
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	- This server is hosted by Underworld <www.underworld.no> in
+2014-09-23 11:30:49	--	- cooperation with UNINETT, The Norwegian research network.
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	-   [ Disclaimer ]
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	- IRC is a free media, the operators of this network take no
+2014-09-23 11:30:49	--	- responsibility whatsoever for opinions expressed or actions
+2014-09-23 11:30:49	--	- taken by users.
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	- By connecting to this server you give us the right to
+2014-09-23 11:30:49	--	- probe your machine for open proxies/wingates.
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	-   [ Staff ]
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	- Administrator  ::  Hardy     <hardy(a)underworld.no>
+2014-09-23 11:30:49	--	- Operator       ::  akai       <akai(a)underworld.no>
+2014-09-23 11:30:49	--	- Operator       ::  Microbe <microbe(a)underworld.no>
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	-   [ Rules ]
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	- This network may NOT be used for:
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	- * Flooding (including flood/clonebots).
+2014-09-23 11:30:49	--	- * Distribution of copyrighted material (eg, warez, mp3,
+2014-09-23 11:30:49	--	-   movies) or pornography.
+2014-09-23 11:30:49	--	- * Channels dedicated to cheats designed to cause unfair
+2014-09-23 11:30:49	--	-   advantage in multiplayer games.
+2014-09-23 11:30:49	--	- * Clones. Please contact info@quakenet.org if you require
+2014-09-23 11:30:49	--	-   more than five clients (LAN parties, bots, etc).
+2014-09-23 11:30:49	--	- * Attempts to takeover existing channels or network services.
+2014-09-23 11:30:49	--	- * Racism and/or Nazism.
+2014-09-23 11:30:49	--	- * Spamming and/or advertising.
+2014-09-23 11:30:49	--	- * Hacking (including Virus/Trojan distribution).
+2014-09-23 11:30:49	--	-
+2014-09-23 11:30:49	--	- Continued use of this server indic

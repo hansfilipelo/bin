@@ -1,0 +1,1043 @@
+2014-09-03 13:08:38	-->	fille (~parker@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-03 13:08:38	--	Topic for #cydadmin is ""snart bara tre veckor kvar!""
+2014-09-03 13:08:38	--	Topic set by dentarg on Sun, 24 Aug 2014 01:31:30
+2014-09-03 13:08:38	--	Nicks #cydadmin: [blueCmd dentarg dentmiho fille lycn postlund rovanion rufwebot]
+2014-09-03 13:08:38	--	Channel #cydadmin: 8 nicks (0 ops, 0 voices, 8 normals)
+2014-09-03 13:08:40	--	Mode #cydadmin [+snCN]
+2014-09-03 13:08:40	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-03 13:08:56	--	irc: disconnected from server
+2014-09-03 13:09:53	-->	parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-03 13:09:53	--	Nicks #cydadmin: [blueCmd dentarg dentmiho lycn parker postlund rovanion rufwebot]
+2014-09-03 13:09:53	--	Channel #cydadmin: 8 nicks (0 ops, 0 voices, 8 normals)
+2014-09-03 13:09:55	--	Mode #cydadmin [+snCN]
+2014-09-03 13:09:55	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-03 13:10:00	parker	I'm back!
+2014-09-03 13:10:31	parker	Debian + KVM
+2014-09-03 13:10:36	parker	ist för ESXi. 
+2014-09-03 13:34:17	--	irc: disconnected from server
+2014-09-03 13:35:36	-->	parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-03 13:35:36	--	Topic for #cydadmin is ""snart bara tre veckor kvar!""
+2014-09-03 13:35:36	--	Topic set by dentarg on Sun, 24 Aug 2014 01:31:30
+2014-09-03 13:35:36	--	Nicks #cydadmin: [blueCmd dentarg dentmiho lycn parker postlund rovanion rufwebot]
+2014-09-03 13:35:36	--	Channel #cydadmin: 8 nicks (0 ops, 0 voices, 8 normals)
+2014-09-03 13:35:38	--	Mode #cydadmin [+snCN]
+2014-09-03 13:35:38	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-03 13:49:17	rovanion	parker: Kommer vi ha ett uppstartsmöte på lördag?
+2014-09-03 13:51:32	parker	rovanion: Det diskuterade vi ju - men då via Mumble
+2014-09-03 13:51:36	parker	rovanion: Fungerar ej?
+2014-09-03 13:51:58	rovanion	parker: Om vi tar det på förmiddagen fungerar det fint, men då är ju lycn inte vaken.
+2014-09-03 13:53:32	parker	Då får han väl vra vaken. 
+2014-09-03 13:53:47	rovanion	För på eftermiddagen är det spex för hela slanten.
+2014-09-03 14:17:35	rovanion	parker: Varför cd:ar du till mappen skriptet ligger i i bashshot?
+2014-09-03 14:26:25	rovanion	parker: Varför definierar du en en sökväg till zfs istället för att anta att den finns i $PATH?
+2014-09-03 14:40:48	parker	rovanion: För att den inte finns i path alla ggr. 
+2014-09-03 14:41:13	rovanion	parker: T.ex. när?
+2014-09-03 14:41:36	parker	rovanion: För att det filer jag vill åt i mappen där bashshot ligger. 
+2014-09-03 14:42:45	parker	rovanion: Enbart root har zfs i path om du installerar debian-zfs och minns att jag stötte på problem med det. 
+2014-09-03 14:42:52	parker	men kan inte komma på när.
+2014-09-03 14:43:21	parker	Man kan ju alltid ersätta sökvägen med "$(which zfs)
+2014-09-03 14:43:23	parker	"
+2014-09-03 14:43:57	rovanion	parker: Intressant, på ubuntu har alla zfs i PATH
+2014-09-03 14:44:15	rovanion	parker: Nej det antar ju att zfs finns i PATH
+2014-09-03 14:44:31	parker	rovanion: Ja det är det jag menar
+2014-09-03 14:44:41	parker	rovanion: Om du nu vill ha det så :)
+2014-09-03 14:45:09	rovanion	Nej jag vill ta bort variabeln över huvud taget
+2014-09-03 15:08:12	parker	rovanion: Kan hända att det är fullt genomförbart. Inget jag har tid med nu däremot. 
+2014-09-03 15:08:16	parker	Har du testat scripten?
+2014-09-03 15:20:16	rovanion	parker: Tänkte köra det på min server, läste installscriptet och började rumstrera runt lite.
+2014-09-03 15:20:41	parker	Skicka en pull request om du är sugen
+2014-09-03 15:20:43	parker	Vad ändrar du?
+2014-09-03 15:21:59	rovanion	parker: Mest bara syntaktiska saker och småteknikaliteter, har pushat några ändringar till min fork men jag är inte klar än.
+2014-09-03 15:22:13	parker	rovanion: Nej det förstår jag :)
+2014-09-03 15:25:57	parker	rovanion: Kikat. Klantigt v mig att lägga array där jag lagt den. 
+2014-09-03 15:26:28	rovanion	parker: Make install ska installera till /usr/local va för att det är installerat av användaren och inte pakethanteraren.
+2014-09-03 15:26:48	parker	did not know. 
+2014-09-03 15:26:56	parker	Men logiskt I guess :)
+2014-09-03 15:26:58	rovanion	Har för mig någonting sådant, får läsa om det och så ordnar det jag också.
+2014-09-03 15:27:12	rovanion	Så kan det aldrig bli kollisioner mellan pakethanteraren och användaren.
+2014-09-03 15:28:11	dentarg	rovanion: hmm har inte behövt öppna något
+2014-09-03 15:28:55	parker	rovanion: gillar inte att du splittar conf och cronfil till utanför installationsscriptet däremot - men resten ser riktigt bra ut! 
+2014-09-03 15:29:10	rovanion	dentarg: Konstigt
+2014-09-03 15:29:33	rovanion	parker: Tyckte det verkligen var jättekonstigt att du hade en del av scripten skrivna i installationsskripten men en som en fil.
+2014-09-03 15:30:23	parker	rovanion: True. Logrotate är ju så
+2014-09-03 15:30:31	parker	rovanion: Gjort vid olika tillfällen. 
+2014-09-03 15:31:06	rovanion	Så jag splitta upp det för det gör det lättare att läsa.
+2014-09-03 15:38:53	dentarg	rovanion: ah fan, my bad, jag hade visst öppnat 60000:61000 i pf på serenity :) (jag kör mosh mot raket ibland)
+2014-09-03 15:39:11	dentarg	och mot en VPS hos digitalocean, men den är brandväggslös
+2014-09-03 16:02:20	rovanion	dentarg: Aja, då var det uppklarat
+2014-09-03 16:24:38	rovanion	parker: En annan effekt av att bara cat:a in config-filerna i varandra är att man får samma sak upprepad i filen om användaren installerar en ny version av scriptet.
+2014-09-03 16:27:15	parker	rovanion: Nja det får du inte. 
+2014-09-03 16:27:30	parker	rovanion: Men håller med dig - det är snyggare att göra som du gör. 
+2014-09-03 16:27:40	parker	När man kör cat > rensas filen
+2014-09-03 16:27:48	parker	När man kör cat >> apendas det. 
+2014-09-03 16:34:10	rovanion	parker: Ah du hade en enkelpil där ja.
+2014-09-03 18:05:41	-->	postlund_ (postlund@rocketsurgery.cyd.liu.se) has joined #cydadmin
+2014-09-03 18:07:26	<--	postlund (postlund@rocketsurgery.cyd.liu.se) has quit (*.net *.split)
+2014-09-04 06:58:13	--	irc: disconnected from server
+2014-09-04 13:56:19	-->	parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-04 13:56:19	--	Topic for #cydadmin is ""snart bara tre veckor kvar!""
+2014-09-04 13:56:19	--	Topic set by dentarg on Sun, 24 Aug 2014 01:31:30
+2014-09-04 13:56:19	--	Nicks #cydadmin: [blueCmd dentarg dentmiho lycn parker postlund_ rovanion rufwebot]
+2014-09-04 13:56:19	--	Channel #cydadmin: 8 nicks (0 ops, 0 voices, 8 normals)
+2014-09-04 13:56:21	--	Mode #cydadmin [+snCN]
+2014-09-04 13:56:21	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-04 14:09:00	parker	rovanion: Fint du gör :)
+2014-09-04 14:29:46	rovanion	parker: Var gör jag vad fint?
+2014-09-04 14:29:53	parker	rovanion: bashShot
+2014-09-04 14:32:48	rovanion	Ah, jo jag ska bara testa det och så ska jag göra ett pull request.
+2014-09-04 14:41:23	parker	Ska köra det i test själv innan jag acceptar - men testar så fort din pull request kommer :)
+2014-09-04 14:52:34	rovanion	parker: Jo det är vettigt för både den som skickar in och tar imot kod att testa den vid tillfälle :P
+2014-09-04 19:53:43	--	irc: disconnected from server
+2014-09-04 19:55:07	-->	cyd_parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-04 19:55:07	--	Nicks #cydadmin: [blueCmd cyd_parker dentarg dentmiho lycn parker postlund_ rovanion rufwebot]
+2014-09-04 19:55:07	--	Channel #cydadmin: 9 nicks (0 ops, 0 voices, 9 normals)
+2014-09-04 19:55:09	--	Mode #cydadmin [+snCN]
+2014-09-04 19:55:09	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-04 19:56:18	<--	parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has quit (Ping timeout)
+2014-09-04 21:25:47	--	You are now known as parker
+2014-09-05 00:47:28	<--	rufwebot (rufwebot@miho.dentarg.net) has quit (EOF from client)
+2014-09-05 00:47:36	-->	rufwebot (rufwebot@miho.dentarg.net) has joined #cydadmin
+2014-09-05 01:03:37	<--	rufwebot (rufwebot@miho.dentarg.net) has quit (EOF from client)
+2014-09-05 01:04:59	-->	rufwebot (rufwebot@miho.dentarg.net) has joined #cydadmin
+2014-09-05 14:23:04	rovanion	parker: Vad gör raden med exec >> templogpath ?
+2014-09-05 14:23:32	rovanion	parker: bash -x stoppar där och gör det ganska svårt att debugga.
+2014-09-05 16:35:37	rovanion	Med på att det är för att redirecta outputten. Löser det.
+2014-09-05 16:36:18	parker	rovanion: Det är för att all output ska till fil. Om du kör bashshot med ./bashshot.sh DEBUG så gör den inte så. 
+2014-09-05 16:53:02	rovanion	parker: Varför skriver du inte direkt till loggen utan till en tempfil där imellan?
+2014-09-05 16:54:02	parker	rovanion: För att ha möjligheten att maila dagens körning. 
+2014-09-05 16:54:35	parker	Eller ja vilken som
+2014-09-05 16:55:29	parker	rovanion: Görs i scripten i CYD men ej i dessa. Dessa körs så ofta så har inte riktigt implementerat mailande på ett bra sätt här. 
+2014-09-05 16:55:52	parker	Men se till att den fortsätter skriva till TMP-fil så man har kvar möjligheten. 
+2014-09-05 16:56:32	rovanion	Jo jag förstår det vettiga i det.
+2014-09-05 21:52:01	rovanion	lycn: Varför har logs lua installerat?
+2014-09-06 03:01:15	--	irc: disconnected from server
+2014-09-06 03:02:54	-->	parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-06 03:02:54	--	Topic for #cydadmin is ""snart bara tre veckor kvar!""
+2014-09-06 03:02:54	--	Topic set by dentarg on Sun, 24 Aug 2014 01:31:30
+2014-09-06 03:02:54	--	Nicks #cydadmin: [blueCmd dentarg dentmiho lycn parker postlund_ rovanion rufwebot]
+2014-09-06 03:02:54	--	Channel #cydadmin: 8 nicks (0 ops, 0 voices, 8 normals)
+2014-09-06 03:02:55	--	Mode #cydadmin [+snCN]
+2014-09-06 03:02:55	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-07 04:05:29	<--	postlund_ (postlund@rocketsurgery.cyd.liu.se) has quit (Ping timeout)
+2014-09-07 04:10:28	-->	postlund (postlund@rocketsurgery.cyd.liu.se) has joined #cydadmin
+2014-09-07 05:49:38	<--	rovanion (~rovanion@h-72-129.a163.priv.bahnhof.se) has quit (*.net *.split)
+2014-09-07 05:49:38	<--	dentarg (dentarg@starkast.net) has quit (*.net *.split)
+2014-09-07 05:49:38	<--	dentmiho (dentarg@miho.dentarg.net) has quit (*.net *.split)
+2014-09-07 05:49:38	<--	rufwebot (rufwebot@miho.dentarg.net) has quit (*.net *.split)
+2014-09-07 05:49:38	<--	blueCmd (bluecmd@skalman.tech.dreamhack.se) has quit (*.net *.split)
+2014-09-07 05:52:52	-->	dentmiho (dentarg@miho.dentarg.net) has joined #cydadmin
+2014-09-07 05:53:10	-->	blueCmd (bluecmd@skalman.tech.dreamhack.se) has joined #cydadmin
+2014-09-07 06:31:44	-->	dentarg (dentarg@starkast.net) has joined #cydadmin
+2014-09-07 06:31:44	-->	rovanion (~rovanion@h-72-129.a163.priv.bahnhof.se) has joined #cydadmin
+2014-09-08 19:46:22	rovanion	What do we say to the god of PHP, Arya?
+2014-09-08 19:47:26	parker	Not today.
+2014-09-08 19:53:18	-->	rufwebot (rufwebot@miho.dentarg.net) has joined #cydadmin
+2014-09-09 22:53:36	dentarg	blueCmd: lite google-whine: trist att + inte är tillåtet i epostadresser i en google group
+2014-09-09 22:53:49	dentarg	alltså member-adresser
+2014-09-10 06:50:55	lycn	rovanion: det Ã¤r vÃ¤l installerat av nÃ¥got paket som behÃ¶ver det
+2014-09-10 06:51:07	lycn	rovanion: det Ã¤r allfal inget jag har gjort manuellt
+2014-09-10 06:52:35	lycn	rovanion: parker: jag fÃ¥r mail nÃ¤r ni skriver men det mailet jag fick 5 september nÃ¤r rov skrev verkar ha markerats som lÃ¤st Ã¤ven fast jag inte kommer ihÃ¥g det
+2014-09-10 06:52:44	lycn	mycket grejer hÃ¤nder under nolle
+2014-09-10 06:52:46	lycn	p
+2014-09-10 09:54:07	parker	rovanion: lycn Vad tycker ni om nya bakgrunden?
+2014-09-10 09:55:35	parker	På skrivborden i CYD: 
+2014-09-10 09:56:49	rovanion	parker: länka
+2014-09-10 10:54:34	parker	rovanion: http://www.hdwallpapers.in/walls/gentoo_penguins_antarctica-wide.jpg
+2014-09-10 10:54:58	rovanion	Fan va nice blåfärg
+2014-09-10 10:55:08	rovanion	Helt klart justerad men endå
+2014-09-10 10:55:38	rovanion	Gentoon är den snabbaste pingvinen btw.
+2014-09-10 10:57:32	rovanion	Jo den har modifierats i Photoscape.
+2014-09-10 15:33:44	dentarg	snyygt wallpaper :)
+2014-09-10 16:14:57	<--	dentarg (dentarg@starkast.net) has quit (Ping timeout)
+2014-09-10 16:16:51	-->	dentarg (dentarg@starkast.net) has joined #cydadmin
+2014-09-10 21:38:13	rovanion	parker: JAG VET! Vi måste sätta upp blommor på dagordningen!
+2014-09-10 21:38:18	rovanion	Eller växter
+2014-09-10 21:38:40	rovanion	15% ökning av anställdas effektivitet då kontoret hade växtlighet visade någon random studie vettu.
+2014-09-11 00:30:08	blueCmd	lycn: för fan fixa åäö
+2014-09-11 08:29:02	dentarg	+1
+2014-09-11 09:07:56	rovanion	+1
+2014-09-11 09:22:48	parker	+1
+2014-09-11 09:23:04	parker	rovanion: Sure. Vattna ingå i supporten?
+2014-09-11 09:23:45	rovanion	parker: Ja. Fast vem är det som sköter de andra växterna ute i korridoren.
+2014-09-11 09:27:00	parker	rovanion: Vore najs om de tog våra också ja. 
+2014-09-11 09:31:03	rovanion	Vi vet fortfarande inte vars vi ska hämta papper va?
+2014-09-11 09:55:08	<--	blueCmd (bluecmd@skalman.tech.dreamhack.se) has quit (Ping timeout)
+2014-09-11 09:57:51	-->	blueCmd (bluecmd@skalman.tech.dreamhack.se) has joined #cydadmin
+2014-09-11 09:58:10	parker	rovanion: Nope. 
+2014-09-11 09:59:17	rovanion	Epostat kristina nu.
+2014-09-11 13:08:36	<--	rufwebot (rufwebot@miho.dentarg.net) has quit (*.net *.split)
+2014-09-11 13:28:45	-->	rufwebot (rufwebot@miho.dentarg.net) has joined #cydadmin
+2014-09-11 13:35:17	<--	rufwebot (rufwebot@miho.dentarg.net) has quit (*.net *.split)
+2014-09-11 13:39:25	-->	rufwebot (rufwebot@miho.dentarg.net) has joined #cydadmin
+2014-09-11 16:03:57	dentarg	rovanion: tror du någon vill ha 250GBs diskar? :)
+2014-09-11 16:04:15	rovanion	dentarg: Det kommer förbi en idag och hämtar upp minst en, så ja.
+2014-09-11 16:04:26	rovanion	Han pm:a mig om det så.
+2014-09-11 16:06:07	dentarg	hah
+2014-09-11 16:06:15	dentarg	vart har diskarna suttit?
+2014-09-11 16:06:33	rovanion	På hög på kontoret, dom är från maskinerna ute i salen.
+2014-09-11 16:06:41	dentarg	ok
+2014-09-11 16:06:44	dentarg	rensade?
+2014-09-11 16:06:53	rovanion	dentarg: Fulla med /dev/zero
+2014-09-11 16:06:56	dentarg	najs
+2014-09-11 16:07:10	rovanion	dd - disk destroyer
+2014-09-11 16:07:15	dentarg	vi har också massa disk över på twingly... men vi är paranoid och demonterar dom :P
+2014-09-11 16:07:20	dentarg	paranoida
+2014-09-11 16:07:45	rovanion	Demonterar eller demolerar?
+2014-09-11 16:09:58	dentarg	både och
+2014-09-11 16:10:18	rovanion	Stackars diskar
+2014-09-11 16:10:28	dentarg	eller vad man ska säga, syftet är att få det jobbigt för någon att återskapa datan
+2014-09-11 16:10:53	parker	dentarg: rovanion: Skrotade servrar på Finansinspektionen i sommras. Där ska ni se på stackars prylar.
+2014-09-11 16:10:56	rovanion	Tänktre mer om ni skruva isär dom eller körde dom genom en grinder.
+2014-09-11 16:10:59	dentarg	parker: hehe
+2014-09-11 16:11:21	parker	Skrotade maskiner med 2*Quad Core och 196 GB RAM och hela disksystem. 
+2014-09-11 16:11:23	dentarg	rovanion: jomen, vi skruvar isär dom, svårt med andra demoleringsmetoder på kontor
+2014-09-11 16:11:40	dentarg	ISYs verkstad borde ju annars vara ypperlig för demolering av disk
+2014-09-11 16:11:51	rovanion	Ta en hammare och banka?
+2014-09-11 16:11:58	parker	rovanion: Eller en borr.
+2014-09-11 16:12:02	dentarg	parker: fett
+2014-09-11 16:12:04	parker	Fast borr. 
+2014-09-11 16:12:11	rovanion	Dödsmaskin
+2014-09-11 16:12:13	dentarg	parker: man fick inte ta hem? 196 GB RAM låter skoj
+2014-09-11 16:12:19	parker	dentarg: Nej inte fett. Tragiskt att jag inte kan ta dem till CYD t ex...
+2014-09-11 16:12:25	dentarg	mm
+2014-09-11 16:12:41	rovanion	Da fuk? Ni förstörde sådan utrustning?
+2014-09-11 16:13:02	rovanion	Finns ju inget permanent i en CPU eller RAM.
+2014-09-11 16:13:17	rovanion	Om vi åsidosätter vad NSA sätter dit vill säga.
+2014-09-11 16:14:49	parker	rovanion: Jupp. Mådde lite dåligt av det men ändå en piss i havet mot vad de gör i övrigt i form av slöseri med skattepengar - vilket jag blev ledsen över på riktigt. 
+2014-09-11 16:14:52	parker	*blir
+2014-09-11 16:15:24	rovanion	parker: Är det ren inkompetens som är orsaken?
+2014-09-11 16:15:36	rovanion	Hårdvaran specifikt då.
+2014-09-11 16:16:51	parker	rovanion: Nej hårdvaran är bara regler för statlig verksamhet. 
+2014-09-11 16:17:23	parker	rovanion: Faktiskt inte sånt slöseri från deras sida. Typ dyrare att donera än att skrota då de inte har resurser att demontera och radera det. 
+2014-09-11 16:17:46	parker	rovanion: Man får inte donera som myndighet utan det måste gå genom donationsverket. 
+2014-09-11 16:18:53	rovanion	Du behöver ju inte förstöra någonting på enheter utan permanent lagring innan man ger/säljer det vidare.
+2014-09-11 16:19:28	parker	rovanion: Nein. 
+2014-09-11 16:19:31	parker	rovanion: Det gör vi inte. 
+2014-09-11 16:19:46	parker	rovanion: Men vi donerar det inte.
+2014-09-11 16:19:50	parker	rovanion: Vilket gör ont. 
+2014-09-11 16:20:48	parker	Sorry hoppade in med ett sidospår.
+2014-09-11 16:21:22	parker	rovanion: Lagt ut förfrågan om diskarna i CYD?
+2014-09-11 16:21:29	rovanion	Och det är din inkompetente chef som bestämmer över vad som doneras?
+2014-09-11 16:21:33	rovanion	parker: Förfrågan?
+2014-09-11 16:23:57	parker	rovanion: Med tanke på att ngn skulle hämta en?
+2014-09-11 16:24:18	rovanion	parker: Jag frågade i #lysator
+2014-09-11 16:29:14	rovanion	https://clusterhq.com/blog/state-zfs-on-linux/
+2014-09-11 16:29:14	rufwebot	Access denied | clusterhq.com used CloudFlare to restrict access
+2014-09-11 16:29:24	rovanion	lel
+2014-09-11 16:30:28	parker	rovanion: Ska kika
+2014-09-11 16:34:00	parker	rovanion: Ungefär den bild jag fått också. Ser verkligen ljusare ut för ZFS än när Oracle tog Solaris och gjorde Closed Source av det. 
+2014-09-11 16:55:01	parker	rovanion: Flocker verkar coolt. 
+2014-09-11 17:22:48	rovanion	parker: Killen från lysator sade att han kunde ta hand om alla 250GB-diskar om ingen annan ville ha dom.
+2014-09-11 17:23:07	rovanion	Är det så att vi vill ha kvar några för reklamering av maskiner typ?
+2014-09-11 17:23:19	parker	rovanion: Nej bara 500 GB-diskarna som är aktuella där. 
+2014-09-11 17:23:45	rovanion	parker: Men kom inte Z400-maskinerna med 250GB-diskar?
+2014-09-11 17:24:50	parker	Har de garanti?
+2014-09-11 17:25:50	parker	rovanion: Är du i CYD?
+2014-09-11 17:26:34	parker	Kan du kolla serienummer på en av dem och skriva in här: http://h20565.www2.hp.com/portal/site/hpsc/public/psi/home?sp4ts.oid=3718668&ac.admitted=1410449101919.876444892.492883150
+2014-09-11 17:26:34	rovanion	Varför är det ett snapsglas uppe i vänstra hörnet på den här sidan? http://www8.hp.com/h20195/v2/GetHTML.aspx?docname=c04110960
+2014-09-11 17:26:35	lycn	parker: reprting in
+2014-09-11 17:26:45	rufwebot	Product documentation
+2014-09-11 17:27:04	lycn	parker: whats up?
+2014-09-11 17:27:25	parker	lycn: Tänkte du hade support men det är ju rovanion  :)
+2014-09-11 17:27:32	rovanion	lycn: Gav just bort 6 diskar till lysator, dom vill ha mer.
+2014-09-11 17:27:41	rovanion	Idd
+2014-09-11 17:27:48	parker	rovanion: Har de garanti?
+2014-09-11 17:29:22	rovanion	Hittar inte serienummersöken..
+2014-09-11 17:30:40	rovanion	Expired
+2014-09-11 17:30:43	rovanion	I maj
+2014-09-11 17:30:55	parker	rovanion: Då kan vi skicka alla 250 GB-diskar. 
+2014-09-11 18:11:45	parker	lycn: rovanion: https://redmine.cyd.liu.se/projects/cyd/wiki/Active_Directory
+2014-09-11 18:11:46	rufwebot	CYD-poolen
+2014-09-11 18:12:15	parker	Kan man kicka boten?
+2014-09-11 18:12:19	parker	ur kanalen?
+2014-09-11 18:12:53	parker	lycn: rovanion Påbörjade dokumentation kring AD och administration. Kommer mer info sen. 
+2014-09-11 18:13:34	lycn	parker: bra, det borde stÃ¥ lite hur man anvÃ¤nder det olika verktygen
+2014-09-11 18:17:18	parker	lycn: Det är det som är målsättningen :)
+2014-09-11 18:33:57	lycn	parker: top
+2014-09-11 18:34:45	lycn	:info
+2014-09-11 18:34:48	lycn	ops
+2014-09-11 18:35:16	lycn	Ã¶Ã¤Ã¥
+2014-09-11 18:35:27	lycn	fungerar min Ã¥Ã¤Ã¶ nu?
+2014-09-11 18:35:31	lycn	parker: ?
+2014-09-11 18:35:45	parker	Nej
+2014-09-11 18:35:48	parker	inga åäö
+2014-09-11 18:36:05	lycn	vad skriver jag nu dÃ¥ Ã¥Ã¤Ã¶
+2014-09-11 18:36:38	lycn	parker: ?
+2014-09-11 18:36:48	lycn	parker: grejen Ã¤r att fÃ¶r mig blir det utf-8
+2014-09-11 18:39:31	parker	lycn: Starta om weechat?
+2014-09-11 18:39:34	parker	Eller irssi.
+2014-09-11 18:39:45	parker	Lär väl läsa sådant vid start?
+2014-09-11 18:39:58	<--	lycn (~lycn@dhcp-240.cyd.liu.se) has quit (Quit: leaving)
+2014-09-11 18:41:01	-->	lycn (~lycn@dhcp-240.cyd.liu.se) has joined #cydadmin
+2014-09-11 18:41:26	lycn	parker: Ã¤r de Ã¥Ã¤Ã¶ nu?
+2014-09-11 18:42:07	parker	Nein
+2014-09-11 18:45:50	lycn	parker: nu dÃ¥ Ã¥Ã¤Ã¶
+2014-09-11 18:45:53	parker	nicht
+2014-09-11 18:45:57	lycn	dam it
+2014-09-11 18:46:42	lycn	fuuck det Ã¤r screen som knasar till det
+2014-09-11 18:46:46	lycn	ska se om jag kan fixa det
+2014-09-11 18:47:56	<--	lycn (~lycn@dhcp-240.cyd.liu.se) has quit (Quit: leaving)
+2014-09-11 18:48:17	-->	lycn (~lycn@dhcp-240.cyd.liu.se) has joined #cydadmin
+2014-09-11 18:48:30	lycn	  /set term_charset utf-8
+2014-09-11 18:51:16	lycn	parker: nu dÃ¥ Ã¥Ã?Ã¶
+2014-09-11 18:56:19	parker	nicht
+2014-09-11 19:02:04	lycn	rip Ã¥Ã?Ã¶
+2014-09-11 19:36:18	rovanion	Altså vad kör du för locale på din dator lycn?
+2014-09-11 19:36:33	rovanion	parker: gött.
+2014-09-11 19:51:37	rovanion	Vem är det som är op i den här kanalen egentligen?
+2014-09-11 19:51:45	rovanion	Är det botten?
+2014-09-11 19:51:46	rovanion	Anna?
+2014-09-12 06:09:13	lycn	rovanion: parker: det kan va nÃ¥tt knas fÃ¶r att jag kÃ¶r Ã¶ver ssh, s frÃ¥n min klient pÃ¥ kontoret dÃ?r irssi kÃ¶rs ifrÃ¥n
+2014-09-12 06:09:35	lycn	ska testa*
+2014-09-12 07:30:30	parker	lycn: Jag kör över SSH. 
+2014-09-12 07:30:53	parker	Mot en VM som står hemma
+2014-09-12 07:46:01	lycn	parker: grejen Ã?r att det funkade jag hade ubuntu pÃ¥ laptopen
+2014-09-12 07:46:34	lycn	nÃ¥vÃ?l om det inte funkar fÃ¥r jag installera om det eller nÃ¥tt
+2014-09-12 10:04:17	rovanion	Kör du utf-8-locale på båda ställena?
+2014-09-12 13:12:22	parker	07:46:01     lycn | parker: grejen Ã?r att det funkade jag hade ubuntu pÃ¥     │
+2014-09-12 13:12:35	parker	Happ.
+2014-09-12 13:12:36	parker	Fint.
+2014-09-12 13:12:41	parker	dentarg: När och hur flyger ni?
+2014-09-12 13:12:55	rovanion	Har lycn bokat sitt flyg än?
+2014-09-12 13:13:01	--	parker has changed topic for #cydadmin from ""snart bara tre veckor kvar!"" to ""> 1 vecka till Irland""
+2014-09-12 13:13:08	--	parker has changed topic for #cydadmin from ""> 1 vecka till Irland"" to ""< 1 vecka till Irland""
+2014-09-12 13:13:48	--	rovanion has changed topic for #cydadmin from ""< 1 vecka till Irland"" to ""< 1 vecka till irland" sa Hasse och drog en djup suck."
+2014-09-12 13:55:22	rovanion	blueCmd: Hur blir det med sovandet, bör man ha med sig madrass, kudde, täcke, sovsäck och/eller lakan? 
+2014-09-12 16:25:38	dentarg	parker: samtidigt som er andra?
+2014-09-12 16:25:43	dentarg	parker: kolla mailtråden
+2014-09-12 16:26:11	dentarg	parker: så brumma inte iväg till arlanda utan mig och postlund :)
+2014-09-12 16:37:08	parker	dentarg: Kanon! 
+2014-09-12 16:37:15	parker	dentarg: Kommer Ronny?
+2014-09-12 16:37:29	parker	dentarg: Nej ser att han ej gör 
+2014-09-12 16:39:25	parker	Bra då får vi plats i bilen öven om lycn nu kommer iväg
+2014-09-12 16:41:40	dentarg	parker: inte hört något så antar inte det
+2014-09-12 16:41:49	dentarg	känns sent påkommet nu så
+2014-09-12 16:42:02	dentarg	har inte lycn köpt biljett?
+2014-09-12 16:42:07	parker	dentarg: Nope. 
+2014-09-12 16:42:11	dentarg	ska han med?
+2014-09-12 16:43:59	parker	dentarg: Säger att han ska med. 
+2014-09-12 16:44:16	dentarg	ok upp till bevis då
+2014-09-12 16:44:17	dentarg	:)
+2014-09-12 17:51:04	blueCmd	rovanion: jag kan husera 3 personer, (1 riktig säng, en tältsäng och en soffa). vi kan införskaffa en till tältsäng om det är aktuellt
+2014-09-12 17:51:22	blueCmd	jag har kuddar så det räcker tror jag, men täcke har jag bara ett
+2014-09-12 17:52:02	blueCmd	ta med sängkläder så ska vi kunna lösa resten
+2014-09-12 18:53:56	dentarg	blueCmd: hmm vi är ju 4 eller 5 som kommer
+2014-09-12 18:54:18	dentarg	postlund: kollar du irc något? :)
+2014-09-12 18:54:40	dentarg	idle 5 days...
+2014-09-12 20:06:51	parker	blueCmd: Behöver ha med mig madrass till polarn så kan väl lösa madrass. 
+2014-09-12 20:56:17	blueCmd	dentarg: tror folk räknade med att de som jobbar kör hotell :P
+2014-09-12 20:56:42	dentarg	jag trodde vi kom fram till att alla får plats
+2014-09-12 20:57:01	dentarg	men det går såklart att kolla på hotell..
+2014-09-12 20:57:12	blueCmd	dåså, hur många är ni?
+2014-09-12 20:57:17	dentarg	men det hade ju såklart varit bättre att göra det lite tidigare :)
+2014-09-12 20:57:32	dentarg	blueCmd: minst 4: parker rovanion dentarg postlund 
+2014-09-12 20:57:32	blueCmd	vi kan alla bo hos mig, det blir bara lite trångt
+2014-09-12 20:57:53	blueCmd	min tolalett har grace period så vi får göra upp ett schema
+2014-09-12 20:58:25	dentarg	det rinner undan segt?
+2014-09-12 20:58:53	blueCmd	den fyller på vatten segt. Dublin har inte trycksatt vatten
+2014-09-12 20:59:19	dentarg	aha :)
+2014-09-12 21:07:00	<--	rufwebot (rufwebot@miho.dentarg.net) has quit (*.net *.split)
+2014-09-12 21:10:20	rovanion	Parkers parkeringsdugliga pruttomobil proppelerar partyt pangsnabbt på ptjållträsks planparkering.
+2014-09-12 21:10:42	rovanion	Allmogen allitererar alert!
+2014-09-12 22:29:46	-->	rufwebot (rufwebot@miho.dentarg.net) has joined #cydadmin
+2014-09-14 04:04:48	<--	postlund (postlund@rocketsurgery.cyd.liu.se) has quit (Ping timeout)
+2014-09-14 04:10:03	-->	postlund (~postlund@rocketsurgery.cyd.liu.se) has joined #cydadmin
+2014-09-14 19:47:10	dentarg	blueCmd: du bor fortfarande på 26 Shelbourne Village (korsningen Ringsend Rd, Barrow St) va?
+2014-09-14 19:54:09	dentarg	hotell ser kört ut
+2014-09-14 19:54:23	dentarg	det är nog bättre att investera pengarna i en säng istället
+2014-09-14 20:00:02	dentarg	eller ett mysigt täcke
+2014-09-14 20:39:59	dentarg	så vi blir 4 alltså
+2014-09-14 20:52:25	blueCmd	dentarg: jepp
+2014-09-14 20:52:42	blueCmd	4:a ska inte vara några problem
+2014-09-15 12:58:49	rovanion	Vad sägs om att vi sätter supportpassen på lunchen istället för efter skolan? Nu under lunchen hade vi faktiskt två pers som kom in och behövde hjälp, efter skolan är det ju vanligtvis ganska dött.
+2014-09-15 13:14:55	rovanion	Eller några av passen bara.
+2014-09-15 14:13:35	dentarg	låter vettigt :)
+2014-09-15 14:18:02	rovanion	dentarg: Är det bestämt på något styrelsemöte någon gång när supportpassen är och hur många det är?
+2014-09-15 14:52:55	rovanion	dentarg: Eller är det någonting som är helt upp till våra egna deviser?
+2014-09-15 14:53:21	rovanion	Äsch, man kan inte använda det svenska ordet devis som det engelska device, men du förstår endå.
+2014-09-15 15:20:24	dentarg	hehe
+2014-09-15 15:20:47	dentarg	rovanion: när jag ronny och pierre jobbade tog vi bort supportpasset på fredag (17-18)
+2014-09-15 15:20:51	dentarg	vi tyckte det var onödigt
+2014-09-15 15:21:04	dentarg	vi tog upp det på ett styrelsemöte
+2014-09-15 15:21:06	dentarg	ingen sa emot
+2014-09-15 15:21:40	dentarg	så hör på mötet, men jag har svårt att tro någon skulle säga nej
+2014-09-15 15:21:44	dentarg	lunch är ju mycket smartare
+2014-09-15 15:21:55	dentarg	eller blandat, kanske jobbigt med alla luncher
+2014-09-15 17:49:15	lycn	parker: åäödfg
+2014-09-15 19:01:01	dentarg	lycn: grattis
+2014-09-15 19:04:50	postlund	kräftbög?
+2014-09-15 19:05:00	postlund	jag menar hej
+2014-09-15 19:07:49	blueCmd	hej
+2014-09-15 19:08:07	postlund	what is up?
+2014-09-15 19:08:35	blueCmd	http://perlbal.hi-pi.com/blog-images/288510/mn/1224584029/Jan-Stenmark-gor-livet-lattare.jpg
+2014-09-15 19:09:21	blueCmd	sitter och väntar på maten som kommer vid 18:30
+2014-09-15 19:09:31	blueCmd	hur är det i framtiden?
+2014-09-15 19:10:10	postlund	stoppaframtidennu.nu.nu, som man brukar säga
+2014-09-15 19:10:40	postlund	https://www.youtube.com/watch?v=278Fl4yEkGI
+2014-09-15 19:10:41	rufwebot	Svenskt Näringsliv stoppar framtiden - YouTube
+2014-09-15 19:11:41	blueCmd	vart är de andra?
+2014-09-15 19:11:46	postlund	vet ej
+2014-09-15 19:12:29	dentarg	jag är här
+2014-09-15 19:12:30	postlund	mastruberar åt östgötatrafikens hemsida kanske
+2014-09-15 19:13:02	blueCmd	ja, den är så bra
+2014-09-15 19:13:17	postlund	så, vad är det som gäller egentligen
+2014-09-15 19:14:47	dentarg	vi ska ut och resa
+2014-09-15 19:15:24	postlund	coolt
+2014-09-15 19:15:27	postlund	vart ska vi?
+2014-09-15 19:15:52	blueCmd	Borås
+2014-09-15 19:16:58	postlund	det låter inte så kul
+2014-09-15 19:17:15	blueCmd	ok. Dublin då
+2014-09-15 19:18:09	blueCmd	lycn är en fitta och kan inte komma, är vi beredda att gå till beslut i detta?
+2014-09-15 19:18:15	postlund	ja
+2014-09-15 19:18:22	blueCmd	finner bifall
+2014-09-15 19:18:28	postlund	vad har man för nytta av en sån liksom
+2014-09-15 19:18:32	blueCmd	mm
+2014-09-15 19:18:56	blueCmd	jag har gjort upp en plan
+2014-09-15 19:19:01	blueCmd	1) ni anländer
+2014-09-15 19:19:06	blueCmd	2) ni dumpar grejer hos mig
+2014-09-15 19:19:11	blueCmd	3) vi köper ev. sovsaker
+2014-09-15 19:19:13	blueCmd	4) öl
+2014-09-15 19:19:16	blueCmd	5) goto 4
+2014-09-15 19:19:20	postlund	0) vi köper öl på planet
+2014-09-15 19:19:22	blueCmd	6) ni äker hem
+2014-09-15 19:19:25	postlund	smart
+2014-09-15 19:19:42	blueCmd	postlund: låter bra
+2014-09-15 19:19:44	postlund	vi behöver den där fittan med bil här
+2014-09-15 19:19:48	postlund	när ska vi åka os
+2014-09-15 19:19:50	postlund	osv*
+2014-09-15 19:19:52	blueCmd	parker
+2014-09-15 19:20:10	postlund	skulle han stänga längre, eller hur var det?
+2014-09-15 19:20:16	postlund	om jag ska boka tåg och skit
+2014-09-15 19:20:30	blueCmd	jag har lite nice:a ställen jag vill ta er till och käka utmärkt mat också
+2014-09-15 19:20:43	postlund	perfekt
+2014-09-15 19:21:15	postlund	har du tillgång till det här världsomspännande nätverket Internet som alla talar om numera?
+2014-09-15 19:21:18	blueCmd	ja
+2014-09-15 19:21:22	blueCmd	jag är Internet
+2014-09-15 19:21:24	postlund	perfa
+2014-09-15 19:21:32	blueCmd	vad heter parker egentligen?
+2014-09-15 19:21:41	postlund	per-albin hansson
+2014-09-15 19:21:43	blueCmd	Nej
+2014-09-15 19:21:47	postlund	nehe
+2014-09-15 19:22:08	postlund	hans-filip kanske
+2014-09-15 19:22:09	blueCmd	Hans-Filip heter han
+2014-09-15 19:22:11	blueCmd	så var det
+2014-09-15 19:22:42	postlund	parker: pung i mun
+2014-09-15 19:23:24	blueCmd	rovanion: pung!
+2014-09-15 19:23:54	postlund	har du bra temperatur i lägenheten blueCmd?
+2014-09-15 19:23:58	dentarg	13:30 kommer vi fram (Dublin är en timme efter oss)
+2014-09-15 19:24:01	blueCmd	postlund: ja
+2014-09-15 19:24:07	dentarg	blueCmd: jobbar du nu?
+2014-09-15 19:24:12	blueCmd	postlund: jag har elvärme så det går att brassa på
+2014-09-15 19:24:14	postlund	blueCmd: då räcker det säkert om jag tar mitt reselakan, så behövs det inget täcke
+2014-09-15 19:24:16	blueCmd	dentarg: "ja"
+2014-09-15 19:24:21	blueCmd	dentarg: jag får iaf betalt
+2014-09-15 19:24:25	postlund	smart
+2014-09-15 19:24:28	blueCmd	resten är lite osagt
+2014-09-15 19:24:45	postlund	är pungen involverad i själva "arbetet"?
+2014-09-15 19:24:55	blueCmd	postlund: pungen är alltid involverad
+2014-09-15 19:25:00	postlund	bra
+2014-09-15 19:26:35	blueCmd	jag ska äta gratismat nu, jag är brb 30 min ish
+2014-09-15 19:27:11	dentarg	noterat
+2014-09-15 19:27:47	postlund	dentarg: skulle herr pung stanna kvar längre eller hur var det?
+2014-09-15 19:27:59	dentarg	jo parker åker inte med hem
+2014-09-15 19:28:07	postlund	ok, så jag borde boka tåg hem
+2014-09-15 19:28:13	postlund	eller dylikt
+2014-09-15 19:29:30	parker	Tjo!
+2014-09-15 19:29:32	parker	Vad vill ni?
+2014-09-15 19:29:47	postlund	vi vill veta när vi åker etc
+2014-09-15 19:29:49	dentarg	postlund: ja, vi är 3 som ska det
+2014-09-15 19:30:05	parker	postlund: Mailar ang det men har för mig att vi sa kring 6:30
+2014-09-15 19:30:07	dentarg	http://www.aerlingus.com/travelinformation/baggageinformation/cabinbaggage/ kan vara bra att kolla på, vi åker ju snålbolag
+2014-09-15 19:30:07	rufwebot	Aer Lingus: Travel Information - Cabin Baggage
+2014-09-15 19:30:13	parker	Maila era adresser. 
+2014-09-15 19:30:23	postlund	maila var?
+2014-09-15 19:30:27	dentarg	parker: vi har ju en tråd?
+2014-09-15 19:30:30	postlund	dentarg: har ni redan bokat eller?
+2014-09-15 19:30:39	dentarg	postlund: nej
+2014-09-15 19:30:46	parker	Crap max 10 kg...
+2014-09-15 19:30:49	dentarg	postlund: tänkte att vi kanske skulle komma fram till det här och nu
+2014-09-15 19:30:53	postlund	dentarg: bra
+2014-09-15 19:30:54	dentarg	parker: ni som valde :)
+2014-09-15 19:31:09	parker	Kan inte nu ska äta middag med gf
+2014-09-15 19:31:13	postlund	jag har ett incheckat bagage à 20kg enligt mail
+2014-09-15 19:31:24	parker	Maila var ni bor så mailar jag ang när jag plockar upp er på onsdag. 
+2014-09-15 19:31:27	postlund	parker: ta det sen, detta är viktigare
+2014-09-15 19:31:45	dentarg	parker: hehe det har jag redan gjort
+2014-09-15 19:31:57	dentarg	parker: får du inte mailen? har mailat admin@cyd
+2014-09-15 19:32:12	dentarg	postlund: har du?
+2014-09-15 19:32:19	postlund	dentarg: nepp
+2014-09-15 19:32:20	parker	Jag med!
+2014-09-15 19:32:20	dentarg	postlund: betalade du för det?
+2014-09-15 19:32:26	postlund	dentarg: ingen aning
+2014-09-15 19:32:27	parker	Betalade inte för det. 
+2014-09-15 19:32:39	postlund	antar att det ingick för jag gick nog inte in för att få det extra
+2014-09-15 19:32:44	postlund	hade nog tänkt klara mig med handbagage
+2014-09-15 19:32:51	parker	Maila adresser - tjao!
+2014-09-15 19:32:52	dentarg	jo det tänkte jag också göra
+2014-09-15 19:32:54	postlund	kanske ska checka in en tom väska
+2014-09-15 19:33:09	dentarg	sängkläder tar ju iofs upp lite plats
+2014-09-15 19:33:32	postlund	jag kör med reselakan, tar noll plats
+2014-09-15 19:33:38	dentarg	så smidigt
+2014-09-15 19:33:42	postlund	tar nog resehandduk också
+2014-09-15 19:33:51	dentarg	just det, det behöver man också
+2014-09-15 19:33:57	postlund	kan vara bra att ha
+2014-09-15 19:34:11	dentarg	misstänker att utbudet på hotell BC är begränsat
+2014-09-15 19:34:18	postlund	precis
+2014-09-15 19:34:24	postlund	han kanske har massa google merchendise iofs
+2014-09-15 19:34:44	dentarg	blueCmd: kan man låna en googlehandduk?
+2014-09-15 19:36:59	dentarg	failade lite kommer du märka postlund 
+2014-09-15 19:37:17	postlund	SÅ JÄVLA NAJS!
+2014-09-15 19:37:20	postlund	JAG ÄR FAN TAGGAD
+2014-09-15 19:37:23	postlund	VI ÅKER NUUUUU
+2014-09-15 19:37:28	postlund	GAAAAAHHWRR
+2014-09-15 19:37:48	dentarg	=)
+2014-09-15 19:38:00	dentarg	vad gör man i dublin egentligen?
+2014-09-15 19:38:05	postlund	dricker öl?
+2014-09-15 19:38:22	dentarg	hmm... ja... kanske det.
+2014-09-15 19:38:30	postlund	allt som behövs
+2014-09-15 19:38:35	dentarg	vi kan prova det.
+2014-09-15 19:38:39	postlund	ja
+2014-09-15 19:42:06	dentarg	transport från flygplatsen till BC: https://goo.gl/maps/vgdmG
+2014-09-15 19:42:08	rufwebot	Dublin Airport to Unknown road - Google Maps
+2014-09-15 19:42:27	dentarg	buss 703 eller 702
+2014-09-15 19:42:54	postlund	jag vill ta buss 404
+2014-09-15 19:45:06	dentarg	tror det är en dålig idé
+2014-09-15 19:45:19	dentarg	finns den ens?
+2014-09-15 19:45:21	dentarg	:P
+2014-09-15 19:45:57	postlund	vet ej
+2014-09-15 20:08:12	blueCmd	dentarg: ja
+2014-09-15 20:08:33	lycn	blueCmd: senpai jag har inte fixat Ã¥Ã?Ã¶, det verkar vara ssh anslutningen som skapar problemet
+2014-09-15 20:09:10	lycn	blueCmd: jag kan itne stÃ¥ i din nÃ?rvaro innan jag fixat detta icke-problem
+2014-09-15 20:09:13	blueCmd	lycn: putty, default locale, screen, irssi
+2014-09-15 20:09:21	blueCmd	lycn: någon av de fyra är fel
+2014-09-15 20:09:29	postlund	SBS
+2014-09-15 20:09:32	lycn	blueCmd: anvÃ?nder inte putty
+2014-09-15 20:09:39	blueCmd	lycn: du kan inte stå i min närvaro för du kommer inte till Dublin!!!
+2014-09-15 20:09:41	postlund	prutty?
+2014-09-15 20:09:42	lycn	kör ssh från en ubuntu laptop
+2014-09-15 20:09:49	blueCmd	hur ska du bli pro utan öl?
+2014-09-15 20:09:51	lycn	som rovanion installerade åt mig
+2014-09-15 20:10:17	lycn	blueCmd: finnsn og med öl i linköping
+2014-09-15 20:10:19	lycn	oroa dig inte
+2014-09-15 20:10:26	blueCmd	lycn: nej
+2014-09-15 20:10:30	blueCmd	det gör det inte
+2014-09-15 20:10:36	blueCmd	det finns O(1000) pubbar här
+2014-09-15 20:10:38	blueCmd	det är lagom
+2014-09-15 20:10:57	dentarg	lycn: https://wiki.starkast.net/irssi_p%C3%A5_beaverstarkastnet och/eller https://wiki.starkast.net/irssi_p%C3%A5_orm kanske kan hjälpa (även om de OS X-inriktade)
+2014-09-15 20:10:57	rufwebot	Starkast Wiki
+2014-09-15 20:13:45	lycn	blueCmd: ska kolla upp lÃ?nkarna, Ã¥terkommer
+2014-09-15 20:51:46	blueCmd	dentarg: postlund parker: nytt besked. hittade en lapp i brevlådan som kräver att jag eller någon är i bostaden mellan 6pm och 9pm på onsdagskvällen. så jag föreslår en lugn hemmakväll med projje, roliga youtube-klipp, kanske ostbågar (postlund gillar nog det förslaget) och sen går vi ut när han som ska komma förbi och testa brandlarmet har gjort det
+2014-09-15 20:54:44	rovanion	blueCmd: pung?
+2014-09-15 20:57:35	rovanion	lycn: Vad har du för locale installerad på maskinen du ssh:ar från? Frågade rovanion för 100:e gången.
+2014-09-15 21:04:31	dentarg	blueCmd: np
+2014-09-15 21:04:54	rovanion	Lugna kvällar är mina favoriter.
+2014-09-15 21:05:24	dentarg	det blir inte lugnt, vi ska ha ostbågar ju
+2014-09-15 21:05:36	rovanion	Fan, tänkte inte på det
+2014-09-15 21:05:51	postlund	det kommar balla ur
+2014-09-15 21:06:08	rovanion	https://www.youtube.com/watch?v=GQFqrOEu3Rc
+2014-09-15 21:06:08	rufwebot	Grotesco - Ett kilo mjöl - YouTube
+2014-09-15 21:06:12	postlund	mailen ballar ur just nu
+2014-09-15 21:06:41	postlund	https://www.youtube.com/watch?v=gBZgOZgZNbg
+2014-09-15 21:06:41	rufwebot	"Jag brukar gå ner i källaren och gråtrunka" - Grotesco 2 - YouTube
+2014-09-15 21:07:02	rovanion	"Grunka"
+2014-09-15 21:07:17	postlund	bajsgråtrunka är det bästa dock
+2014-09-15 21:30:24	blueCmd	postlund: https://www.youtube.com/watch?v=JUpYuml0Y0g
+2014-09-15 21:30:25	rufwebot	Grotesco 2 Viktigast av allt är kuken - YouTube
+2014-09-15 21:44:23	postlund	det stämmer
+2014-09-15 21:44:35	rovanion	kan bekräfta
+2014-09-15 22:12:49	dentarg	blueCmd: har ni också kommentarer i er källkod på google som: // THIS IS DANGEROUS OLD CODE!!!! BAD CODE! BAD!
+2014-09-15 22:36:55	blueCmd	dentarg: <.<
+2014-09-15 22:37:05	blueCmd	dentarg: jag kan varken bekräfta eller dementera
+2014-09-15 22:37:16	dentarg	hehe
+2014-09-15 22:37:34	blueCmd	jag gissar att antal sådana per LOC är lägre hos oss dock
+2014-09-15 22:39:13	dentarg	det är nog bara gamla synder hos oss som har sånt
+2014-09-15 22:39:30	blueCmd	lycn: fick en tröja idag: https://lh3.googleusercontent.com/-0eTTOuWpat0/VBcuQa-6hoI/AAAAAAAACsM/Sfd_TMuS3-0/w1284-h963-no/IMG_20140915_191926.jpg
+2014-09-15 22:39:39	blueCmd	du är inte avis va?
+2014-09-16 00:19:19	dentarg	blueCmd: har du spelat Giraffe Simulator?
+2014-09-16 00:20:28	dentarg	åh, det var visst bara en del av goat simulator
+2014-09-16 00:22:24	dentarg	https://www.youtube.com/watch?v=c2qUTXxI1mM cirka 2:45 in kan vi njuta av på onsdag
+2014-09-16 00:22:25	rufwebot	Giraffe Simulator - TALL GOAT! - YouTube
+2014-09-16 08:49:28	dentarg	blueCmd: har ni bra badhus i Dublin?
+2014-09-16 08:49:33	dentarg	jag tycker vi går och badar
+2014-09-16 08:49:47	dentarg	postlund: rovanion parker: glöm inte badbyxor
+2014-09-16 09:04:25	rovanion	dentarg: Sure, bada är faktiskt jättekul.
+2014-09-16 09:04:32	rovanion	Har inte gjort det på jättelänge.
+2014-09-16 10:36:04	dentarg	wee
+2014-09-16 11:24:36	blueCmd	dentarg: ingen aning, badar alltid på jobbet
+2014-09-16 11:24:53	blueCmd	men jag kan tänka mig att bada
+2014-09-16 11:25:22	blueCmd	eller att ni badar under dagen på torsdagen och jag kan jobba lite
+2014-09-16 11:28:38	parker	blueCmd: Bjuder Google på lunch? ;)
+2014-09-16 11:31:14	dentarg	blueCmd: får vi bada hos google? :D
+2014-09-16 11:34:02	blueCmd	parker: ofc
+2014-09-16 11:35:15	blueCmd	parker: vi kör lunch på torsdagen tycker jag
+2014-09-16 14:15:40	rovanion	blueCmd: Google har eget badhus?
+2014-09-16 14:20:58	blueCmd	rovanion: egen simbassäng iaf
+2014-09-16 14:43:14	rovanion	blueCmd: Trampolin?
+2014-09-16 14:54:36	parker	lycn: rovanion Vi borde ha sshblock installerat på alla maskiner i CYD: 
+2014-09-16 14:54:37	parker	. 
+2014-09-16 14:54:52	parker	I dagsläget skyddar vi ej mot interna attacker. Inget akut däremot. 
+2014-09-16 14:56:30	lycn	parker: finns ju massa anti-attack vi borde ha
+2014-09-16 14:57:19	parker	lycn: Finns såklart alltid saker man borde ha - men sshblock är jävligt enkel grej man kan göra när man sätter upp server. Samma på alla maskiner så kan scriptas också. 
+2014-09-16 14:57:42	lycn	parker: jo bara att skapa ett iptalbes script
+2014-09-16 14:58:45	lycn	parker: jag kan skapa ett till nÃ?sta vecka om du vill
+2014-09-16 14:58:59	parker	lycn: Certen är högre prio i mmin bok. 
+2014-09-16 14:59:16	lycn	parker: jo men jag kna nog göra båda
+2014-09-16 14:59:16	parker	parker: Så fokusera på det tycker jag men om du hinner kan du ju ta sshblock också :)
+2014-09-16 14:59:24	lycn	parker: mm
+2014-09-16 15:01:49	blueCmd	lycn: såg du länken jag länkade?
+2014-09-16 15:02:55	lycn	blueCmd: ja men jag har inte hunnit
+2014-09-16 15:03:05	lycn	blueCmd: jag har labbrapport jag måste fixa tills imorgon
+2014-09-16 15:07:53	lycn	parker: var ansÃ¶ker man om sin tjÃ?nst
+2014-09-16 15:11:56	blueCmd	lycn: du behöver bara kolla ju!
+2014-09-16 15:12:02	blueCmd	https://lh3.googleusercontent.com/-0eTTOuWpat0/VBcuQa-6hoI/AAAAAAAACsM/Sfd_TMuS3-0/w1284-h963-no/IMG_20140915_191926.jpg
+2014-09-16 15:12:12	blueCmd	det är en JPG, inte en uppsats :P
+2014-09-16 15:20:50	lycn	blueCmd: dam
+2014-09-16 15:20:53	lycn	root @ google
+2014-09-16 15:25:33	parker	lycn: På länken martin skickade. Senast imorgon. 
+2014-09-16 15:25:56	lycn	parker: senast den 18 står det
+2014-09-16 15:26:05	parker	lycn: Förlåt - senast då
+2014-09-16 15:26:11	lycn	han mailade mig fÃ¶r att jag inte har skickat in min ansÃ¶kan Ã?nnu
+2014-09-16 15:26:29	lycn	sÃ¥ jag fÃ¶r vÃ?l gÃ¶r adet nu dÃ¥
+2014-09-16 15:44:33	parker	blueCmd: Hahah!
+2014-09-16 15:44:36	parker	Länken alltså. 
+2014-09-16 16:05:02	dentarg	blueCmd: kolla min t-shirt http://zomg.se/s/3z/jzvu1q4e2owgw.png
+2014-09-16 17:02:02	blueCmd	dentarg: snygg!
+2014-09-16 17:02:24	dentarg	tack
+2014-09-16 17:02:29	parker	dentarg: Pixelmator :)
+2014-09-16 17:02:46	dentarg	jag är en riktig ninja i det
+2014-09-16 17:03:28	parker	dentarg: Jasså? Du borde fan visa mig lite i s f
+2014-09-16 17:04:02	dentarg	min titel på jobbet är ju "Creative Lead"
+2014-09-16 17:04:23	dentarg	bevis: http://zomg.se/s/2p/8rm3jvfqecw00.png
+2014-09-16 17:08:55	parker	dentarg: Dags att flytta till södermalm?
+2014-09-16 17:12:38	dentarg	:)
+2014-09-16 17:13:08	parker	Måste varna alla tittare för att jag är rätt sjuk. 
+2014-09-16 17:13:19	dentarg	jag har nyss varit lite sjuk
+2014-09-16 17:13:30	dentarg	så jag borde ju vara imun nu?
+2014-09-16 17:13:37	dentarg	alla på jobbet var typ sjuka
+2014-09-16 17:13:51	parker	Good for you. 
+2014-09-16 17:13:54	dentarg	så blev jag lite snuvig i slutet av förra veckan. jävla skit tänkte jag...
+2014-09-16 17:14:03	dentarg	men har repat mig ganska bra tror jag
+2014-09-16 17:14:40	parker	dentarg: Härligt!
+2014-09-16 17:14:53	parker	Jag har bara AIDS. Var jobbigt att bli av med förra gången i o f s. 
+2014-09-16 17:17:09	dentarg	det är lugnt, tänkte inte ha sex med dig
+2014-09-16 17:17:11	dentarg	bara med postlund 
+2014-09-16 18:07:48	postlund	det ser jag fram emot
+2014-09-16 18:35:08	dentarg	blueCmd: hur är vädret i dublin?
+2014-09-16 19:15:29	blueCmd	dentarg: rätt varmt nu
+2014-09-16 19:15:38	blueCmd	har bara långtröja på mig
+2014-09-16 19:45:47	dentarg	oki
+2014-09-16 19:49:26	postlund	blueCmd: väldigt fin musikvideo från bahnhof som du länkade på facebook
+2014-09-16 20:03:15	dentarg	blueCmd: får du jobba på catamaran på arbetstid?
+2014-09-16 20:06:39	rovanion	Så vad ska man packa? har kläder, badbyxor och neccisär.
+2014-09-16 20:08:09	rovanion	parker: AIDS har jag redan haft så jag är immun.
+2014-09-16 20:12:39	postlund	jag tänkte spara ned internet på cd-rom och ta med
+2014-09-16 20:13:08	rovanion	postlund: Bra, får jag låna den för att läsa lite dokumentation på vägen?
+2014-09-16 20:13:23	postlund	rovanion: sure
+2014-09-16 20:13:30	rovanion	Nic(!
+2014-09-16 20:14:12	postlund	en kollega hade skrivit ut en rfc om någon tcp-extension som han läste på bussen ned till firmafesten med jobbet för något år sen
+2014-09-16 20:14:16	postlund	så kan man göra, men det är inte rätt
+2014-09-16 20:21:10	postlund	krappar
+2014-09-16 20:21:18	postlund	http://www.aerlingus.com/travelinformation/traveladvice/web-check-in/#
+2014-09-16 20:21:22	postlund	checka in för helvete
+2014-09-16 20:21:26	postlund	jag tar plats 11a
+2014-09-16 20:23:17	postlund	rovanion parker dentarg 
+2014-09-16 20:23:19	rovanion	Baggage man väljer är väl inte handbaggage?
+2014-09-16 20:23:26	postlund	nee, det är incheckat
+2014-09-16 20:23:49	rovanion	Fan att du tog fönstret!
+2014-09-16 20:23:57	postlund	klart jag gjorde ;)
+2014-09-16 20:24:22	rovanion	Måste man skriva ut det här nu?
+2014-09-16 20:24:36	rovanion	Måste jag fara ner till CYD för att skriva ut det här nu är frågan altså..
+2014-09-16 20:24:37	postlund	du kan nog göra samma procedur på flygplatsen och skriva ut i automat där
+2014-09-16 20:24:55	postlund	de har en app till iofs iaf, ska testa den
+2014-09-16 20:25:22	rovanion	Har ju checkat in, går det fortfarande att skriva ut i automaten?
+2014-09-16 20:25:29	postlund	det brukar det göra ja
+2014-09-16 20:26:10	rovanion	Jamen då är det lugnt, då tar jag ut boarding pass där. Sitter på plats 11B iaf.
+2014-09-16 20:46:50	rovanion	Lista över Gnome-program som fungerar i Wayland: https://wiki.gnome.org/Initiatives/Wayland/Applications
+2014-09-16 20:46:51	rufwebot	Initiatives/Wayland/Applications - GNOME Wiki!
+2014-09-16 20:47:41	rovanion	Tangentbordslayouter, viss drag and drop samt pekskärmar fungerar med Gnome 3.14
+2014-09-16 21:10:20	postlund	nu hittade jag mitt pass, det är praktiskt att ha med det har jag hört
+2014-09-16 21:11:27	rovanion	Nä Irland är ju inte medlemar i Schengen
+2014-09-16 21:14:20	postlund	precis, de är lite retarded
+2014-09-16 21:14:21	dentarg	jag har inte heller skrivare
+2014-09-16 21:14:38	postlund	jag har skrivit ut mitt boardingkort iaf, så up yours
+2014-09-16 21:14:42	rovanion	dentarg: Då brinner vi tillsammans om man inte kan skriva ut i automaten.
+2014-09-16 21:14:46	dentarg	jag plockade också fram passet tidigare ikväll
+2014-09-16 21:14:57	dentarg	jag har glömt det en gång :(
+2014-09-16 21:15:08	rovanion	Hur gick det då?
+2014-09-16 21:15:11	dentarg	skulle till Israel..
+2014-09-16 21:15:16	rovanion	Ouch
+2014-09-16 21:15:30	dentarg	det blev avgift för tillfälligt pass + ny biljett
+2014-09-16 21:15:40	dentarg	så det kostade en del mer än tänkt...
+2014-09-16 21:16:02	dentarg	flög så tidigt, så passutfärdarna på arlanda började inte jobba förrän efter flyget gått
+2014-09-16 21:17:22	rovanion	Fan va jobbigt
+2014-09-16 21:18:23	postlund	det är fint att slösa, så det var bra gjort dentarg 
+2014-09-16 21:19:50	rovanion	wat?
+2014-09-16 21:20:28	postlund	slösa på pengar alltså
+2014-09-16 21:20:52	rovanion	Det förstod jag, fortfarande: wat?
+2014-09-16 21:21:42	postlund	så är det
+2014-09-16 21:22:08	rovanion	https://www.destroyallsoftware.com/talks/wat
+2014-09-16 21:22:09	rufwebot	Wat ? Destroy All Software Talks
+2014-09-16 21:22:52	dentarg	rovanion: bäst
+2014-09-16 21:23:24	dentarg	11c aisle föreslår Aer Lingus
+2014-09-16 21:23:34	rovanion	BREVID MIG!
+2014-09-16 21:23:45	dentarg	fan
+2014-09-16 21:23:49	rovanion	Och postlund så klart.
+2014-09-16 21:23:50	dentarg	:P
+2014-09-16 21:24:21	rovanion	Happ, nu har jag ätit upp mackorna jag tänkte ha med i bilen imorgon.
+2014-09-16 21:24:23	dentarg	men det blir kanon
+2014-09-16 21:24:41	postlund	bra jobbat rovanion 
+2014-09-16 21:24:42	dentarg	ja.. ska man äta frukost innan eller blir det stopp för det?
+2014-09-16 21:24:51	postlund	jag har gjort en macka iaf
+2014-09-16 21:24:57	dentarg	jag har gjort pannkakor
+2014-09-16 21:25:01	postlund	najs
+2014-09-16 21:25:07	dentarg	men åt upp nästan alla ikväll :(
+2014-09-16 21:25:11	postlund	haha
+2014-09-16 21:25:27	postlund	.insult dentarg 
+2014-09-16 21:25:28	rufwebot	Oops. Error logged.
+2014-09-16 21:25:31	postlund	bra
+2014-09-16 21:25:34	postlund	.insult
+2014-09-16 21:25:34	rufwebot	Oops. Error logged.
+2014-09-16 21:25:38	postlund	.compliment
+2014-09-16 21:25:38	rufwebot	Oops. Error logged.
+2014-09-16 21:25:42	rovanion	.dö
+2014-09-16 21:25:43	postlund	bra bot
+2014-09-16 21:25:50	postlund	.penis
+2014-09-16 21:25:50	dentarg	tror det är något med textfilerna
+2014-09-16 21:25:52	dentarg	de är nog tomma
+2014-09-16 21:26:00	postlund	.addinsult %s är så jävla sämst
+2014-09-16 21:26:00	rufwebot	Added insult: postlund är så jävla sämst
+2014-09-16 21:26:03	postlund	.insult dentarg 
+2014-09-16 21:26:03	rufwebot	dentarg är så jävla sämst
+2014-09-16 21:26:25	dentarg	nu är de inte tomma...
+2014-09-16 21:26:28	postlund	nepp
+2014-09-16 21:26:54	postlund	.addcompliment %s kan allt om data
+2014-09-16 21:26:54	rufwebot	Added compliment: postlund kan allt om data
+2014-09-16 21:26:57	postlund	.compliment
+2014-09-16 21:26:57	rufwebot	postlund kan allt om data
+2014-09-16 21:27:11	rovanion	.addcompliment %s är så jävla dålig att man knappt kan tro't.
+2014-09-16 21:27:11	rufwebot	Added compliment: rovanion är så jävla dålig att man knappt kan tro't.
+2014-09-16 21:27:29	dentarg	skön komplimang
+2014-09-16 21:27:51	postlund	.addcompliment %s är våldtäktsman, fast på ett bra sätt
+2014-09-16 21:27:51	rufwebot	Added compliment: postlund är våldtäktsman, fast på ett bra sätt
+2014-09-16 21:29:00	rovanion	.addcompliment %s har bra hand med barn.
+2014-09-16 21:29:00	rufwebot	Added compliment: rovanion har bra hand med barn.
+2014-09-16 21:29:11	dentarg	rufwebot: "You must have your email confirmation or paper ticket with you." så verkar gå bra utan utskrift
+2014-09-16 21:29:30	dentarg	ok, nästa punkt var visst "After printing your boarding pass ..."
+2014-09-16 21:29:39	dentarg	aja går ju på flygplatsen som postlund sa 
+2014-09-16 21:29:44	postlund	japp
+2014-09-16 21:30:18	postlund	man stoppar in kuken i automaten så tatuerar den in en QR-kod som man använder när man går på planet
+2014-09-16 21:30:21	postlund	true story
+2014-09-16 21:30:30	rovanion	lol
+2014-09-16 21:30:37	rovanion	.compliment postlund 
+2014-09-16 21:30:37	rufwebot	postlund kan allt om data
+2014-09-16 21:31:10	rovanion	Han kan spara närpå 60GB data i sitt huvud.
+2014-09-16 21:42:39	blueCmd	dentarg: joda
+2014-09-16 21:42:46	blueCmd	dentarg: kodar hemma nu dock :P
+2014-09-16 21:42:50	dentarg	ok :)
+2014-09-16 21:43:48	dentarg	blueCmd: internet är litet... läste http://www.metro.se/nyheter/sa-forsokte-nagon-hacka-valsystemet/EVHnip!7cvq7kIKT9CME/ som länkar till https://kryptera.se/xss-forsok-i-valet/ som länkar till https://www.facebook.com/groups/utvecklare.stockholm/ och så såg jag att du hade skrivit där :)
+2014-09-16 21:43:49	rufwebot	Så försökte någon hacka valsystemet – Metro
+2014-09-16 21:44:07	rovanion	Intresseklubben rapporterar: Fler personer sökte förrå årets Paradise Hotel än Lärarutbildningen.
+2014-09-16 21:48:17	dentarg	blueCmd: kan du godkänna medlemmar till den gruppen?
+2014-09-16 21:49:09	blueCmd	dentarg: ingen aning
+2014-09-16 21:54:41	dentarg	blueCmd: är det någon linköpingsgrupp eller?
+2014-09-16 21:56:54	blueCmd	dentarg: det är 5000+ medlemar, så nope
+2014-09-16 21:57:10	dentarg	oj ok :)
+2014-09-16 21:57:15	dentarg	bara jag som levt under en sten då
+2014-09-16 21:57:29	dentarg	https://www.facebook.com/groups/utvecklare.stockholm/permalink/742642289118179/
+2014-09-16 21:57:30	rufwebot	Facebook
+2014-09-16 21:57:33	dentarg	den var intressant
+2014-09-16 21:57:46	dentarg	John Wilander har pluggat och doktorerat och jobbat på LiU
+2014-09-16 21:58:23	dentarg	sen kommenterade en kompis (som läst I (!)) från LiU på i tråden
+2014-09-16 22:00:10	postlund	det finns ganska mycket folk från linköping i den gruppen
+2014-09-16 22:00:45	postlund	är lite intressant inlägg ibland, dock överhängande mest webb och sånt som jag inte är så intresserad av
+2014-09-16 22:08:20	dentarg	jo, det var mycket intressant tyckte jag
+2014-09-16 22:08:34	dentarg	men blandad nivå
+2014-09-16 22:08:49	blueCmd	dentarg: gruppen har rätt låg kunskapsnivå i allmänhet, det finns bra inlägg men som på mitt WebRTC-inlägg, jag förväntade mig 100st "Så här använder jag WebRTC på ett orelevant sätt"-inlägg.
+2014-09-16 22:08:54	blueCmd	Jag har hittills två tror jag
+2014-09-16 22:09:06	dentarg	blueCmd: jag tänkte kommentera på den :)
+2014-09-16 22:09:08	blueCmd	vilket är 100%. Sen har jag två där jag säger att det är orelevant också
+2014-09-16 22:10:20	dentarg	inte för att jag gjort något, tänkte bara höra med dig och andra killen tittat på WebTorrent
+2014-09-16 22:11:39	rovanion	Visst är det så att vi antingen behöver att vanliga torrentklienter kan köra webrtc eller att WebTorrent kan köra över det vanliga protokollet?
+2014-09-16 22:11:49	rovanion	För att de ska kunna delta i en vanlig svärm dvs.
+2014-09-16 22:12:38	dentarg	rufwebot: ja, vanliga torrentklienter behöver köra både vanliga och webtorrent
+2014-09-16 22:12:43	dentarg	eh rovanion 
+2014-09-16 22:13:00	rovanion	y?
+2014-09-16 22:13:04	dentarg	jag lyssnade på feross snacka om webtorrent i april i budapest :)
+2014-09-16 22:13:05	rovanion	Jaha, ja
+2014-09-16 22:13:17	dentarg	energisk ung man
+2014-09-16 22:20:06	blueCmd	dentarg: när är ni här lokal tid?
+2014-09-16 22:20:29	dentarg	13:30
+2014-09-16 22:20:38	blueCmd	vilket är exakt då jag har ett 1-timme långt möte
+2014-09-16 22:20:41	blueCmd	fantastiskt
+2014-09-16 22:20:47	blueCmd	typ det enda jag behöver göra den dagen
+2014-09-16 22:21:03	rovanion	Vi tar oss la ner till centrum och äter något antar ja
+2014-09-16 22:21:26	dentarg	eller kraschar BCs möte?
+2014-09-16 22:21:35	blueCmd	det är en intervju så helst inte :P
+2014-09-16 22:21:56	dentarg	tror nog vi kan hjälpa och tycka till lite
+2014-09-16 22:21:57	blueCmd	dentarg: landar ni då?
+2014-09-16 22:22:00	dentarg	mm
+2014-09-16 22:22:02	blueCmd	för det kommer ju ta 30 min att få väskor
+2014-09-16 22:22:06	blueCmd	och så 30 min att åka taxi
+2014-09-16 22:22:19	blueCmd	så det blir bra
+2014-09-16 22:22:40	dentarg	taxi :) jag har kollat upp buss, hehe
+2014-09-16 22:23:12	dentarg	702 towards Greystones, gå av Maldron Hotel, sen gå en liten bit
+2014-09-16 22:24:24	blueCmd	det går
+2014-09-16 22:24:39	blueCmd	aldrig åkt buss från flygplatsen
+2014-09-16 22:24:50	blueCmd	ni får se hur ni löser med biljett
+2014-09-16 22:25:00	rovanion	Jag tror man köper den
+2014-09-16 22:25:01	blueCmd	annars kostar en taxi absolut max 30 euro
+2014-09-16 22:25:24	rovanion	  ▲
+2014-09-16 22:25:28	rovanion	▲ ▲
+2014-09-16 22:27:38	rovanion	Men det är inte helt otroligt att det blir billigare att åka taxi
+2014-09-16 22:29:11	dentarg	sant
+2014-09-16 22:29:30	dentarg	har laddat hem underhållning till flygresan nu: https://valtech.se/events/inspirationslunch-nya-tv4/
+2014-09-16 22:29:31	rufwebot	Inspirationslunch - Nya TV4.se - Valtech
+2014-09-16 22:31:31	dentarg	så då var det dags att packa...
+2014-09-16 22:31:56	rovanion	Klockan halv elva dagen innan, aja, det går ju snabbt så.
+2014-09-16 22:32:13	rovanion	Jag har badbyxor, något annat bra att ha?
+2014-09-16 22:36:02	blueCmd	handduk
+2014-09-16 22:36:08	blueCmd	jag har ett fåtal lånehanddukar
+2014-09-16 22:36:22	blueCmd	annars kan vi gå till google-shoppen och köpa om ni vill ha google-handdukar
+2014-09-16 22:37:50	blueCmd	jag är så jävla bra, jag dammsuger till och med för att ni kommer!
+2014-09-16 22:43:37	dentarg	uppskattas!
+2014-09-16 22:44:06	dentarg	jag ska se om jag inte får ner handduk
+2014-09-16 22:44:30	dentarg	rovanion: jag är sämst på att packa i tid :(
+2014-09-16 22:44:34	dentarg	det blir alltid sent
+2014-09-16 22:50:13	rovanion	Och sängkläder kom ja på skulle man ha
+2014-09-16 22:52:29	rovanion	Tar en sovsäck så är det löst
+2014-09-16 22:53:58	rovanion	Fan va stor den va då.
+2014-09-16 22:54:52	rovanion	Nattinatti
+2014-09-17 01:02:24	dentarg	sent blir det alltid som sagt..
+2014-09-17 03:13:51	<--	blueCmd (bluecmd@skalman.tech.dreamhack.se) has quit (Ping timeout)
+2014-09-17 03:19:59	-->	blueCmd (bluecmd@skalman.tech.dreamhack.se) has joined #cydadmin
+2014-09-17 06:23:06	postlund	snart smäller det
+2014-09-17 06:28:24	postlund	sover ni eller?
+2014-09-17 06:28:29	postlund	det är dumt att göra nämligen
+2014-09-17 06:50:46	dentarg	dock mycket skönt
+2014-09-17 15:59:27	rovanion	fruktansvärt skört
+2014-09-17 15:59:31	rovanion	skönt*
+2014-09-18 00:10:09	<--	blueCmd (bluecmd@skalman.tech.dreamhack.se) has quit (Ping timeout)
+2014-09-18 00:15:35	-->	blueCmd (bluecmd@skalman.tech.dreamhack.se) has joined #cydadmin
+2014-09-18 17:35:34	parker	http://dailycurrant.com/2014/09/17/kanye-scores-106-points-against-wheelchair-basketball-team/
+2014-09-18 17:35:35	rufwebot	Kanye Scores 106 Points Against Wheelchair Basketball Team - The Daily Currant
+2014-09-18 19:04:37	rovanion	Satir!
+2014-09-19 11:53:12	dentarg	blueCmd: vi bangar lunch med dig idag
+2014-09-19 11:53:27	blueCmd	dentarg: ack!
+2014-09-19 11:53:40	dentarg	blueCmd: vi käkar inne i stan, blir lite långt att gå fram och tillbaka på så kort tid
+2014-09-19 11:53:46	dentarg	blueCmd: när slutar du jobba?
+2014-09-19 11:54:55	rovanion	ack ack, vilken vånda.
+2014-09-19 14:01:12	blueCmd	dentarg: 4-tiden
+2014-09-19 16:45:55	dentarg	blueCmd: ok vi är på väg hem, handlar lite atm
+2014-09-19 16:46:13	dentarg	free wifi på en tesco
+2014-09-19 16:55:33	blueCmd	dentarg: haha nice
+2014-09-20 10:08:49	blueCmd	aj mitt huvve
+2014-09-20 22:35:28	dentarg	bakis?
+2014-09-20 22:35:30	dentarg	blueCmd: https://www.imperialviolet.org/
+2014-09-20 22:35:36	rufwebot	ImperialViolet - ImperialViolet.org
+2014-09-20 22:37:20	dentarg	https://www.imperialviolet.org/2011/06/16/dnssecchrome.html
+2014-09-20 22:37:21	dentarg	https://www.imperialviolet.org/2011/09/19/dnsseclive.html
+2014-09-20 22:37:26	rufwebot	ImperialViolet - DNSSEC authenticated HTTPS in Chrome
+2014-09-20 22:37:32	rufwebot	ImperialViolet - DNSSEC Certificates now in Chrome Stable
+2014-09-20 22:38:41	dentarg	71 6F AF 53 0B 0A 80 60 0D 2C E3 C9 E4 83 B3 BC 68 F5 FF 10
+2014-09-20 23:14:37	<--	rovanion (~rovanion@h-72-129.a163.priv.bahnhof.se) has quit (Ping timeout)
+2014-09-20 23:14:55	-->	rovanion (~rovanion@h-72-129.a163.priv.bahnhof.se) has joined #cydadmin
+2014-09-20 23:53:56	<--	lycn (~lycn@dhcp-240.cyd.liu.se) has quit (Ping timeout)
+2014-09-20 23:53:56	<--	dentmiho (dentarg@miho.dentarg.net) has quit (Ping timeout)
+2014-09-20 23:53:56	-->	lycn (~lycn@dhcp-240.cyd.liu.se) has joined #cydadmin
+2014-09-20 23:53:56	--	irc: disconnected from server
+2014-09-20 23:54:15	-->	parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-20 23:54:15	--	Topic for #cydadmin is ""Awesome!""
+2014-09-20 23:54:15	--	Topic set by rovanion on Sat, 20 Sep 2014 23:49:33
+2014-09-20 23:54:15	--	Nicks #cydadmin: [blueCmd dentarg dentmiho_ lycn parker postlund rufwebot]
+2014-09-20 23:54:15	--	Channel #cydadmin: 7 nicks (0 ops, 0 voices, 7 normals)
+2014-09-20 23:54:17	--	Mode #cydadmin [+snCN]
+2014-09-20 23:54:17	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-21 04:05:01	<--	postlund (~postlund@rocketsurgery.cyd.liu.se) has quit (Ping timeout)
+2014-09-21 04:09:38	-->	postlund (postlund@rocketsurgery.cyd.liu.se) has joined #cydadmin
+2014-09-21 12:07:37	-->	rovanion (~rovanion@h-72-129.a163.priv.bahnhof.se) has joined #cydadmin
+2014-09-21 12:07:50	rovanion	Servern starta igen! Automatiskt!
+2014-09-21 12:35:40	rovanion	Underbart! Hört på arlanda: "Så ska Jonas köpa en skoter för 140 000 och så har dom inte gjort klart köket på över två år". Underbara Sverige.
+2014-09-21 12:41:18	<--	rovanion (~rovanion@h-72-129.a163.priv.bahnhof.se) has quit (Quit: WeeChat 0.4.2)
+2014-09-21 12:41:29	-->	rovanion (~rovanion@h-72-129.a163.priv.bahnhof.se) has joined #cydadmin
+2014-09-21 13:18:38	dentarg	rovanion: hehe
+2014-09-21 13:18:48	dentarg	postlund: http://gilesbowkett.blogspot.com/2014/09/why-scrum-should-basically-just-die-in.html
+2014-09-21 13:18:49	rufwebot	Giles Bowkett: Why Scrum Should Basically Just Die In A Fire
+2014-09-21 13:38:39	dentarg	(handlar inte bara om scrum)
+2014-09-21 13:50:50	rovanion	https://en.wikipedia.org/wiki/Chicago_Convention_on_International_Civil_Aviation
+2014-09-21 13:50:50	rufwebot	Chicago Convention on International Civil Aviation - Wikipedia, the free encyclopedia
+2014-09-21 13:51:06	rovanion	blueCmd: > The Convention also exempts commercial air fuels from tax.
+2014-09-21 13:58:49	blueCmd	rovanion: där ser man, men det är bara commercial flights och international?
+2014-09-21 13:59:24	blueCmd	för när jag flyger själv så är jag rätt säker att 50% är skatt
+2014-09-21 14:02:06	rovanion	blueCmd: Precis, när du flyger själv så skattar du ganska gött.
+2014-09-21 22:05:17	rovanion	Vad jag också får med när jag skriver i en fysisk bok är utvecklingen av min handstil.
+2014-09-21 22:05:48	rovanion	Kul hur jag känner att jag behöver fortsätta diskussionen även väl hemma :P
+2014-09-21 23:04:39	dentarg	:)
+2014-09-21 23:05:05	dentarg	blueCmd: http://www.ripe.net/internet-coordination/ipv4-exhaustion "No new IPv4 Provider Independent (PI) space will be assigned." så även om man blir LIR ser det mörkt ut...
+2014-09-21 23:05:05	rufwebot	IPv4 Exhaustion ? RIPE Network Coordination Centre
+2014-09-21 23:18:15	<--	dentmiho_ (dentarg@miho.dentarg.net) has quit (Ping timeout)
+2014-09-21 23:18:15	--	irc: disconnected from server
+2014-09-21 23:18:33	-->	parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-21 23:18:33	--	Topic for #cydadmin is ""Awesome!""
+2014-09-21 23:18:33	--	Topic set by rovanion on Sat, 20 Sep 2014 23:49:33
+2014-09-21 23:18:33	--	Nicks #cydadmin: [blueCmd lycn parker postlund]
+2014-09-21 23:18:33	--	Channel #cydadmin: 4 nicks (0 ops, 0 voices, 4 normals)
+2014-09-21 23:18:35	--	Mode #cydadmin [+snCN]
+2014-09-21 23:18:35	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-21 23:19:53	-->	dentmiho (dentarg@37.139.10.127) has joined #cydadmin
+2014-09-21 23:19:53	-->	rovanion (~rovanion@h-72-129.a163.priv.bahnhof.se) has joined #cydadmin
+2014-09-21 23:19:53	-->	rufwebot (rufwebot@miho.dentarg.net) has joined #cydadmin
+2014-09-21 23:19:53	-->	dentarg (dentarg@starkast.net) has joined #cydadmin
+2014-09-21 23:27:59	-->	blueCmd_ (bluecmd@skalman.tech.dreamhack.se) has joined #cydadmin
+2014-09-21 23:28:06	blueCmd_	det är lite kul hur folk har målat upp v4-exhausten som ett domedags-scenario, när det är rätt självklart att den enda ändringen är att det kommer bli lite dyrare då du måste köpa av någon
+2014-09-21 23:28:50	<--	blueCmd (bluecmd@skalman.tech.dreamhack.se) has quit (*.net *.split)
+2014-09-22 01:17:46	rovanion	https://i.imgur.com/kYoGblf.png
+2014-09-22 01:17:53	rovanion	Jenga sales in the united states.
+2014-09-22 11:01:15	parker	lycn: Sluta ha privata konversationer på din CYD-adress :D
+2014-09-22 11:02:06	parker	blueCmd_: Tack för helgen. Var trevligt!
+2014-09-22 11:02:18	parker	postlund: dentarg rovanion Hemresan gick bra?
+2014-09-22 11:16:10	parker	eduroam fungerar klart sämre här än på LiU. 
+2014-09-22 11:16:28	rovanion	parker: Jajjemen, tog en buss för 200kr istället för en tågresa för 700 från Arlanda.
+2014-09-22 11:17:12	parker	rovanion: Lät mer värt. Billigare än min bilresa kan jag säga. 
+2014-09-22 11:17:32	rovanion	Du får lägga in din parkeringsavgift och bensin i skuld så får vi lösa ut allt sedan.
+2014-09-22 11:18:27	rovanion	Sitter på embassaden och mina vänner kan inte logga in, inte för att dom blir nekade utan för att "Setting up personalized settings for" "Windows Desktop Update".
+2014-09-22 11:18:36	rovanion	En windows XP-login på Windows 7.
+2014-09-22 11:19:04	parker	rovanion: Parkeringen är väl mer min (eftersom jag stannar längre)
+2014-09-22 11:19:08	rovanion	Men dom hade en annan cool sak. Dom har dns:at embassaden rakt av så att man kan skriva in det i webbläsaren och komma till deras hemsida. 
+2014-09-22 11:19:15	parker	rovanion: Men kan lägga in bensin för en resa
+2014-09-22 11:19:52	parker	rovanion: Om vi DNSar "cyd.cyd.liu.se" så kan man det i CYD också :)
+2014-09-22 11:20:16	parker	rovanion: XP-login på Win7?
+2014-09-22 11:20:39	rovanion	parker: Jamen det är precis samma fönster som jag sett på Windows-XP-domän, bara att det är i Windows 7 nu.
+2014-09-22 11:21:17	parker	rovanion: Går att ändra i GPO-editorn vilken loginprompt man ska ha. Känns onödigt att ändra den bara :)
+2014-09-22 11:24:41	rovanion	Inte inloggningspromten, efter att man satt in sin information och den håller på och loggar in är det jag syftar på.
+2014-09-22 11:31:33	parker	rovanion: Aaah okaj. 
+2014-09-22 11:31:43	parker	rovanion: Ngt mer de gör vi borde ta efter?
+2014-09-22 11:37:41	rovanion	parker: Vi borde inte ta efter det, det är hemskt!
+2014-09-22 11:37:59	rovanion	Ser ut som år 2001 och är än långsmammare.
+2014-09-22 11:38:14	rovanion	Datorsalen är tom och jag förstår varför, datorerna går inte att använda.
+2014-09-22 11:47:04	parker	rovanion: "Än långsammare" - Våra datorer är apsnabba?
+2014-09-22 11:47:21	rovanion	Är i Valhalla
+2014-09-22 11:47:24	parker	rovanion: Menade inte det utan DNS-uppslag till cyd@cyd
+2014-09-22 11:47:25	rovanion	Valhall
+2014-09-22 11:47:39	rovanion	Styrs av embassaden tror jag.
+2014-09-22 11:55:03	rovanion	blueCmd_: Du råkar inte känna till något sätt att stänga av tangentbordsgenvägarna i google docs? Kör firemacs och det kolliderar på någe vis med docs så att inte en enda tangent, inklusive piltangenterna, fungerar.
+2014-09-22 11:55:21	blueCmd_	rovanion: ingen aning
+2014-09-22 11:55:26	blueCmd_	parker: tack själv!
+2014-09-22 11:55:41	rovanion	Hittar inge bra på internet om det, suger tydligen på data. Kan du hjälpa mig postlund?
+2014-09-22 12:04:32	rovanion	Tydligen IEI som sköter den här salen.
+2014-09-22 12:08:06	parker	rovanion: Embassaden går in under IEI.
+2014-09-22 12:09:16	lycn	parker: ÃÃ?r du i svergie nu
+2014-09-22 12:15:51	parker	lycn: Nein.
+2014-09-22 12:16:05	lycn	parker: rovanion: så ingen möte idag
+2014-09-22 12:16:27	lycn	det passar mig för jag har dugga imorgon
+2014-09-22 12:20:28	lycn	parker: rovanion: jag tar dock supportpasset, tycker det ÃgÃ¥r bra att plugga pÃ¥ kontoret
+2014-09-22 12:30:17	lycn	fuccck nms Ã?r nere
+2014-09-22 12:30:25	lycn	kommer ni inhåg vad man behövde göra
+2014-09-22 12:36:46	parker	lycn: No idea
+2014-09-22 12:53:42	parker	lycn: rovanion Ni behöver ta supporten även om ni ej har möte. Både idag och imorgon (min tid). Kan ta torsdag om det hjälper. 
+2014-09-22 13:05:19	lycn	parker: rovanion: sÃ¥ rov behÃ¶ver komma idag fast jag Ã?r dÃ?r?
+2014-09-22 13:05:30	lycn	lÃ¥ter ju inte helt nÃ¶dvÃ?ndigt
+2014-09-22 13:05:48	parker	lycn: Såklart inte men ngn av er. Menade bara att ni ej får glömma det :)
+2014-09-22 13:05:54	lycn	mmmm
+2014-09-22 13:06:03	lycn	rovanion: kan du ta imorgon
+2014-09-22 13:14:38	rovanion	lycn: Jorå
+2014-09-22 13:15:16	rovanion	Fixa din encoding lycn!
+2014-09-22 13:15:36	lycn	rovanion: det Ã?r Ã?rligt talat inte helt enkelt
+2014-09-22 13:15:39	rovanion	lycn: Testat starta om tjänsten?
+2014-09-22 13:15:50	lycn	det verkar vara nÃ¥got som blir knas nÃ?r jag sshar
+2014-09-22 13:15:55	rovanion	lycn: Har du kollat vilken encoding du har på din dator?
+2014-09-22 13:16:01	lycn	fÃ¶r det blir inte knas nÃ?r jag kÃ¶r irssi lokalt
+2014-09-22 13:16:22	rovanion	lycn: Vilken encoding kör du på din maskin?
+2014-09-22 13:16:25	rovanion	Vilken locale
+2014-09-22 13:16:35	lycn	lycn @ ID-41 ~ locale
+2014-09-22 13:16:35	lycn	LANG=en_US.UTF-8
+2014-09-22 13:16:35	lycn	LANGUAGE=
+2014-09-22 13:16:35	lycn	LC_CTYPE="en_US.UTF-8"
+2014-09-22 13:16:35	lycn	LC_NUMERIC=sv_SE.UTF-8
+2014-09-22 13:16:37	lycn	LC_TIME=sv_SE.UTF-8
+2014-09-22 13:16:40	lycn	LC_COLLATE="en_US.UTF-8"
+2014-09-22 13:16:42	lycn	LC_MONETARY=sv_SE.UTF-8
+2014-09-22 13:16:45	lycn	LC_MESSAGES="en_US.UTF-8"
+2014-09-22 13:16:47	lycn	LC_PAPER=sv_SE.UTF-8
+2014-09-22 13:16:50	lycn	LC_NAME=sv_SE.UTF-8
+2014-09-22 13:16:52	lycn	LC_ADDRESS=sv_SE.UTF-8
+2014-09-22 13:16:55	lycn	LC_TELEPHONE=sv_SE.UTF-8
+2014-09-22 13:16:57	lycn	LC_MEASUREMENT=sv_SE.UTF-8
+2014-09-22 13:17:00	lycn	LC_IDENTIFICATION=sv_SE.UTF-8
+2014-09-22 13:17:02	lycn	LC_ALL=
+2014-09-22 13:17:13	rovanion	... pastebin?
+2014-09-22 13:17:33	lycn	och på maskinen som irssi körs på(klienten på jobbet)
+2014-09-22 13:17:45	rovanion	.pastebin
+2014-09-22 13:17:47	lycn	lycn @ cyd75 ~ locale
+2014-09-22 13:17:47	lycn	locale: Cannot set LC_ALL to default locale: No such file or directory
+2014-09-22 13:17:47	lycn	LANG=en_US.UTF-8
+2014-09-22 13:17:47	lycn	LANGUAGE=en_US:en
+2014-09-22 13:17:47	lycn	LC_CTYPE="en_US.UTF-8"
+2014-09-22 13:17:50	lycn	LC_NUMERIC=sv_SE.UTF-8
+2014-09-22 13:17:50	rovanion	PASTEBIN!
+2014-09-22 13:17:52	lycn	LC_TIME=sv_SE.UTF-8
+2014-09-22 13:17:55	lycn	LC_COLLATE="en_US.UTF-8"
+2014-09-22 13:17:57	lycn	LC_MONETARY=sv_SE.UTF-8
+2014-09-22 13:18:00	lycn	LC_MESSAGES="en_US.UTF-8"
+2014-09-22 13:18:02	lycn	LC_PAPER=sv_SE.UTF-8
+2014-09-22 13:18:05	lycn	LC_NAME=sv_SE.UTF-8
+2014-09-22 13:18:07	parker	rovanion: Hahahahaha
+2014-09-22 13:18:07	lycn	LC_ADDRESS=sv_SE.UTF-8
+2014-09-22 13:18:10	lycn	LC_TELEPHONE=sv_SE.UTF-8
+2014-09-22 13:18:12	lycn	LC_MEASUREMENT=sv_SE.UTF-8
+2014-09-22 13:18:15	lycn	LC_IDENTIFICATION=sv_SE.UTF-8
+2014-09-22 13:18:17	lycn	LC_ALL=
+2014-09-22 13:18:19	rovanion	http://paste.debian.net/
+2014-09-22 13:18:19	rufwebot	Debian Pastezone
+2014-09-22 13:18:21	rovanion	http://paste.debian.net/
+2014-09-22 13:18:22	rufwebot	Debian Pastezone
+2014-09-22 13:18:23	rovanion	http://paste.debian.net/
+2014-09-22 13:18:24	rufwebot	Debian Pastezone
+2014-09-22 13:18:25	rovanion	http://paste.debian.net/
+2014-09-22 13:18:26	rufwebot	Debian Pastezone
+2014-09-22 13:18:27	rovanion	http://paste.debian.net/
+2014-09-22 13:18:28	rufwebot	Debian Pastezone
+2014-09-22 13:18:34	lycn	man ser iof att laptopen inte har LANUGAGE satt
+2014-09-22 13:18:44	lycn	ska testa det
+2014-09-22 13:19:04	rovanion	lycn: Du har två olika locales. Testa insallera och kör samma på badå.
+2014-09-22 13:24:50	lycn	funkerar det nu? Ã¥Ã?Ã¶fg 
+2014-09-22 13:25:12	parker	nee
+2014-09-22 13:25:26	lycn	parker: fucking buntu helt vÃ?rdelÃ¶st
+2014-09-22 13:25:40	lycn	klarar inte ens av att ha en korrekt locale
+2014-09-22 13:26:38	parker	lycn: Tror inte att det är enkom Ubuntus fel. 
+2014-09-22 13:26:44	rovanion	För min locale fungerar ju inte
+2014-09-22 13:27:14	rovanion	lycn: Har du tesat installera och köra samma locale på båda maskiner?
+2014-09-22 13:32:50	<--	lycn (~lycn@dhcp-240.cyd.liu.se) has quit (Quit: leaving)
+2014-09-22 13:33:22	-->	lycn (~lycn@dhcp-240.cyd.liu.se) has joined #cydadmin
+2014-09-22 13:33:28	lycn	åäö
+2014-09-22 13:33:33	rovanion	et voila
+2014-09-22 13:33:33	lycn	senpai funkar det
+2014-09-22 13:33:41	lycn	blueCmd_: ?
+2014-09-22 13:34:17	lycn	rovanion: så det funkar?
+2014-09-22 13:34:32	rovanion	lycn: Det fungerar. Tack för att du äntligen följde det jag sade.
+2014-09-22 13:35:14	lycn	nee det var att localerna för svenska inte var generade på min klient
+2014-09-22 13:37:08	lycn	rovanion: parker: vet ni om vi nu har access till rummet där man hämtar papper
+2014-09-22 13:38:31	rovanion	lycn: Vilket var precis vad jag sade och alltid sagt att du skulle kolla.
+2014-09-22 13:38:35	parker	lycn: Det ska finnas papper utanför Kristinas gamla kontor. 
+2014-09-22 13:38:46	rovanion	Om det är skrivarpapper vi pratar om.
+2014-09-22 13:39:05	lycn	parker: rovanion: ok bra
+2014-09-22 13:39:17	rovanion	Gick just och kolla, står inget där än.
+2014-09-22 13:39:26	lycn	rovanion: fan då
+2014-09-22 13:39:49	lycn	vi har väl skickat ett mail om access till nya pappersrummet
+2014-09-22 13:41:42	rovanion	lycn: Kristina har sagt att det ska komma papper där men du kan ju eposta henne och fråga när mer specifikt det kommer.
+2014-09-23 06:51:30	--	irc: disconnected from server
+2014-09-23 11:13:42	-->	parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-23 11:13:42	--	Topic for #cydadmin is ""Awesome!""
+2014-09-23 11:13:42	--	Topic set by rovanion on Sat, 20 Sep 2014 23:49:33
+2014-09-23 11:13:42	--	Nicks #cydadmin: [blueCmd_ dentarg dentmiho lycn parker postlund rovanion rufwebot]
+2014-09-23 11:13:42	--	Channel #cydadmin: 8 nicks (0 ops, 0 voices, 8 normals)
+2014-09-23 11:13:44	--	Mode #cydadmin [+snCN]
+2014-09-23 11:13:44	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-23 11:17:24	--	irc: disconnected from server
+2014-09-23 11:30:23	-->	parker (~fille@c-55c4e455.013-554-6c6b701.cust.bredbandsbolaget.se) has joined #cydadmin
+2014-09-23 11:30:23	--	Topic for #cydadmin is ""Awesome!""
+2014-09-23 11:30:23	--	Topic set by rovanion on Sat, 20 Sep 2014 23:49:33
+2014-09-23 11:30:23	--	Nicks #cydadmin: [blueCmd_ dentarg dentmiho lycn parker postlund rovanion rufwebot]
+2014-09-23 11:30:23	--	Channel #cydadmin: 8 nicks (0 ops, 0 voices, 8 normals)
+2014-09-23 11:30:25	--	Mode #cydadmin [+snCN]
+2014-09-23 11:30:25	--	Channel created on Wed, 03 Aug 2011 19:11:57
+2014-09-23 11:30:31	--	irc: disconnected from server
