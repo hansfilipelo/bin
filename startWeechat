@@ -1,0 +1,23 @@
+#!/bin/bash
+session=fille
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+    # Start session
+    runuser -l $session -c "tmux new-session -d -s $session"
+    # Start weechat
+    runuser -l $session -c "tmux new-window 'weechat'"
+    ;;
+  stop)
+    runuser -l $session -c "tmux kill-session -t $session"  
+  ;;
+  *)
+    echo "Usage: /etc/init.d/blah {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+
+
