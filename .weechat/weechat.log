@@ -1,0 +1,14 @@
+[2014-09-23 11:30:39] WeeChat 0.4.2 (compiled on Oct 25 2013 09:30:24)
+[2014-09-23 11:30:39] Reading configuration file sec.conf
+[2014-09-23 11:30:39] Reading configuration file weechat.conf
+[2014-09-23 11:30:40] Reading configuration file plugins.conf
+[2014-09-23 11:30:40] Reading configuration file relay.conf
+[2014-09-23 11:30:40] Reading configuration file aspell.conf
+[2014-09-23 11:30:40] Reading configuration file xfer.conf
+[2014-09-23 11:30:40] Reading configuration file logger.conf
+[2014-09-23 11:30:40] Reading configuration file rmodifier.conf
+[2014-09-23 11:30:40] Reading configuration file charset.conf
+[2014-09-23 11:30:40] Reading configuration file irc.conf
+[2014-09-23 11:30:40] irc: connecting to server irc.quakenet.org/6667...
+[2014-09-23 11:30:40] Reading configuration file alias.conf
+[2014-09-23 11:30:40] Reading configuration file script.conf
