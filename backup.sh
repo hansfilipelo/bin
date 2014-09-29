@@ -4,6 +4,7 @@ LOGGFOLDER=/home/fille/loggar
 LOGG=backup.txt
 mkdir -p "$LOGGFOLDER"
 touch "$LOGGFOLDER/$LOGG"
+service=/usr/sbin/service
 
 TMP=/tmp/tmplog.txt
 touch $TMP
@@ -19,8 +20,8 @@ source backup.conf
 echo "" 
 echo "Closing services"
 echo "" 
-service transmission-daemon stop
-service openvpn stop
+$service transmission-daemon stop
+$service openvpn stop
 
 sleep 60
 
@@ -53,8 +54,8 @@ echo "-------------------------------------"
 echo "" 
 echo "Starting services"
 echo "" 
-service openvpn start
-service transmission-daemon start
+$service openvpn start
+$service transmission-daemon start
 
 
 cat $TMP >> "$LOGGFOLDER/$LOGG"
