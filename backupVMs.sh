@@ -12,6 +12,9 @@ do
 	virsh -c qemu:///system shutdown $domain
 done
 
+# Wait for VMs to shutdown. 
+sleep 10
+
 echo ""
 echo "Rsyncing VMs"
 date '+%Y-%m-%d %H:%M'
@@ -29,7 +32,7 @@ date '+%Y-%m-%d %H:%M'
 echo "--------------"
 
 
-for domain in $(virsh -c qemu:///system list | tail -n +3 | grep \n | awk {'print $2'})
+for domain in $(virsh -c qemu:///system list --all | tail -n +3 | grep \n | awk {'print $2'})
 do
 	virsh -c qemu:///system start $domain
 done
