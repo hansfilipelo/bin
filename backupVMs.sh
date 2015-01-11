@@ -1,13 +1,15 @@
 #!/bin/bash
 
 locations="/var/lib/libvirt/images /ssd2"
+VMs=$(virsh -c qemu:///system list | tail -n +3 | grep \n | awk {'print $2'})
+
 
 echo "Shutting down VMs"
 date '+%Y-%m-%d %H:%M'
 echo "--------------"
 
 
-for domain in $(virsh -c qemu:///system list | tail -n +3 | grep \n | awk {'print $2'})
+for domain in $VMs
 do
 	virsh -c qemu:///system shutdown $domain
 done
@@ -32,7 +34,7 @@ date '+%Y-%m-%d %H:%M'
 echo "--------------"
 
 
-for domain in $(virsh -c qemu:///system list --all | tail -n +3 | grep \n | awk {'print $2'})
+for domain in $VMs
 do
 	virsh -c qemu:///system start $domain
 done
