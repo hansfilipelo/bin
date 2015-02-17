@@ -17,11 +17,11 @@ cd $DIR
 
 source backup.conf
 
-echo "" 
-echo "Closing services"
-echo "" 
-$service transmission-daemon stop
-$service openvpn stop
+#echo "" 
+#echo "Closing services"
+#echo "" 
+#$service transmission-daemon stop
+#$service openvpn stop
 
 sleep 60
 
@@ -51,11 +51,11 @@ echo "Backup finished"
 date "+%Y-%m-%d %H:%M"
 echo "-------------------------------------"
 
-echo "" 
-echo "Starting services"
-echo "" 
-$service openvpn start
-$service transmission-daemon start
+#echo "" 
+#echo "Starting services"
+#echo "" 
+#$service openvpn start
+#$service transmission-daemon start
 
 
 cat $TMP >> "$LOGGFOLDER/$LOGG"
