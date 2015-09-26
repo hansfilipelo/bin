@@ -1,0 +1,5 @@
+clear Mod4
+keysym Super_L = Control_L
+add Control = Control_L
+add Mod4 = Super_R
+
