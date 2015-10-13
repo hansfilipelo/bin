@@ -1,9 +1,11 @@
 #!/bin/bash
 
-if [[ $# -gt 3 ]]
+if [[ $# -gt 3 || $# -eq 0 ]]
 then
 	echo "Usage: "
-	echo "$0 ammount currencyCodeFrom currencyCodeTo"
+	echo "$0 ammount [currencyCodeFrom] [currencyCodeTo]"
+	echo ""
+	echo "Default currencies, used unless currency codes are given, are USD to SEK"
 	echo ""
 	exit 11
 
