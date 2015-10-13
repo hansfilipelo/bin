@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [[ $# -gt 3 ]]
+then
+	echo "Usage: "
+	echo "$0 ammount currencyCodeFrom currencyCodeTo"
+	echo ""
+	exit 11
+
+elif [[ $# -eq 2 ]]
+then
+	wget -qO- "http://www.google.com/finance/converter?a=$1&from=$2&to=SEK" |  sed '/res/!d;s/<[^>]*>//g';
+
+elif [[ $# -eq 1 ]]
+then
+	wget -qO- "http://www.google.com/finance/converter?a=$1&from=USD&to=SEK" |  sed '/res/!d;s/<[^>]*>//g';
+	
+else
+	wget -qO- "http://www.google.com/finance/converter?a=$1&from=$2&to=$3" |  sed '/res/!d;s/<[^>]*>//g';
+	exit 0
+fi
+
