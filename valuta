@@ -3,7 +3,7 @@
 gnuSed=$(which sed)
 platform=$(uname)
 
-if [[ platform -eq "Darwin" ]]
+if [[ $platform == "Darwin" ]]
 then
 	gnuSed=$(which gsed)
 fi
