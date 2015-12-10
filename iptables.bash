@@ -36,13 +36,19 @@ iptables -t nat -A POSTROUTING -o eth1 -j MASQUERADE
 # Don't forward from the outside to the inside.
 # iptables -A FORWARD -i eth1 -o eth0 -j REJECT
 
+# Enable routing.
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
 # NAT port forwarding
+# -----------------------------
+
 # port 80
 iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 80 -j DNAT --to $web
 iptables -A INPUT -p tcp -m state --state NEW --dport 80 -i eth1 -j ACCEPT
 # port 443
 iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 443 -j DNAT --to $web
 #iptables -A INPUT -p tcp -m state --state NEW --dport 443 -i eth1 -j ACCEPT
+
 # ssh
 iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 22 -j DNAT --to $dt03
 iptables -A INPUT -p tcp -m state --state NEW --dport 22 -i eth1 -j ACCEPT
@@ -50,6 +56,16 @@ iptables -A INPUT -p tcp -m state --state NEW --dport 22 -i eth1 -j ACCEPT
 iptables -A PREROUTING -t nat -i eth1 -p udp --dport 60000:61000 -j DNAT --to $dt03
 iptables -A INPUT -p udp -m state --state NEW --dport 60000:61000 -i eth1 -j ACCEPT
 
-# Enable routing.
-echo 1 > /proc/sys/net/ipv4/ip_forward
+# ---- Counter Strike server
+# 1200
+iptables -A PREROUTING -t nat -i eth1 -p udp --dport 1200 -j DNAT --to $dt03
+iptables -A INPUT -p tcp -m state --state NEW --dport 1200 -i eth1 -j ACCEPT
+# 27000-27015
+iptables -A PREROUTING -t nat -i eth1 -p udp --dport 27000:27015 -j DNAT --to $dt03
+iptables -A INPUT -p udp -m state --state NEW --dport 27000:27015 -i eth1 -j ACCEPT
+# 27020-27039
+iptables -A PREROUTING -t nat -i eth1 -p udp --dport 27020:27039 -j DNAT --to $dt03
+iptables -A INPUT -p udp -m state --state NEW --dport 27020:27039 -i eth1 -j ACCEPT
+
+# -----------------------------
 
