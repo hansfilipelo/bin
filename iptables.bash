@@ -9,6 +9,14 @@ web=10.0.0.17
 server02=10.0.0.5
 
 ##################
+#### PROTOCOLS ####
+
+ssh=22
+http=80
+https=443
+
+####################
+
 
 # delete all existing rules.
 iptables -F
@@ -42,23 +50,28 @@ echo 1 > /proc/sys/net/ipv4/ip_forward
 iptables -t mangle -A PREROUTING -p tcp --sport 4070 -j TOS --set-tos Minimize-Delay
 iptables -t mangle -A PREROUTING -p tcp --dport 4070 -j TOS --set-tos Minimize-Delay
 # Web traffic (Sonos use this as well
-iptables -t mangle -A PREROUTING -p tcp --sport 80 -j TOS --set-tos Minimize-Delay
-iptables -t mangle -A PREROUTING -p tcp --dport 80 -j TOS --set-tos Minimize-Delay
+iptables -t mangle -A PREROUTING -p tcp --sport $http -j TOS --set-tos Minimize-Delay
+iptables -t mangle -A PREROUTING -p tcp --dport $http -j TOS --set-tos Minimize-Delay
+iptables -t mangle -A PREROUTING -p tcp --sport $https -j TOS --set-tos Minimize-Delay
+iptables -t mangle -A PREROUTING -p tcp --dport $https -j TOS --set-tos Minimize-Delay
 
+# SSH
+iptables -t mangle -A PREROUTING -p tcp --sport $ssh -j TOS --set-tos Minimize-Delay
+iptables -t mangle -A PREROUTING -p tcp --dport $ssh -j TOS --set-tos Minimize-Delay
 
 # NAT port forwarding for services
 # ---------------------------------------------
 
 # port 80
-iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 80 -j DNAT --to $web
-iptables -A INPUT -p tcp -m state --state NEW --dport 80 -i eth1 -j ACCEPT
+iptables -A PREROUTING -t nat -i eth1 -p tcp --dport $http -j DNAT --to $web
+iptables -A INPUT -p tcp -m state --state NEW --dport $http -i eth1 -j ACCEPT
 # port 443
-iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 443 -j DNAT --to $web
-#iptables -A INPUT -p tcp -m state --state NEW --dport 443 -i eth1 -j ACCEPT
+iptables -A PREROUTING -t nat -i eth1 -p tcp --dport $https -j DNAT --to $web
+iptables -A INPUT -p tcp -m state --state NEW --dport $https -i eth1 -j ACCEPT
 
 # ssh
-iptables -A PREROUTING -t nat -i eth1 -p tcp --dport 22 -j DNAT --to $dt03
-iptables -A INPUT -p tcp -m state --state NEW --dport 22 -i eth1 -j ACCEPT
+iptables -A PREROUTING -t nat -i eth1 -p tcp --dport $ssh -j DNAT --to $dt03
+iptables -A INPUT -p tcp -m state --state NEW --dport $ssh -i eth1 -j ACCEPT
 
 # mosh
 iptables -A PREROUTING -t nat -i eth1 -p udp --dport 60000:61000 -j DNAT --to $dt03
