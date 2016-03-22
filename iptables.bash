@@ -7,6 +7,9 @@ PATH=/usr/sbin:/sbin:/bin:/usr/bin
 external=eth1
 internal=eth0
 
+external_IP=$(/sbin/ifconfig $external | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}')
+internal_IP=$(/sbin/ifconfig $internal | grep "inet addr" | awk -F: '{print $2}' | awk '{print $1}')
+
 #### MACHINES ####
 
 dt03=10.0.0.20
@@ -42,6 +45,8 @@ iptables -A FORWARD -i $external -o $internal -m state --state ESTABLISHED,RELAT
 iptables -A FORWARD -i $internal -o $external -j ACCEPT
 # Masquerade - necessary for NAT
 iptables -t nat -A POSTROUTING -o $external -j MASQUERADE
+# MASQUERADE on packages from internal-to-internal, nessecary for NAT Loopback
+iptables -A POSTROUTING -t nat -s 10.0.0.0/8 -d 10.0.0.0/8 -p tcp -j MASQUERADE
 # Enable routing.
 echo 1 > /proc/sys/net/ipv4/ip_forward
 # -------------
@@ -70,17 +75,21 @@ iptables -t mangle -A PREROUTING -p tcp --dport $ssh -j TOS --set-tos Minimize-D
 # port 80
 iptables -A PREROUTING -t nat -i $external -p tcp --dport $http -j DNAT --to $web
 iptables -A INPUT -p tcp -m state --state NEW --dport $http -i $external -j ACCEPT
+iptables -A PREROUTING -t nat -d $external_IP -p tcp --dport $http -j DNAT --to-destination $web
 # port 443
 iptables -A PREROUTING -t nat -i $external -p tcp --dport $https -j DNAT --to $web
 iptables -A INPUT -p tcp -m state --state NEW --dport $https -i $external -j ACCEPT
+iptables -A PREROUTING -t nat -d $external_IP -p tcp --dport $https -j DNAT --to-destination $web
 
 # ssh
 iptables -A PREROUTING -t nat -i $external -p tcp --dport $ssh -j DNAT --to $dt03
 iptables -A INPUT -p tcp -m state --state NEW --dport $ssh -i $external -j ACCEPT
+iptables -A PREROUTING -t nat -d $external_IP -p tcp --dport $ssh -j DNAT --to-destination $dt03
 
 # mosh
 iptables -A PREROUTING -t nat -i $external -p udp --dport 60000:61000 -j DNAT --to $dt03
 iptables -A INPUT -p udp -m state --state NEW --dport 60000:61000 -i $external -j ACCEPT
+iptables -A PREROUTING -t nat -d $external_IP -p tcp --dport 60000:61000 -j DNAT --to-destination $dt03
 
 # BitTorrent
 #iptables -A PREROUTING -t nat -i $external -p tcp --dport 64795 -j DNAT --to $server02
