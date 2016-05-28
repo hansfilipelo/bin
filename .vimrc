@@ -16,6 +16,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-scripts/a.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tikhomirov/vim-glsl'
+Plugin 'rdnetto/YCM-Generator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -42,9 +44,11 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 
-" Configure youcompleteme for C-based languages
-let g:ycm_global_ycm_extra_conf = '~/src/bin/ycm_conf.py'
-
 " Make backspace work
 set backspace=2
+
+" Larger font
+set guifont=Inconsolata:h13
+" Color scheme
+colorscheme torte
 
