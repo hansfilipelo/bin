@@ -19,6 +19,11 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'vim-airline/vim-airline'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
+Plugin 'jmcantrell/vim-virtualenv'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -58,3 +63,6 @@ let mapleader=","
 
 " Make Ycm close preview window after completion
 let g:ycm_autoclose_preview_window_after_completion=1
+
+map <C-m> :NERDTreeToggle<CR>
+
