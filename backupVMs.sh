@@ -2,7 +2,7 @@
 
 locations="/var/lib/libvirt/images /ssd2"
 VMs=$(virsh -c qemu:///system list | tail -n +3 | grep \n | awk {'print $2'})
-
+remoteHost=10.0.0.5
 
 echo "Shutting down VMs"
 date '+%Y-%m-%d %H:%M'
@@ -24,7 +24,7 @@ echo "--------------"
 
 for location in $locations
 do
-	rsync -raz --update --delete $location server02:/mnt/storage/vms/
+	rsync -raz --update --delete $location $remoteHost:/mnt/storage/vms/
 done
 
 
