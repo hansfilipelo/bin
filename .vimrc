@@ -40,9 +40,12 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+" Make Ctrl+C do copy to system clipboard
+vnoremap <C-c> "+y
 syntax on 
 " Numbered lines
 set number
+set relativenumber
 
 " No tabs, just spaces
 retab
@@ -64,5 +67,6 @@ let mapleader=","
 " Make Ycm close preview window after completion
 let g:ycm_autoclose_preview_window_after_completion=1
 
+" Airline stuff
 map <C-m> :NERDTreeToggle<CR>
 
