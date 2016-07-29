@@ -59,7 +59,7 @@ set backspace=2
 " Larger font
 set guifont=Inconsolata:h13
 " Color scheme
-colorscheme torte
+colorscheme slate
 
 " Map leader to , instead of \
 let mapleader=","
