@@ -53,6 +53,9 @@ set shiftwidth=4
 set tabstop=4
 set expandtab
 
+" Toogle for case sensitivity
+nmap <C-i> :set ignorecase! ignorecase?
+
 " Make backspace work
 set backspace=2
 
