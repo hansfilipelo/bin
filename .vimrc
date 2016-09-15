@@ -24,6 +24,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/nerdtree'
+Plugin 'bjoernd/vim-ycm-tex'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -32,7 +33,7 @@ filetype plugin indent on    " required
 "filetype plugin on
 "
 " Brief help
-" :PluginList       - lists configured plugins
+" :PluginList       - lists configured pluginsG
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
@@ -43,15 +44,17 @@ filetype plugin indent on    " required
 " Make Ctrl+C do copy to system clipboard
 vnoremap <C-c> "+y
 syntax on 
-" Numbered lines
+" Numbered lines and highlight searches
 set number
-set relativenumber
+"set relativenumber
+set hlsearch
 
 " No tabs, just spaces
 retab
 set shiftwidth=4
 set tabstop=4
 set expandtab
+set smartcase
 
 " Toogle for case sensitivity
 nmap <C-i> :set ignorecase! ignorecase?
@@ -60,7 +63,7 @@ nmap <C-i> :set ignorecase! ignorecase?
 set backspace=2
 
 " Larger font
-set guifont=Inconsolata:h13
+set guifont=Inconsolata:h14
 " Color scheme
 colorscheme slate
 
@@ -71,5 +74,12 @@ let mapleader=","
 let g:ycm_autoclose_preview_window_after_completion=1
 
 " Airline stuff
-map <C-m> :NERDTreeToggle<CR>
+"map <C-> :NERDTreeToggle<CR>
+command NT NERDTreeToggle
+
+
+" Latex for ycm completion
+let g:ycm_semantic_triggers = {
+\  'tex'  : ['\ref{','\cite{'],
+\ }
 
