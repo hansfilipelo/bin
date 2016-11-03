@@ -25,6 +25,14 @@ Plugin 'mhinz/vim-signify'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bjoernd/vim-ycm-tex'
+Plugin 'guns/vim-sexp'
+Plugin 'guns/vim-clojure-highlight'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'tpope/vim-salve'
+Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-classpath'
+Plugin 'tpope/vim-dispatch'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -46,6 +54,7 @@ vnoremap <C-c> "+y
 syntax on 
 " Numbered lines and highlight searches
 set number
+set ruler
 "set relativenumber
 set hlsearch
 
@@ -73,6 +82,9 @@ let mapleader=","
 " Make Ycm close preview window after completion
 let g:ycm_autoclose_preview_window_after_completion=1
 
+" Clojure stuff
+let g:salve_auto_start_repl=1
+
 " Airline stuff
 "map <C-> :NERDTreeToggle<CR>
 command NT NERDTreeToggle
@@ -82,4 +94,8 @@ command NT NERDTreeToggle
 let g:ycm_semantic_triggers = {
 \  'tex'  : ['\ref{','\cite{'],
 \ }
+
+" Remove trailing whitespace from python files on save
+autocmd BufWritePre *.py %s/\s\+$//e
+
 
