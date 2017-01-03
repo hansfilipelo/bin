@@ -1,6 +1,6 @@
 #!/bin/bash
 
-locations="/var/lib/libvirt/images /ssd2"
+locations="/var/lib/libvirt/images"
 VMs=$(virsh -c qemu:///system list | tail -n +3 | grep \n | awk {'print $2'})
 remoteHost=10.0.0.5
 
@@ -11,7 +11,7 @@ echo "--------------"
 
 for domain in $VMs
 do
-	virsh -c qemu:///system shutdown $domain
+    virsh -c qemu:///system "snapshot-create $domain"
 done
 
 # Wait for VMs to shutdown. 
