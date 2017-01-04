@@ -4,13 +4,14 @@ locations="/var/lib/libvirt/images"
 VMs=$(virsh -c qemu:///system list | tail -n +3 | grep \n | awk {'print $2'})
 remoteHost=10.0.0.5
 
-echo "Shutting down VMs"
+echo "Snapshoting VMs"
 date '+%Y-%m-%d %H:%M'
 echo "--------------"
 
 
 for domain in $VMs
 do
+    echo "Snapshoting $domain"
     virsh -c qemu:///system "snapshot-create $domain"
 done
 
@@ -36,7 +37,12 @@ echo "--------------"
 
 for domain in $VMs
 do
-	virsh -c qemu:///system start $domain
+    echo "Removing snapshots for $domain"
+    snapshots=$(virsh -c qemu:///system "snapshot-list $domain" | tail -n +3 | awk '{print $1}')
+    for snapshot in $snapshots
+    do
+        virsh -c qemu:///system snapshot-delete $domain $snapshot
+    done
 done
 
 echo ""
