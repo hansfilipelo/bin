@@ -1,18 +1,17 @@
 #!/bin/bash
 
-locations="/var/lib/libvirt/images"
+locations="/var/lib/libvirt/images /ssd2"
 VMs=$(virsh -c qemu:///system list | tail -n +3 | grep \n | awk {'print $2'})
 remoteHost=10.0.0.5
 
-echo "Snapshoting VMs"
+echo "Shutting down VMs"
 date '+%Y-%m-%d %H:%M'
 echo "--------------"
 
 
 for domain in $VMs
 do
-    echo "Snapshoting $domain"
-    virsh -c qemu:///system "snapshot-create $domain"
+	virsh -c qemu:///system shutdown $domain
 done
 
 # Wait for VMs to shutdown. 
@@ -37,12 +36,7 @@ echo "--------------"
 
 for domain in $VMs
 do
-    echo "Removing snapshots for $domain"
-    snapshots=$(virsh -c qemu:///system "snapshot-list $domain" | tail -n +3 | awk '{print $1}')
-    for snapshot in $snapshots
-    do
-        virsh -c qemu:///system snapshot-delete $domain $snapshot
-    done
+	virsh -c qemu:///system start $domain
 done
 
 echo ""
