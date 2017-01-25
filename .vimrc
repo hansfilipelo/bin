@@ -96,9 +96,13 @@ let g:ycm_semantic_triggers = {
 \  'tex'  : ['\ref{','\cite{'],
 \ }
 
-" Remove trailing whitespace from code files on save
-autocmd FileType c,cpp,java,php,python,bash,cljs autocmd BufWritePre <buffer> %s/\s\+$//e
+" Remove trailing whitespace from files on save
+autocmd BufWritePre <buffer> %s/\s\+$//e
 
 " Use spellcheck for tex files
 autocmd FileType tex,bib set spell
+
+" Remap Esc to close a terminal in neovim
+tnoremap <Esc> <C-\><C-n>
+
 
