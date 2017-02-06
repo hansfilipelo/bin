@@ -1,0 +1,11 @@
+#!/bin/bash
+
+ln -s $HOME/src/bin/.vimrc ~/
+ln -s $HOME/src/bin/.tmux.conf ~/
+
+if [ "$(uname -s)" != "Darwin" ]; then
+    echo "export PATH=$HOME/src/bin:$PATH" >> ~/.bashrc
+else
+    echo "export PATH=$HOME/src/bin:$PATH" >> ~/.bash_profile
+fi
+
