@@ -30,6 +30,8 @@ Plugin 'guns/vim-clojure-highlight'
 Plugin 'tpope/vim-sexp-mappings-for-regular-people'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'rust-lang/rust.vim'
+Plugin 'mkitt/tabline.vim'
+Plugin 'scrooloose/nerdcommenter'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -97,7 +99,7 @@ let g:ycm_semantic_triggers = {
 \ }
 
 " Remove trailing whitespace from files on save
-autocmd BufWritePre <buffer> %s/\s\+$//e
+autocmd BufWritePre * %s/\s\+$//e
 
 " Use spellcheck for tex files
 autocmd FileType tex,bib set spell
