@@ -51,7 +51,7 @@ autocmd! bufwritepost .vimrc source %
 
 " Make Ctrl+C do copy to system clipboard
 vnoremap <C-c> "+y
-syntax on 
+syntax on
 " Numbered lines and highlight searches
 set number
 set ruler
@@ -103,6 +103,7 @@ autocmd BufWritePre <buffer> %s/\s\+$//e
 autocmd FileType tex,bib set spell
 
 " Remap Esc to close a terminal in neovim
-tnoremap <Esc> <C-\><C-n>
-
+if has('nvim')
+    tnoremap <Esc> <C-\><C-n>
+endif
 
