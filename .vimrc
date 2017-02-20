@@ -32,6 +32,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mkitt/tabline.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'gerw/vim-latex-suite'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -108,4 +109,10 @@ autocmd FileType tex,bib set spell
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
 endif
+
+" Shut down auto fold for latex documents
+let g:tex_flavor='latex'
+set grepprg=grep\ -nH\ $*
+let g:Tex_Folding=0
+set iskeyword+=:
 
