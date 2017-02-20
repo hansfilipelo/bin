@@ -32,6 +32,7 @@ Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mkitt/tabline.vim'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'andviro/flake8-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -53,7 +54,7 @@ autocmd! bufwritepost .vimrc source %
 
 " Make Ctrl+C do copy to system clipboard
 vnoremap <C-c> "+y
-syntax on 
+syntax on
 " Numbered lines and highlight searches
 set number
 set ruler
@@ -100,6 +101,11 @@ let g:ycm_semantic_triggers = {
 
 " Remove trailing whitespace from files on save
 autocmd BufWritePre * %s/\s\+$//e
+" Pep8-check python files
+let g:PyFlakeOnWrite = 1
+let g:PyFlakeCheckers = 'pep8,mccabe,frosted'
+:map <F7> :PyFlakeAuto<CR>
+
 
 " Use spellcheck for tex files
 autocmd FileType tex,bib set spell
