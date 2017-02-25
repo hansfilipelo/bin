@@ -1,27 +1,22 @@
 #!/bin/bash
 
-FOLDER_FROM=$1
-FOLDER_TO=$2
-LOGG="/home/fille/Loggar/unrar.eloeldh.se"
-touch $LOGG
-exec >> $LOGG 2>&1
+folder_from=$1
+folder_to=$2
+files=/tmp/filelist.txt
 
-echo $FOLDER_FROM
-echo $FOLDER_TO
+echo $folder_from
+echo $folder_to
 
 # If folder doesn't exist - create it
-mkdir -p $FOLDER_TO
+mkdir -p $folder_to
 
-find $FOLDER_FROM -name *.rar > /home/fille/filelist.txt
+find $folder_from -name *.rar > $files
 
-FILES=/home/fille/filelist.txt
-
-cd $FOLDER_TO
+cd $folder_to
 
 while read line
 do
 	unrar e -o- -c- $line
-done < $FILES
+done < $files
 
-rm $FILES
-
+rm $files

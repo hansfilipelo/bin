@@ -1,0 +1,31 @@
+#!/bin/bash
+
+gnuSed=$(which sed)
+platform=$(uname)
+
+if [[ $platform == "Darwin" ]]
+then
+	gnuSed=$(which gsed)
+fi
+
+if [[ $# -gt 3 || $# -eq 0 ]]
+then
+	echo "Usage: "
+	echo "$0 ammount [currencyCodeFrom] [currencyCodeTo]"
+	echo ""
+	echo "Default currencies, used unless currency codes are given, are USD to SEK"
+	echo ""
+	exit 11
+
+elif [[ $# -eq 2 ]]
+then
+	wget -qO- "http://www.google.com/finance/converter?a=$1&from=$2&to=SEK" |  $gnuSed '/res/!d;s/<[^>]*>//g';
+
+elif [[ $# -eq 1 ]]
+then
+	wget -qO- "http://www.google.com/finance/converter?a=$1&from=USD&to=SEK" |  $gnuSed '/res/!d;s/<[^>]*>//g';
+
+else
+	wget -qO- "http://www.google.com/finance/converter?a=$1&from=$2&to=$3" |  $gnuSed '/res/!d;s/<[^>]*>//g';
+	exit 0
+fi
