@@ -1,16 +1,6 @@
 #!/bin/bash
 
-LOGGFOLDER=/home/fille/loggar
-LOGG=backup.txt
-mkdir -p "$LOGGFOLDER"
-touch "$LOGGFOLDER/$LOGG"
 service=/usr/sbin/service
-
-TMP=/tmp/tmplog.txt
-touch $TMP
-
-exec >> $TMP 2>&1
-
 # cd to script dir
 DIR=$( cd "$( dirname "$0" )" && pwd )
 cd $DIR
@@ -23,8 +13,6 @@ source backup.conf
 #$service transmission-daemon stop
 #$service openvpn stop
 
-sleep 60
-
 echo " "
 echo "Written by /home/fille/backup.sh"
 echo "-------------------------------------"
@@ -34,6 +22,7 @@ date "+%Y-%m-%d %H:%M"
 # Backup of main storage
 for FS in lagret privat os home
 do
+	echo "$FS"
 	rsync -q -a --update --delete --exclude=".*" /mnt/storage/$FS root@$REMOTEHOST:/mnt/storage
 	
 	if [ $? == 0 ]
@@ -56,9 +45,4 @@ echo "-------------------------------------"
 #echo "" 
 #$service openvpn start
 #$service transmission-daemon start
-
-
-cat $TMP >> "$LOGGFOLDER/$LOGG"
-cat $TMP | mail -s "Backup report from $(echo $(hostname))" hansfilipelo@gmail.com
-rm $TMP
 
