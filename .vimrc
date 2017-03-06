@@ -75,6 +75,9 @@ nmap <C-i> :set ignorecase! ignorecase?
 " Make backspace work
 set backspace=2
 
+" If file changed on disk, reload it
+set autoread
+
 " Larger font
 set guifont=Inconsolata:h14
 " Color scheme
