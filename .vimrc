@@ -34,6 +34,7 @@ Plugin 'mkitt/tabline.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'chiedo/vim-case-convert'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -102,7 +103,7 @@ let g:ycm_semantic_triggers = {
 
 " Remove trailing whitespace from files on save
 autocmd BufWritePre * %s/\s\+$//e
-" Syntax check python files
+" Syntax check files but not latex
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -110,6 +111,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
+let g:syntastic_tex_checkers = ['']
 
 " Use spellcheck for tex files
 autocmd FileType tex,bib set spell
