@@ -1,3 +1,8 @@
 #!/bin/bash
 
-ssh root@beast.hfelo.se "pm-suspend"
+if [ "$(hostname)" = "dt03" ]
+then
+    ssh root@beast.hfelo.se "pm-suspend"
+else
+    ssh fille@ssh.hfelo.se "ssh root@beast \"pm-suspend\""
+fi
