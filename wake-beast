@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "$(hostname)" = "dt03" ]
+then
+    ssh pi@antman "wakeonlan -i 192.168.1.255 14:dd:a9:51:e7:e7"
+else
+    ssh fille@ssh.hfelo.se "ssh pi@antman \"wakeonlan -i 192.168.1.255 14:dd:a9:51:e7:e7\""
+fi
+

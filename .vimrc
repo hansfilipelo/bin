@@ -34,6 +34,8 @@ Plugin 'mkitt/tabline.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'chiedo/vim-case-convert'
+Plugin 'zcodes/vim-colors-basic'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -81,7 +83,7 @@ set autoread
 " Larger font
 set guifont=Inconsolata:h14
 " Color scheme
-"colorscheme slate
+colorscheme slate
 
 " Map leader to , instead of \
 let mapleader=","
