@@ -81,7 +81,7 @@ set autoread
 " Larger font
 set guifont=Inconsolata:h14
 " Color scheme
-colorscheme slate
+"colorscheme slate
 
 " Map leader to , instead of \
 let mapleader=","
