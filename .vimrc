@@ -36,6 +36,8 @@ Plugin 'gerw/vim-latex-suite'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'chiedo/vim-case-convert'
 Plugin 'zcodes/vim-colors-basic'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'kien/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -66,8 +68,8 @@ set hlsearch
 
 " No tabs, just spaces
 retab
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 set expandtab
 set smartcase
 
@@ -105,6 +107,19 @@ let g:ycm_semantic_triggers = {
 \  'tex'  : ['\ref{','\cite{'],
 \ }
 
+
+"" Use Silver Searcher for ctrlp plugin
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 " Remove trailing whitespace from files on save
 autocmd BufWritePre * %s/\s\+$//e
 " Syntax check files but not latex
@@ -116,6 +131,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 let g:syntastic_tex_checkers = ['']
+" Currently not JS
+let g:syntastic_disabled_filetypes=['js', 'tsx']
 
 " Use spellcheck for tex files
 autocmd FileType tex,bib set spell
