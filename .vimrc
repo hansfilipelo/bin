@@ -85,7 +85,7 @@ set autoread
 " Larger font
 set guifont=Inconsolata:h14
 " Color scheme
-colorscheme basic-dark
+colorscheme slate
 
 " Map leader to , instead of \
 let mapleader=","
@@ -122,7 +122,7 @@ endif
 
 " Remove trailing whitespace from files on save
 autocmd BufWritePre * %s/\s\+$//e
-" Syntax check files but not latex
+" Syntax check python files
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
@@ -130,9 +130,6 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
-let g:syntastic_tex_checkers = ['']
-" Currently not JS
-let g:syntastic_disabled_filetypes=['js', 'tsx']
 
 " Use spellcheck for tex files
 autocmd FileType tex,bib set spell
