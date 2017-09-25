@@ -1,6 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+let mapleader = ","
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -36,8 +38,13 @@ Plugin 'gerw/vim-latex-suite'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'chiedo/vim-case-convert'
 Plugin 'zcodes/vim-colors-basic'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf'
+Plugin 'rking/ag.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'vim-scripts/Conque-GDB'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,7 +81,8 @@ set expandtab
 set smartcase
 
 " Toogle for case sensitivity
-nmap <C-i> :set ignorecase! ignorecase?
+nmap <F7> :set ignorecase! ignorecase?
+set ignorecase
 
 " Make backspace work
 set backspace=2
@@ -107,19 +115,6 @@ let g:ycm_semantic_triggers = {
 \  'tex'  : ['\ref{','\cite{'],
 \ }
 
-
-"" Use Silver Searcher for ctrlp plugin
-if executable('ag')
-  " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
 " Remove trailing whitespace from files on save
 autocmd BufWritePre * %s/\s\+$//e
 " Syntax check python files
@@ -131,17 +126,67 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
+let g:syntastic_mode_map = {
+      \ "mode": "active",
+      \ "passive_filetypes": ["cpp"] }
+
 " Use spellcheck for tex files
 autocmd FileType tex,bib set spell
 
 " Remap Esc to close a terminal in neovim
 if has('nvim')
-    tnoremap <Esc> <C-\><C-n>
-endif
+tnoremap <Esc> <C-\><C-n>
+end
 
 " Shut down auto fold for latex documents
 let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
 let g:Tex_Folding=0
 set iskeyword+=:
+
+" Remap ctrl to FZF
+"map <C-P> :FZF<CR>
+
+" Use ag/silver searcher with ctrlp
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  "     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+" Remap ctags to F12 and Ctrl+-
+nnoremap t <C-]>
+" ctags optimization
+" set autochdir
+set tags=tags;
+" Ctrlp for tags
+nmap <F9> :CtrlPTag<cr>
+nmap <F8> :TagbarToggle<CR>
+
+
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+"command! -bang -nargs=* Find call fzf#vim#grep('ag --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
+
+" GLSL on vricon shaders
+autocmd BufRead *.fp,*.vp setf glsl
+autocmd BufRead *.fp,*.vp set syntax=glsl
+
+" Autoread buffers changed
+set autoread
+autocmd FocusGained * checktime
+
+" GDB integration
+let g:ConqueTerm_color =2
+nmap <F5> :ConqueGdbExe
 
