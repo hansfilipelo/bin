@@ -44,6 +44,9 @@ Plugin 'rking/ag.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'vim-scripts/Conque-GDB'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'danro/rename.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -102,6 +105,9 @@ let mapleader=","
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_python_binary_path = 'python3'
 let g:ycm_rust_src_path = '/usr/local/share/rustc-1.13.0/src'
+nmap <C-f> :YcmCompleter FixIt<CR>
+nmap <C-d> :YcmCompleter GoTo<CR>
+
 
 " Clojure stuff
 let g:salve_auto_start_repl=1
@@ -155,6 +161,7 @@ if executable('ag')
   "     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
+nnoremap <C-a> :CtrlP ~/src/vricon/<CR>
 
 " Remap ctags to F12 and Ctrl+-
 nnoremap t <C-]>
@@ -189,4 +196,7 @@ autocmd FocusGained * checktime
 " GDB integration
 let g:ConqueTerm_color =2
 nmap <F5> :ConqueGdbExe
+
+" Disable folding in markdown
+let g:vim_markdown_folding_disabled = 1
 
