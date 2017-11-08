@@ -134,7 +134,7 @@ let g:syntastic_check_on_wq = 1
 
 let g:syntastic_mode_map = {
       \ "mode": "active",
-      \ "passive_filetypes": ["cpp"] }
+      \ "passive_filetypes": ["cpp", "js"] }
 
 " Use spellcheck for tex files
 autocmd FileType tex,bib set spell
