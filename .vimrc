@@ -186,8 +186,8 @@ nmap <F8> :TagbarToggle<CR>
 "command! -bang -nargs=* Find call fzf#vim#grep('ag --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>), 1, <bang>0)
 
 " GLSL on vricon shaders
-autocmd BufRead *.fp,*.vp setf glsl
-autocmd BufRead *.fp,*.vp set syntax=glsl
+autocmd BufRead *.fp,*.vp,*.gp,*.sp,*.sp,*.hlsl setf glsl
+autocmd BufRead *.fp,*.vp,*.gp,*.sp,*.sp,*.hlsl set syntax=glsl
 
 " Autoread buffers changed
 set autoread
@@ -199,4 +199,7 @@ nmap <F5> :ConqueGdbExe
 
 " Disable folding in markdown
 let g:vim_markdown_folding_disabled = 1
+
+" Pretty print json
+nmap <C-j> :%!python -m json.tool<CR>
 
