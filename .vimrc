@@ -133,8 +133,8 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
 let g:syntastic_mode_map = {
-      \ "mode": "active",
-      \ "passive_filetypes": ["cpp"] }
+      \ "mode": "passive",
+      \ "passive_filetypes": ["cpp", "js"] }
 
 " Use spellcheck for tex files
 autocmd FileType tex,bib set spell
@@ -171,7 +171,8 @@ set tags=tags;
 " Ctrlp for tags
 nmap <F9> :CtrlPTag<cr>
 nmap <F8> :TagbarToggle<CR>
-
+" Map term
+nmap <C-b> :vs term://bash -l<CR>
 
 " --column: Show column number
 " --line-number: Show line number
