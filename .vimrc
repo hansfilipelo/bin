@@ -90,6 +90,9 @@ set ignorecase
 " Make backspace work
 set backspace=2
 
+" Mouse integration
+set mouse=a
+
 " If file changed on disk, reload it
 set autoread
 
@@ -189,6 +192,8 @@ nmap <C-b> :vs term://bash -l<CR>
 " GLSL on vricon shaders
 autocmd BufRead *.fp,*.vp,*.gp,*.sp,*.sp,*.hlsl setf glsl
 autocmd BufRead *.fp,*.vp,*.gp,*.sp,*.sp,*.hlsl set syntax=glsl
+" XML on Vricon .fx files
+autocmd BufRead *.fx,*.mat set syntax=xml
 
 " Autoread buffers changed
 set autoread
@@ -203,4 +208,6 @@ let g:vim_markdown_folding_disabled = 1
 
 " Pretty print json
 nmap <C-j> :%!python -m json.tool<CR>
+
+
 
