@@ -1,7 +1,8 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-let mapleader = ","
+" remap leader
+let mapleader = "-"
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -43,11 +44,11 @@ Plugin 'junegunn/fzf'
 Plugin 'rking/ag.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'vim-scripts/Conque-GDB'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'danro/rename.vim'
-
+Plugin 'Shougo/vimproc.vim'
+Plugin 'loolo78/vim-breakpoint'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -110,6 +111,7 @@ let g:ycm_python_binary_path = 'python3'
 let g:ycm_rust_src_path = '/usr/local/share/rustc-1.13.0/src'
 nmap <C-f> :YcmCompleter FixIt<CR>
 nmap <C-d> :YcmCompleter GoTo<CR>
+let g:ycm_semantic_triggers = { 'cpp': [ 're!.' ] }
 
 
 " Clojure stuff
@@ -174,8 +176,6 @@ set tags=tags;
 " Ctrlp for tags
 nmap <F9> :CtrlPTag<cr>
 nmap <F8> :TagbarToggle<CR>
-" Map term
-nmap <C-b> :vs term://bash -l<CR>
 
 " --column: Show column number
 " --line-number: Show line number
@@ -199,15 +199,15 @@ autocmd BufRead *.fx,*.mat set syntax=xml
 set autoread
 autocmd FocusGained * checktime
 
-" GDB integration
-let g:ConqueTerm_color =2
-nmap <F5> :ConqueGdbExe
-
 " Disable folding in markdown
 let g:vim_markdown_folding_disabled = 1
+autocmd BufWritePost *.md,*.mkd !pandoc <afile> -o /tmp/<afile>:h.pdf; xdg-open /tmp/<afile>:h.pdf
 
 " Pretty print json
 nmap <C-j> :%!python -m json.tool<CR>
 
-
+" Some breakpoitns for explorer and add GDB integration
+nmap <F4> :BreakpointSetBreakpoint<CR> :BreakpointWriteBreakpoints<CR>
+nmap <F5> :BreakpointPrintBreakpoints<CR>
+nmap <F6> :BreakpointClearBreakpoints<CR> :BreakpointWriteBreakpoints<CR> :echo "Breakpoints cleared!"<CR>
 
