@@ -201,7 +201,7 @@ autocmd FocusGained * checktime
 
 " Disable folding in markdown
 let g:vim_markdown_folding_disabled = 1
-autocmd BufWritePost *.md,*.mkd !pandoc <afile> -o /tmp/<afile>:h.pdf; xdg-open /tmp/<afile>:h.pdf
+autocmd BufWritePost *.md,*.mkd !pandoc <afile> -o /tmp/<afile>:t.pdf
 
 " Pretty print json
 nmap <C-j> :%!python -m json.tool<CR>
