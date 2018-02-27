@@ -1,6 +1,12 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+set encoding=utf-8
+set fileencoding=
+setglobal fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,latin1
+set termencoding=latin1
+
 " remap leader
 let mapleader = "-"
 
@@ -49,6 +55,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'danro/rename.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'loolo78/vim-breakpoint'
+Plugin 'mzlogin/vim-markdown-toc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -83,6 +90,9 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 set smartcase
+set autoindent
+set smartindent
+set smarttab
 
 " Toogle for case sensitivity
 nmap <F7> :set ignorecase! ignorecase?
@@ -127,7 +137,9 @@ let g:ycm_semantic_triggers = {
 \ }
 
 " Remove trailing whitespace from files on save
-autocmd BufWritePre * %s/\s\+$//e
+" autocmd BufWritePre * %s/\s\+$//e
+let blacklist = ['mkd', 'md']
+autocmd BufWritePre * if index(blacklist, &ft) < 0 |
 " Syntax check python files
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -142,7 +154,8 @@ let g:syntastic_mode_map = {
       \ "passive_filetypes": ["cpp", "js"] }
 
 " Use spellcheck for tex files
-autocmd FileType tex,bib set spell
+autocmd FileType * set nospell
+autocmd FileType md,mkd,tex,bib set spell
 
 " Remap Esc to close a terminal in neovim
 if has('nvim')
@@ -202,9 +215,10 @@ autocmd FocusGained * checktime
 " Disable folding in markdown
 let g:vim_markdown_folding_disabled = 1
 autocmd BufWritePost *.md,*.mkd !pandoc <afile> -o /tmp/<afile>:t.pdf
+autocmd BufWritePost *.tex !pdflatex -output-directory /tmp <afile>
 
 " Pretty print json
-nmap <C-j> :%!python -m json.tool<CR>
+nmap <C-S-j> :%!python -m json.tool<CR>
 
 " Some breakpoitns for explorer and add GDB integration
 nmap <F4> :BreakpointSetBreakpoint<CR> :BreakpointWriteBreakpoints<CR>
