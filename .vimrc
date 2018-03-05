@@ -137,7 +137,7 @@ let g:ycm_semantic_triggers = {
 \ }
 
 " Remove trailing whitespace from files on save
-" autocmd BufWritePre * %s/\s\+$//e
+autocmd BufWritePre * %s/\s\+$//e
 let blacklist = ['mkd', 'md']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 |
 " Syntax check python files
