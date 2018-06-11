@@ -155,7 +155,7 @@ let g:syntastic_mode_map = {
 
 " Use spellcheck for tex files
 autocmd FileType * set nospell
-autocmd FileType md,mkd,tex,bib set spell
+autocmd FileType md,mkd,tex set spell
 
 " Remap Esc to close a terminal in neovim
 if has('nvim')
