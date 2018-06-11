@@ -1,11 +1,11 @@
 #!/bin/bash
 
-mac=wakeonlan 2c:fd:a1:bc:fd:bf
+mac=2c:fd:a1:bc:fd:bf
 
 if [ "$(hostname)" = "dt03" ]
 then
-    wakeonlan 2c:fd:a1:bc:fd:bf
+    wakeonlan $mac
 else
-    ssh fille@ssh.hfelo.se "wakeonlan 2c:fd:a1:bc:fd:bf"
+    ssh fille@ssh.hfelo.se "wakeonlan $mac"
 fi
 
