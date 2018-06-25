@@ -122,7 +122,7 @@ let g:ycm_rust_src_path = '/usr/local/share/rustc-1.13.0/src'
 nmap <C-f> :YcmCompleter FixIt<CR>
 nmap <C-d> :YcmCompleter GoTo<CR>
 let g:ycm_semantic_triggers = { 'cpp': [ 're!.' ] }
-
+let g:ycm_confirm_extra_conf = 0
 
 " Clojure stuff
 let g:salve_auto_start_repl=1
@@ -179,7 +179,7 @@ if executable('ag')
   "     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 endif
-nnoremap <C-a> :CtrlP ~/src/vricon/<CR>
+" nnoremap <C-a> :CtrlP ~/src/vricon/<CR>
 
 " Remap ctags to F12 and Ctrl+-
 nnoremap t <C-]>
@@ -225,3 +225,5 @@ nmap <F4> :BreakpointSetBreakpoint<CR> :BreakpointWriteBreakpoints<CR>
 nmap <F5> :BreakpointPrintBreakpoints<CR>
 nmap <F6> :BreakpointClearBreakpoints<CR> :BreakpointWriteBreakpoints<CR> :echo "Breakpoints cleared!"<CR>
 
+" Gitgutter max
+let g:gitgutter_max_signs = 1000
