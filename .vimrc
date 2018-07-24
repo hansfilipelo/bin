@@ -7,9 +7,6 @@ setglobal fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 set termencoding=latin1
 
-" remap leader
-let mapleader = "-"
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -34,19 +31,13 @@ Plugin 'mhinz/vim-signify'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bjoernd/vim-ycm-tex'
-Plugin 'guns/vim-sexp'
-Plugin 'guns/vim-clojure-highlight'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mkitt/tabline.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'gerw/vim-latex-suite'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'chiedo/vim-case-convert'
 Plugin 'zcodes/vim-colors-basic'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'junegunn/fzf'
 Plugin 'rking/ag.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'jaxbot/semantic-highlight.vim'
@@ -54,8 +45,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'danro/rename.vim'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'loolo78/vim-breakpoint'
-Plugin 'mzlogin/vim-markdown-toc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -114,11 +103,11 @@ colorscheme slate
 
 " Map leader to , instead of \
 let mapleader=","
+set showcmd
 
 " Make Ycm close preview window after completion
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_python_binary_path = 'python3'
-let g:ycm_rust_src_path = '/usr/local/share/rustc-1.13.0/src'
 nmap <C-f> :YcmCompleter FixIt<CR>
 nmap <C-d> :YcmCompleter GoTo<CR>
 let g:ycm_semantic_triggers = { 'cpp': [ 're!.' ] }
@@ -140,18 +129,6 @@ let g:ycm_semantic_triggers = {
 autocmd BufWritePre * %s/\s\+$//e
 let blacklist = ['mkd', 'md']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 |
-" Syntax check python files
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
-
-let g:syntastic_mode_map = {
-      \ "mode": "passive",
-      \ "passive_filetypes": ["cpp", "js"] }
 
 " Use spellcheck for tex files
 autocmd FileType * set nospell
@@ -167,9 +144,6 @@ let g:tex_flavor='latex'
 set grepprg=grep\ -nH\ $*
 let g:Tex_Folding=0
 set iskeyword+=:
-
-" Remap ctrl to FZF
-"map <C-P> :FZF<CR>
 
 " Use ag/silver searcher with ctrlp
 if executable('ag')
@@ -218,12 +192,12 @@ autocmd BufWritePost *.md,*.mkd !pandoc <afile> -o /tmp/<afile>:t.pdf
 autocmd BufWritePost *.tex !pdflatex -output-directory /tmp <afile>
 
 " Pretty print json
-nmap <C-S-j> :%!python -m json.tool<CR>
-
-" Some breakpoitns for explorer and add GDB integration
-nmap <F4> :BreakpointSetBreakpoint<CR> :BreakpointWriteBreakpoints<CR>
-nmap <F5> :BreakpointPrintBreakpoints<CR>
-nmap <F6> :BreakpointClearBreakpoints<CR> :BreakpointWriteBreakpoints<CR> :echo "Breakpoints cleared!"<CR>
+nmap <C-j> :%!python -m json.tool<CR>
 
 " Gitgutter max
 let g:gitgutter_max_signs = 1000
+
+" easy comment toggle
+" Comment current line
+nmap <C-Space> v<leader>c<Space>
+vmap <C-Space> <leader>cm
