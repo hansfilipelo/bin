@@ -1,0 +1,70 @@
+#!/bin/bash
+
+arguments="${@:2}"
+executable=$1
+randomVal=$(cat /dev/urandom | tr -dc 'a-z' | fold -w 32 | head -n 1)
+currDir=$(pwd)
+
+sourceTtyFile=/tmp/gdb.tmuxsession.tty.code.$randomVal
+expressionsTtyFile=/tmp/gdb.tmuxsession.tty.expressions.$randomVal
+stackTtyFile=/tmp/gdb.tmuxsession.tty.stack.$randomVal
+threadsTtyFile=/tmp/gdb.tmuxsession.tty.threads.$randomVal
+
+session=gdbSession-$randomVal
+gdbWindow=${session}:0
+gdbPane=$gdbWindow.3
+sourcePane=$gdbWindow.4
+stackPane=$gdbWindow.0
+threadsPane=$gdbWindow.2
+expressionsPane=$gdbWindow.1
+
+rm -f $sourceTtyFile
+
+tmux new-session -d -s $session -n $gdbWindow
+tmux split-window -hb 'bash'
+tmux split-pane -v 'bash'
+tmux split-pane -v 'bash'
+tmux select-pane -t $gdbPane
+tmux split-pane -vb 'bash'
+tmux select-pane -t $gdbPane
+
+tmux send-keys -t $gdbPane "bash" Enter
+tmux send-keys -t $gdbPane "cd $currDir" Enter
+tmux send-keys -t $gdbPane "gdb $executable" Enter
+
+tmux send-keys -t $sourcePane "tty > $sourceTtyFile" Enter
+tmux send-keys -t $expressionsPane "tty > $expressionsTtyFile" Enter
+tmux send-keys -t $stackPane "tty > $stackTtyFile" Enter
+tmux send-keys -t $threadsPane "tty > $threadsTtyFile" Enter
+
+# Make sure command completes before spawning new
+while [ ! -f $sourceTtyFile ] || [ ! -f $expressionsTtyFile ] || [ ! -f $stackTtyFile ] || [ ! -f $threadsTtyFile ]
+do
+  sleep 0.5
+done
+
+tmux send-keys -t $gdbPane Enter Enter
+tmux send-keys -t $gdbPane "dashboard source -output $(cat $sourceTtyFile)" Enter
+tmux send-keys -t $gdbPane "dashboard stack -output $(cat $stackTtyFile)" Enter
+tmux send-keys -t $gdbPane "dashboard expressions -output $(cat $expressionsTtyFile)" Enter
+tmux send-keys -t $gdbPane "dashboard threads -output $(cat $threadsTtyFile)" Enter
+tmux send-keys -t $gdbPane "dashboard -layout threads source expressions stack" Enter
+tmux send-keys -t $gdbPane "dashboard source -style context 50" Enter
+tmux send-keys -t $gdbPane "dashboard stack -style limit 1" Enter
+tmux send-keys -t $gdbPane "dashboard stack -style locals True" Enter
+tmux send-keys -t $gdbPane "dashboard -style syntax_highlighting 'monokai'" Enter
+
+# Run exec if given
+dummyVar="bla"
+if [ ! -z "$executable" ]; then
+  tmux send-keys -t $gdbPane "r $arguments" Enter
+fi
+
+# choose pane and attach
+tmux select-pane -t $gdbPane
+tmux attach -t $session
+
+rm -f $sourceTtyFile
+rm -f $expressionsTtyFile
+rm -f $stackTtyFile
+rm -f $threadsTtyFile
