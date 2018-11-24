@@ -131,8 +131,8 @@ let blacklist = ['mkd', 'md']
 autocmd BufWritePre * if index(blacklist, &ft) < 0 |
 
 " Use spellcheck for tex files
-autocmd FileType * set nospell
-autocmd FileType md,mkd,tex set spell
+"autocmd FileType * set nospell
+"autocmd FileType md,mkd,tex set spell
 
 " Remap Esc to close a terminal in neovim
 if has('nvim')
@@ -188,8 +188,8 @@ autocmd FocusGained * checktime
 
 " Disable folding in markdown
 let g:vim_markdown_folding_disabled = 1
-autocmd BufWritePost *.md,*.mkd !pandoc <afile> -o /tmp/<afile>:t.pdf
-autocmd BufWritePost *.tex !pdflatex -output-directory /tmp <afile>
+"autocmd BufWritePost *.md,*.mkd !pandoc <afile> -o /tmp/<afile>:t.pdf
+"autocmd BufWritePost *.tex !pdflatex -output-directory /tmp <afile>
 
 " Pretty print json
 nmap <C-j> :%!python -m json.tool<CR>
