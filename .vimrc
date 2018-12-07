@@ -181,6 +181,8 @@ autocmd BufRead *.fp,*.vp,*.gp,*.sp,*.sp,*.hlsl setf glsl
 autocmd BufRead *.fp,*.vp,*.gp,*.sp,*.sp,*.hlsl set syntax=glsl
 " XML on Vricon .fx files
 autocmd BufRead *.fx,*.mat set syntax=xml
+" CSS on QSS
+autocmd BufRead *.qss set syntax=css
 
 " Autoread buffers changed
 set autoread
