@@ -1,7 +1,13 @@
 #!/bin/bash
+set -e
+
 inputFile=$1
-interMediateFile="/tmp/$inputFile.html"
-outputFile="$inputFile.html"
+outputFile=$2
+
+if [ $outputFile = "" ]
+then
+  outputFile="$inputFile.html"
+fi
 
 extensions=$(cmark-gfm --list-extensions |tail -n +2)
 extStr=""
