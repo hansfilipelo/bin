@@ -1,6 +1,6 @@
 #!/bin/bash
 
-mac=2c:fd:a1:bc:fd:bf
+mac=7c:5c:f8:11:2c:f4
 
 if [ "$(hostname)" = "dt03" ]
 then
