@@ -1,0 +1,77 @@
+#!/bin/sh
+set -e
+
+execName=$0
+
+function printHelp {
+	execName=$1
+	echo "Usage: "
+	echo "    $execName [-u projectfile.uproject] [-p platform] [-t buildtarget]"
+	echo ""
+	echo "    -u|--uproject    Project file to build. Defaults to any .uproject file found in current directory."
+	echo "    -x|--xres        Resolution X-axis."
+	echo "    -y|--yres        Resolution Y-axis."
+}
+
+projectFile=""
+xres=1280
+yres=720
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+	key="$1"
+
+	case $key in
+		-u|--uproject)
+			projectFile="$2"
+			shift # past argument
+			shift # past value
+			;;
+		--uproject=*)
+			projectFile="${i#*=}"
+			shift # past argument
+			;;
+
+		-x|--xres)
+			xres="$2"
+			shift # past argument
+			shift # past value
+			;;
+		--xres=*)
+			xres="${i#*=}"
+			shift # past argument
+			;;
+
+		-y|--yres)
+			yres="$2"
+			shift # past argument
+			shift # past value
+			;;
+		--yres=*)
+			yres="${i#*=}"
+			shift # past argument
+			;;
+
+		-h|--help)
+			printHelp $execName
+			exit 0
+			;;
+		*)    # unknown option
+			echo "Unknown argument: $key"
+			printHelp $execName
+			exit 1
+			;;
+	esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+# Set defaults
+if [ "$projectFile" = "" ]
+then
+	projectFile="$(pwd)/$(ls *.uproject)"
+fi
+projectFile=$(realpath "$projectFile")
+
+/Users/Shared/Epic\ Games/UE_4.21/Engine/Binaries/Mac/UE4Editor.app/Contents/MacOS/UE4Editor "$projectFile" -game -WINDOWED -ResX=$xres -ResY=$yres -WinX=320 -WinY=180 -log
+
