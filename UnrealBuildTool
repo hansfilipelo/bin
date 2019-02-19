@@ -1,10 +1,12 @@
 #!/bin/sh
 set -e
 
+execName=$0
+
 function printHelp {
 	execName=$1
 	echo "Usage: "
-	echo "		$execName [-u projectfile.uproject] [-p platform] [-t buildtarget]"
+	echo "    $execName [-u projectfile.uproject] [-p platform] [-t buildtarget]"
 	echo ""
 	echo "    -u|--uproject    Project file to build. Defaults to any .uproject file found in current directory."
 	echo "    -p|--platform    Target platform of build. Defaults to the platform that this script is running on."
@@ -52,12 +54,12 @@ do
 			;;
 
 		-h|--help)
-			printHelp
+			printHelp $execName
 			exit 0
 			;;
 		*)    # unknown option
 			echo "Unknown argument: $key"
-			printHelp
+			printHelp $execName
 			exit 1
 			;;
 	esac
@@ -84,6 +86,7 @@ then
 	buildTarget="Development"
 fi
 
+projectFile=$(realpath $projectFile)
 projectName=$(echo $(basename "$projectFile") | sed 's/.uproject//g')
 
 # this is located inside an extra 'Mac' path unlike the Windows variant.
