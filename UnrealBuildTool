@@ -1,0 +1,94 @@
+#!/bin/sh
+set -e
+
+function printHelp {
+	execName=$1
+	echo "Usage: "
+	echo "		$execName [-u projectfile.uproject] [-p platform] [-t buildtarget]"
+	echo ""
+	echo "    -u|--uproject    Project file to build. Defaults to any .uproject file found in current directory."
+	echo "    -p|--platform    Target platform of build. Defaults to the platform that this script is running on."
+	echo "    -t|--target      Build target to use. Defaults to Development."
+}
+
+projectFile=""
+platform=""
+buildTarget=""
+
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+	key="$1"
+
+	case $key in
+		-u|--uproject)
+			projectFile="$2"
+			shift # past argument
+			shift # past value
+			;;
+		--uproject=*)
+			projectFile="${i#*=}"
+			shift # past argument
+			;;
+
+		-p|--platform)
+			platform="$2"
+			shift # past argument
+			shift # past value
+			;;
+		--platform=*)
+			platform="${i#*=}"
+			shift # past argument
+			;;
+
+		-t|--target)
+			buildTarget="$2"
+			shift # past argument
+			shift # past value
+			;;
+		--target=*)
+			buildTarget="${i#*=}"
+			shift # past argument
+			;;
+
+		-h|--help)
+			printHelp
+			exit 0
+			;;
+		*)    # unknown option
+			echo "Unknown argument: $key"
+			printHelp
+			exit 1
+			;;
+	esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+BASE_PATH="/Users/Shared/Epic Games/UE_4.21/Engine/Build/BatchFiles/Mac"
+
+# Set defaults
+if [ "$projectFile" = "" ]
+then
+	projectFile="$(pwd)/$(ls *.uproject)"
+fi
+if [ "$platform" = "" ]
+then
+	if [[ "$OSTYPE" == "linux-gnu" ]]; then
+		platform="Linux"
+	elif [[ "$OSTYPE" == "darwin"* ]]; then
+		platform="Mac"
+	fi
+fi
+if [ "$buildTarget" = "" ]
+then
+	buildTarget="Development"
+fi
+
+projectName=$(echo $(basename "$projectFile") | sed 's/.uproject//g')
+
+# this is located inside an extra 'Mac' path unlike the Windows variant.
+. "$BASE_PATH/SetupMono.sh" "$BASE_PATH"
+
+# pass all parameters to UBT
+#mono "$BASE_PATH/../../../Binaries/DotNET/UnrealBuildTool.exe" -projectfiles $projectName $platform $buildTarget "$projectFile"
+mono "$BASE_PATH/../../../Binaries/DotNET/UnrealBuildTool.exe" "$projectName"Editor $platform $buildTarget "$projectFile" -rocket
