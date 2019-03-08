@@ -7,6 +7,7 @@ setglobal fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 set termencoding=latin1
 
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -45,6 +46,12 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'danro/rename.vim'
 Plugin 'Shougo/vimproc.vim'
+Plugin 'autozimu/LanguageClient-neovim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'ncm2/ncm2'
+Plugin 'ncm2/ncm2-bufword'
+Plugin 'ncm2/ncm2-path'
+Plugin 'ncm2/ncm2-racer'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,6 +70,65 @@ filetype plugin indent on    " required
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
+
+" --------------- Rust support
+autocmd BufReadPost *.rs setlocal filetype=rust
+autocmd BufEnter *.rs call ncm2#enable_for_buffer()
+
+" suppress the annoying 'match x of y', 'The only match' and 'Pattern not
+" found' messages
+set shortmess+=c
+
+" CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
+inoremap <c-c> <ESC>
+
+" When the <Enter> key is pressed while the popup menu is visible, it only
+" hides the menu. Use this mapping to close the menu and also start a new
+" line.
+inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+
+" Use <TAB> to select the popup menu:
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" wrap existing omnifunc
+" Note that omnifunc does not run in background and may probably block the
+" editor. If you don't want to be blocked by omnifunc too often, you could
+" add 180ms delay before the omni wrapper:
+"  'on_complete': ['ncm2#on_complete#delay', 180,
+"               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+au User Ncm2Plugin call ncm2#register_source({
+        \ 'name' : 'css',
+        \ 'priority': 9,
+        \ 'subscope_enable': 1,
+        \ 'scope': ['css','scss'],
+        \ 'mark': 'css',
+        \ 'word_pattern': '[\w\-]+',
+        \ 'complete_pattern': ':\s*',
+        \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+        \ })
+
+" IMPORTANT: :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+
+" NOTE: you need to install completion sources to get completions. Check
+" our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+" Maps K to hover, gd to goto definition, F2 to rename
+nnoremap <C-h> :call LanguageClient_textDocument_hover()<CR>
+nnoremap gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <F2> :call LanguageClient_textDocument_rename()<CR>
+" ---------- END RUST
 
 " Make Ctrl+C do copy to system clipboard
 vnoremap <C-c> "+y
@@ -112,6 +178,7 @@ nmap <C-f> :YcmCompleter FixIt<CR>
 nmap <C-d> :YcmCompleter GoTo<CR>
 let g:ycm_semantic_triggers = { 'cpp': [ 're!.' ] }
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_filetype_blacklist = { 'rust': 1 }
 
 " Clojure stuff
 let g:salve_auto_start_repl=1
