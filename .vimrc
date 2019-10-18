@@ -39,6 +39,8 @@ Plugin 'gerw/vim-latex-suite'
 Plugin 'chiedo/vim-case-convert'
 Plugin 'zcodes/vim-colors-basic'
 Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 Plugin 'rking/ag.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'jaxbot/semantic-highlight.vim'
@@ -52,10 +54,14 @@ Plugin 'ncm2/ncm2-bufword'
 Plugin 'ncm2/ncm2-path'
 Plugin 'ncm2/ncm2-racer'
 Plugin 'rhysd/vim-clang-format'
-Plugin 'FelikZ/ctrlp-py-matcher'
+"Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-syntastic/syntastic'
+Plugin 'chromium/vim-codesearch'
+Plugin 'autozimu/LanguageClient-neovim'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-clang'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -140,6 +146,25 @@ set smartcase
 set autoindent
 set smartindent
 set smarttab
+autocmd BufEnter *.cc,*.h,*.hpp,*.cpp,*.c setlocal cinoptions=(0,W4
+" Follow Chromium style guides with ClangFormat
+"autocmd BufRead *.cc,*.h,*.hpp,*.cpp,*.c ClangFormat
+"autocmd BufWritePre *.cc,*.h,*.hpp,*.cpp,*.c ClangFormat
+autocmd BufWritePost *.cc,*.h,*.hpp,*.cpp,*.c silent !git reformat
+
+" Clangd completion
+"let g:LanguageClient_serverCommands = {
+"  \ 'cpp': ['clangd', '-compile-commands-dir=~/src/tvsdk/chromium/src/out_gn_x86_64/Debug'],
+"  \ }
+"let g:LanguageClient_autoStart = 1
+"" Autocompletion Configurations
+"let g:deoplete#enable_at_startup = 1
+"set completeopt=longest,menuone,preview
+"" close the preview window when you're not using it
+"autocmd InsertLeave * if pumvisible() == 0 | pclose | endif
+"let g:deoplete#sources#clang#clang_complete_database = '~/src/tvsdk/chromium/src/out_gn_x86_64/Debug'
+"let g:loaded_youcompleteme = 1
+
 " Python/pep8 requires slightly differing
 autocmd FileType python setlocal tabstop=8 shiftwidth=4 softtabstop=4 expandtab
 let g:pyindent_continue = '&sw'
@@ -150,7 +175,10 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                           \ 'active_filetypes': ['python'],
                           \ 'passive_filetypes': [] }
 let g:syntastic_auto_loc_list=1
-nnoremap <silent> <F8> :SyntasticCheck<CR>
+let g:syntastic_python_checker_args='--ignore=E501,E123,W504 --max-line-length=120'
+let g:syntastic_python_flake8_post_args='--ignore=E501,E123,W504 --max-line-length=120'
+let g:syntastic_python_flake8_args='--ignore=E501,E123,W504 --max-line-length=120'
+let g:syntastic_python_pylint_args='--ignore=E501,E123,W504 --max-line-length=120'
 
 " Toogle for case sensitivity
 nmap <F7> :set ignorecase! ignorecase?
@@ -195,8 +223,6 @@ let g:ycm_semantic_triggers = {
 \  'tex'  : ['\ref{','\cite{'],
 \ }
 
-autocmd BufRead *.cc,*.h,*.hpp,*.cpp,*.c ClangFormat
-
 " Remove trailing whitespace from files on save
 autocmd BufWritePre * %s/\s\+$//e
 let blacklist = ['mkd', 'md', "*.cc", "*.h", "*.hpp", "*.cpp", "*.c"]
@@ -217,40 +243,52 @@ set grepprg=grep\ -nH\ $*
 let g:Tex_Folding=0
 set iskeyword+=:
 
+" map FZF to ctrlp
+nnoremap <C-P> :FZF<CR>
+" Force removal of "regular CtrlP
+autocmd VimEnter * nnoremap <C-P> :FZF<CR>
+nnoremap <C-T> :Tags<CR>
+
 " Root marker for ctrlp
-let g:ctrlp_root_markers = ['.ctrlp']
-let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+"let g:ctrlp_root_markers = ['.ctrlp']
+"let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
 "let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 "let g:ctrlp_custom_ignore = '\v[\/](out_gn_*)|(\.(git))$'
 
 " Set delay to prevent extra search
-let g:ctrlp_lazy_update = 350
+let g:ctrlp_lazy_update = 150
 
 " Do not clear filenames cache, to improve CtrlP startup
 " You can manualy clear it by <F5>
-let g:ctrlp_clear_cache_on_exit = 0
+"let g:ctrlp_clear_cache_on_exit = 0
 
 " Set no file limit, we are building a big project
-let g:ctrlp_max_files = 0
+"let g:ctrlp_max_files = 0
 
 " Use ag/silver searcher with ctrlp
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  "     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-  "let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-standard %s']
-endif
+" if executable('ag')
+"   " Use Ag over Grep
+"   set grepprg=ag\ --nogroup\ --nocolor
+"
+"   "     " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+"   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+"   "let g:ctrlp_user_command = ['.git/', 'git ls-files --cached --others  --exclude-standard %s']
+" endif
 " nnoremap <C-a> :CtrlP ~/src/vricon/<CR>
 
-" Remap ctags to F12 and Ctrl+-
-nnoremap t <C-]>
+" Chromium is so f*kking big that CtrlP becomes insufficient
+"let g:codesearch_source_root = '/home/helo/src/tvsdk/chromium'
+"nmap <C-f> :CrSearch<Space>
+"nnoremap t :tabnew | :CrSearch <C-W><CR>
+" Create a find mapping
+"command! -complete=file -bang ChrFind :!find /home/helo/src/tvsdk/chromium/src -iname <args>
+"autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
+
 " ctags optimization
 " set autochdir
 set tags=tags;
 " Ctrlp for tags
-nmap <F9> :CtrlPTag<cr>
+"nmap <F9> :CtrlPTag<cr>
 nmap <F8> :TagbarToggle<CR>
 
 " --column: Show column number
@@ -296,8 +334,8 @@ let g:gitgutter_max_signs = 1000
 
 " easy comment toggle
 " Comment current line
-nmap <F12> v<leader>c<Space>
-vmap <F12> <leader>cm
+nmap <C-Space> v<leader>c<Space>
+vmap <C-Space> <leader>cm
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSCOPE settings for vim
