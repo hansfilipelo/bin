@@ -29,7 +29,6 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-airline/vim-airline'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
-Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bjoernd/vim-ycm-tex'
 Plugin 'rust-lang/rust.vim'
@@ -54,11 +53,8 @@ Plugin 'ncm2/ncm2-bufword'
 Plugin 'ncm2/ncm2-path'
 Plugin 'ncm2/ncm2-racer'
 Plugin 'rhysd/vim-clang-format'
-"Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'tpope/vim-fugitive.git'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'chromium/vim-codesearch'
 Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-clang'
@@ -150,7 +146,8 @@ autocmd BufEnter *.cc,*.h,*.hpp,*.cpp,*.c setlocal cinoptions=(0,W4
 " Follow Chromium style guides with ClangFormat
 "autocmd BufRead *.cc,*.h,*.hpp,*.cpp,*.c ClangFormat
 "autocmd BufWritePre *.cc,*.h,*.hpp,*.cpp,*.c ClangFormat
-autocmd BufWritePost *.cc,*.h,*.hpp,*.cpp,*.c silent !git reformat
+"autocmd BufWritePost *.cc,*.h,*.hpp,*.cpp,*.c !git reformat
+nnoremap <C-S> :ClangFormat<CR>:noa w<CR>
 
 " Clangd completion
 "let g:LanguageClient_serverCommands = {
@@ -224,9 +221,8 @@ let g:ycm_semantic_triggers = {
 \ }
 
 " Remove trailing whitespace from files on save
-autocmd BufWritePre * %s/\s\+$//e
 let blacklist = ['mkd', 'md', "*.cc", "*.h", "*.hpp", "*.cpp", "*.c"]
-autocmd BufWritePre * if index(blacklist, &ft) < 0 |
+autocmd BufWritePre * if index(blacklist, &ft) < 0 | %s/\s\+$//e
 
 " Use spellcheck for tex files
 "autocmd FileType * set nospell
@@ -335,7 +331,7 @@ let g:gitgutter_max_signs = 1000
 " easy comment toggle
 " Comment current line
 nmap <C-Space> v<leader>c<Space>
-vmap <C-Space> <leader>cm
+vmap <C-Space> <leader>c<Space>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSCOPE settings for vim
