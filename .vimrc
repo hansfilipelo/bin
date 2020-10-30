@@ -21,7 +21,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'vim-scripts/a.vim'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tikhomirov/vim-glsl'
 Plugin 'rdnetto/YCM-Generator'
@@ -33,11 +33,11 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'bjoernd/vim-ycm-tex'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mkitt/tabline.vim'
+Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'gerw/vim-latex-suite'
 Plugin 'chiedo/vim-case-convert'
 Plugin 'zcodes/vim-colors-basic'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'rking/ag.vim'
@@ -58,6 +58,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-clang'
+Plugin 'nikvdp/neomux'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -147,7 +148,8 @@ autocmd BufEnter *.cc,*.h,*.hpp,*.cpp,*.c setlocal cinoptions=(0,W4
 "autocmd BufRead *.cc,*.h,*.hpp,*.cpp,*.c ClangFormat
 "autocmd BufWritePre *.cc,*.h,*.hpp,*.cpp,*.c ClangFormat
 "autocmd BufWritePost *.cc,*.h,*.hpp,*.cpp,*.c !git reformat
-nnoremap <C-S> :ClangFormat<CR>:noa w<CR>
+"nnoremap <C-S> :ClangFormat<CR>:noa w<CR>
+nnoremap <C-S> :w<CR>:!git reformat<CR>:e<CR>
 
 " Clangd completion
 "let g:LanguageClient_serverCommands = {
@@ -163,7 +165,7 @@ nnoremap <C-S> :ClangFormat<CR>:noa w<CR>
 "let g:loaded_youcompleteme = 1
 
 " Python/pep8 requires slightly differing
-autocmd FileType python setlocal tabstop=8 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType python setlocal tabstop=4 shiftwidth=2 softtabstop=4 expandtab
 let g:pyindent_continue = '&sw'
 let g:pyindent_open_paren = '&sw'
 "autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
@@ -172,10 +174,10 @@ let g:syntastic_mode_map = { 'mode': 'passive',
                           \ 'active_filetypes': ['python'],
                           \ 'passive_filetypes': [] }
 let g:syntastic_auto_loc_list=1
-let g:syntastic_python_checker_args='--ignore=E501,E123,W504 --max-line-length=120'
-let g:syntastic_python_flake8_post_args='--ignore=E501,E123,W504 --max-line-length=120'
-let g:syntastic_python_flake8_args='--ignore=E501,E123,W504 --max-line-length=120'
-let g:syntastic_python_pylint_args='--ignore=E501,E123,W504 --max-line-length=120'
+let g:syntastic_python_checker_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=120'
+let g:syntastic_python_flake8_post_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=120'
+let g:syntastic_python_flake8_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=120'
+let g:syntastic_python_pylint_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=120'
 
 " Toogle for case sensitivity
 nmap <F7> :set ignorecase! ignorecase?
@@ -207,6 +209,8 @@ nmap <C-d> :YcmCompleter GoTo<CR>
 let g:ycm_semantic_triggers = { 'cpp': [ 're!.' ] }
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_filetype_blacklist = { 'rust': 1 }
+let g:ycm_use_clangd = 0
+nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Clojure stuff
 let g:salve_auto_start_repl=1
@@ -228,10 +232,7 @@ autocmd BufWritePre * if index(blacklist, &ft) < 0 | %s/\s\+$//e
 "autocmd FileType * set nospell
 "autocmd FileType md,mkd,tex set spell
 
-" Remap Esc to close a terminal in neovim
-if has('nvim')
-tnoremap <Esc> <C-\><C-n>
-end
+
 
 " Shut down auto fold for latex documents
 let g:tex_flavor='latex'
@@ -241,6 +242,8 @@ set iskeyword+=:
 
 " map FZF to ctrlp
 nnoremap <C-P> :FZF<CR>
+nnoremap <C-H> :History<CR>
+"nnoremap <C-A> :Windows<CR>
 " Force removal of "regular CtrlP
 autocmd VimEnter * nnoremap <C-P> :FZF<CR>
 nnoremap <C-T> :Tags<CR>
@@ -332,6 +335,9 @@ let g:gitgutter_max_signs = 1000
 " Comment current line
 nmap <C-Space> v<leader>c<Space>
 vmap <C-Space> <leader>c<Space>
+
+" Yank current file path t clipboard
+nmap ä :let @" = expand("%")<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " CSCOPE settings for vim
@@ -498,3 +504,39 @@ if has("cscope")
 
 endif
 
+" TMUX style splits
+" Maps ctrl-b + c to open a new tab window
+nnoremap <C-b>c :tabnew +terminal<CR>
+tnoremap <C-b>c <C-\><C-n>:tabnew +terminal<CR>
+
+" Maps ctrl-b + " to open a new horizontal split with a terminal
+nnoremap <C-b>" :new +terminal<CR>
+tnoremap <C-b>" <C-\><C-n>:new +terminal<CR>
+
+" Maps ctrl-b + % to open a new vertical split with a terminal
+nnoremap <C-b>% :vnew +terminal<CR>
+tnoremap <C-b>% <C-\><C-n>:vnew +terminal<cr>
+" Remap Esc to close a terminal in neovim
+if has('nvim')
+tnoremap <Esc> <C-\><C-n>
+end
+
+augroup neovim_terminal
+  autocmd!
+
+  " Enter Terminal-mode (insert) automatically
+  autocmd TermOpen * startinsert
+
+  " Disables number lines on terminal buffers
+  autocmd TermOpen * :set nonumber norelativenumber
+augroup END
+
+" use nvr if giting inside of neovim
+if has('nvim')
+  let $GIT_EDITOR = 'nvr -cc split --remote-wait'
+  autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+endif
+
+set number
+"let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'.g:airline_symbols.space, 'linenr', 'maxlinenr', g:airline_symbols.space.':%3V'])
+let g:airline_section_z = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v/%03{col("$")-1}'
