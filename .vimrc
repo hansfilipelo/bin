@@ -27,38 +27,25 @@ Plugin 'tikhomirov/vim-glsl'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'vim-airline/vim-airline'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mhinz/vim-signify'
 Plugin 'scrooloose/nerdtree'
-Plugin 'bjoernd/vim-ycm-tex'
 Plugin 'rust-lang/rust.vim'
 Plugin 'mkitt/tabline.vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'gerw/vim-latex-suite'
 Plugin 'chiedo/vim-case-convert'
 Plugin 'zcodes/vim-colors-basic'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
-Plugin 'rking/ag.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'danro/rename.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'roxma/nvim-yarp'
-Plugin 'ncm2/ncm2'
-Plugin 'ncm2/ncm2-bufword'
-Plugin 'ncm2/ncm2-path'
-Plugin 'ncm2/ncm2-racer'
 Plugin 'rhysd/vim-clang-format'
 Plugin 'nvie/vim-flake8'
 Plugin 'vim-syntastic/syntastic'
-Plugin 'autozimu/LanguageClient-neovim'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-clang'
-Plugin 'nikvdp/neomux'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -191,11 +178,6 @@ set mouse=a
 
 " If file changed on disk, reload it
 set autoread
-
-" Larger font
-set guifont=Inconsolata:h14
-" Color scheme
-colorscheme slate
 
 " Map leader to , instead of \
 let mapleader=","
