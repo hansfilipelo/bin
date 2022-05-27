@@ -1,0 +1,9 @@
+#!/bin/bash
+
+infile="$1"
+filename=$(basename -- "$infile")
+extension="${filename##*.}"
+filename_without_ext="${filename%.*}"
+out_dir="$(dirname $infile)"
+
+pandoc "$infile" -o "$out_dir/$filename_without_ext.pdf" --from markdown --template eisvogel --listings
