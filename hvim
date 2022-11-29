@@ -1,0 +1,12 @@
+#!/bin/bash
+
+readonly folder_name="$(realpath . |tr '/' '_')"
+readonly session_name="nvim$folder_name"
+
+abduco |grep $session_name
+if [ $? -ne 0 ]; then
+  abduco -e "^q" -c "$session_name" nvim
+else
+  abduco -e "^q" -a "$session_name"
+fi
+
