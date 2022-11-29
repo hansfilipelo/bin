@@ -152,22 +152,22 @@ nnoremap <C-S> :w<CR>:!git reformat<CR>:e<CR>
 "let g:loaded_youcompleteme = 1
 
 " Python/pep8 requires slightly differing
-autocmd FileType python setlocal tabstop=4 shiftwidth=2 softtabstop=4 expandtab
+autocmd FileType python setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 let g:pyindent_continue = '&sw'
 let g:pyindent_open_paren = '&sw'
 "autocmd FileType python map <buffer> <F8> :call flake8#Flake8()<CR>
 " Let's add syntastic for pep8
 let g:syntastic_mode_map = { 'mode': 'passive',
                           \ 'active_filetypes': ['python'],
-                          \ 'passive_filetypes': [] }
+                          \ 'passive_filetypes': ['python'] }
 let g:syntastic_auto_loc_list=1
-let g:syntastic_python_checker_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=120'
-let g:syntastic_python_flake8_post_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=120'
-let g:syntastic_python_flake8_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=120'
-let g:syntastic_python_pylint_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=120'
+let g:syntastic_python_checker_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
+let g:syntastic_python_flake8_post_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
+let g:syntastic_python_flake8_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
+let g:syntastic_python_pylint_args='--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
 
 " Toogle for case sensitivity
-nmap <F7> :set ignorecase! ignorecase?
+nmap <F7> :set ignorecase! ignorecase?<CR>
 set ignorecase
 
 " Make backspace work
@@ -224,10 +224,12 @@ set iskeyword+=:
 
 " map FZF to ctrlp
 nnoremap <C-P> :FZF<CR>
+nnoremap <C-Å> :GFiles<CR>
 nnoremap <C-H> :History<CR>
-"nnoremap <C-A> :Windows<CR>
+"nnoremap <C-J> :Windows<CR>
 " Force removal of "regular CtrlP
 autocmd VimEnter * nnoremap <C-P> :FZF<CR>
+autocmd VimEnter * nnoremap <C-Å> :GFiles<CR>
 nnoremap <C-T> :Tags<CR>
 
 " Root marker for ctrlp
@@ -295,6 +297,8 @@ autocmd BufRead *.fx,*.mat set syntax=xml
 autocmd BufRead *.qss set syntax=css
 " OMI files from TvSDK
 autocmd BufRead *.omi set syntax=cpp
+" Jenkinsfiles
+autocmd BufRead Jenkinsfile.* setf groovy
 
 
 " Autoread buffers changed
@@ -307,8 +311,8 @@ let g:vim_markdown_folding_disabled = 1
 "autocmd BufWritePost *.tex !pdflatex -output-directory /tmp <afile>
 
 " Pretty print json
-nmap <C-j> :%!python -m json.tool<CR>
-command! PrettyJson :%!python -m json.tool
+nmap <C-j> :%!python3 -m json.tool<CR>
+command! PrettyJson :%!python3 -m json.tool
 
 " Gitgutter max
 let g:gitgutter_max_signs = 1000
