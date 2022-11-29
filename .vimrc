@@ -528,3 +528,5 @@ set number
 let g:airline_section_z = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v/%03{col("$")-1}'
 
 let g:ycm_extra_conf_globlist=['/home/helo/src/tvsdk/.ycm_extra_conf.py']
+
+colorscheme slate
