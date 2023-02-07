@@ -174,7 +174,7 @@ set ignorecase
 set backspace=2
 
 " Mouse integration
-set mouse=a
+set mouse=nvi
 
 " If file changed on disk, reload it
 set autoread
