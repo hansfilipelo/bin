@@ -32,7 +32,6 @@ Plugin 'rust-lang/rust.vim'
 Plugin 'mkitt/tabline.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'chiedo/vim-case-convert'
-Plugin 'zcodes/vim-colors-basic'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'majutsushi/tagbar'
@@ -273,6 +272,8 @@ set tags=tags;
 " Ctrlp for tags
 "nmap <F9> :CtrlPTag<cr>
 nmap <F8> :TagbarToggle<CR>
+command! CopyRelPath call setreg('+', expand('%'))
+nmap <C-g> :CopyRelPath<CR> :echo expand('%')<CR>
 
 " --column: Show column number
 " --line-number: Show line number
@@ -514,7 +515,7 @@ augroup neovim_terminal
   autocmd TermOpen * startinsert
 
   " Disables number lines on terminal buffers
-  autocmd TermOpen * :set nonumber norelativenumber
+  autocmd TermOpen * :setlocal nonumber norelativenumber
 augroup END
 
 " use nvr if giting inside of neovim
@@ -528,5 +529,3 @@ set number
 let g:airline_section_z = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v/%03{col("$")-1}'
 
 let g:ycm_extra_conf_globlist=['/home/helo/src/tvsdk/.ycm_extra_conf.py']
-
-colorscheme slate
