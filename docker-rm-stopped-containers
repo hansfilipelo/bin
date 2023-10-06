@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for container in $(docker ps -qa -f 'status=exited' -f 'status=dead')
+do
+  docker rm $container $@
+done

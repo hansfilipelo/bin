@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for image in $(docker images -qa -f 'dangling=true')
+do
+  docker rmi $image $@
+done
