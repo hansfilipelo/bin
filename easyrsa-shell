@@ -1,0 +1,23 @@
+#!/usr/bin/bash -e
+
+readonly download_url="$(curl -s https://api.github.com/repos/OpenVPN/easy-rsa/releases/latest \
+  | grep "browser_download_url" |grep "EasyRSA-" |grep ".tgz" |grep -v ".sig" \
+  | cut -d : -f 2,3 \
+  | tr -d \" | awk '{$1=$1;print}')"
+
+readonly easy_rsa_package_filename="$(basename $download_url)"
+readonly easy_rsa_package_path="$HOME/$easy_rsa_package_filename"
+readonly easy_rsa_folder_path="$HOME/$(basename $easy_rsa_package_filename .tgz)"
+
+wget -O $easy_rsa_package_path "$download_url"
+
+cleanup_trap() {
+  rm -rf "$easy_rsa_folder_path"
+}
+
+trap cleanup_trap EXIT
+
+tar -xf "$easy_rsa_package_path"
+rm "$easy_rsa_package_path"
+export PATH="$PATH:$easy_rsa_folder_path"
+bash
