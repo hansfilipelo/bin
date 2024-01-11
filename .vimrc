@@ -45,6 +45,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-clang'
+Plugin 'google/vim-jsonnet'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -300,6 +301,7 @@ autocmd BufRead *.qss set syntax=css
 autocmd BufRead *.omi set syntax=cpp
 " Jenkinsfiles
 autocmd BufRead Jenkinsfile.* setf groovy
+autocmd BufRead *.jsonnet setf jsonnet
 
 
 " Autoread buffers changed
