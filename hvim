@@ -5,7 +5,7 @@ readonly session_name="nvim$folder_name"
 
 abduco |grep "$session_name\$"
 if [ $? -ne 0 ]; then
-  abduco -e "^q" -c "$session_name" nvim
+  abduco -e "^q" -c "$session_name" uv run --with neovim-remote nvim
 else
   abduco -e "^q" -a "$session_name"
 fi

@@ -10,6 +10,6 @@ if [ $? != 0 ]; then
    tmux new -s $session
 else
   # Attach to created session
-  tmux attach-session -dt $session
+  tmux attach-session -dxt $session
 fi
 
