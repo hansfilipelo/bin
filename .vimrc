@@ -46,6 +46,10 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-clang'
 Plugin 'google/vim-jsonnet'
+Plugin 'ngg/vim-gn'
+Plugin 'github/copilot.vim'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'CopilotC-Nvim/CopilotChat.nvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -67,12 +71,12 @@ autocmd! bufwritepost init.vim source %
 autocmd! bufwritepost .vimrc source %
 
 " --------------- Rust support
-autocmd BufReadPost *.rs setlocal filetype=rust
-autocmd BufEnter *.rs call ncm2#enable_for_buffer()
+"autocmd BufReadPost *.rs setlocal filetype=rust
+"autocmd BufEnter *.rs call ncm2#enable_for_buffer()
 
 " suppress the annoying 'match x of y', 'The only match' and 'Pattern not
 " found' messages
-set shortmess+=c
+"set shortmess+=c
 
 " CTRL-C doesn't trigger the InsertLeave autocmd . map to <ESC> instead.
 inoremap <c-c> <ESC>
@@ -80,11 +84,11 @@ inoremap <c-c> <ESC>
 " When the <Enter> key is pressed while the popup menu is visible, it only
 " hides the menu. Use this mapping to close the menu and also start a new
 " line.
-inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
+"inoremap <expr> <CR> (pumvisible() ? "\<c-y>\<cr>" : "\<CR>")
 
 " Use <TAB> to select the popup menu:
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " wrap existing omnifunc
 " Note that omnifunc does not run in background and may probably block the
@@ -92,19 +96,19 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 " add 180ms delay before the omni wrapper:
 "  'on_complete': ['ncm2#on_complete#delay', 180,
 "               \ 'ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-au User Ncm2Plugin call ncm2#register_source({
-        \ 'name' : 'css',
-        \ 'priority': 9,
-        \ 'subscope_enable': 1,
-        \ 'scope': ['css','scss'],
-        \ 'mark': 'css',
-        \ 'word_pattern': '[\w\-]+',
-        \ 'complete_pattern': ':\s*',
-        \ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
-        \ })
+"au User Ncm2Plugin call ncm2#register_source({
+        "\ 'name' : 'css',
+        "\ 'priority': 9,
+        "\ 'subscope_enable': 1,
+        "\ 'scope': ['css','scss'],
+        "\ 'mark': 'css',
+        "\ 'word_pattern': '[\w\-]+',
+        "\ 'complete_pattern': ':\s*',
+        "\ 'on_complete': ['ncm2#on_complete#omni', 'csscomplete#CompleteCSS'],
+        "\ })
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
+"set completeopt=noinsert,menuone,noselect
 
 " NOTE: you need to install completion sources to get completions. Check
 " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
@@ -176,6 +180,16 @@ set backspace=2
 " Mouse integration
 set mouse=nvi
 
+function! ToggleMouse()
+  if &mouse == 'nvi'
+    " disable mouse
+    set mouse=
+  else
+    set mouse=nvi
+  endif
+endfunc
+nmap <C-m> :call ToggleMouse()<CR>
+
 " If file changed on disk, reload it
 set autoread
 
@@ -190,7 +204,6 @@ nmap <C-f> :YcmCompleter FixIt<CR>
 nmap <C-d> :YcmCompleter GoTo<CR>
 let g:ycm_semantic_triggers = { 'cpp': [ 're!.' ] }
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_filetype_blacklist = { 'rust': 1 }
 let g:ycm_use_clangd = 0
 nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
@@ -198,8 +211,8 @@ nnoremap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 let g:salve_auto_start_repl=1
 
 " Airline stuff
-map <C-m> :NERDTreeToggle<CR>
-
+"map <C-n> :NERDTreeToggle<CR>
+"nmap <return> :NERDTreeToggle<CR>
 
 " Latex for ycm completion
 let g:ycm_semantic_triggers = {
@@ -530,4 +543,24 @@ set number
 "let g:airline_section_z = airline#section#create(['windowswap', 'obsession', '%3p%%'.g:airline_symbols.space, 'linenr', 'maxlinenr', g:airline_symbols.space.':%3V'])
 let g:airline_section_z = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v/%03{col("$")-1}'
 
-let g:ycm_extra_conf_globlist=['/home/helo/src/tvsdk/.ycm_extra_conf.py']
+let g:ycm_extra_conf_globlist=['/home/helo/src/tvsdk/.ycm_extra_conf.py', '/media/helo/helo_storage/src/tvsdk/.ycm_extra_conf.py', '/media/helo/helo_storage/src/tvsdk_2/.ycm_extra_conf.py', '/media/helo/helo_storage/src/tvsdk_3/.ycm_extra_conf.py']
+
+colorscheme vim
+
+" Copilot
+imap <silent><script><expr> <C-K> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+lua << EOF
+require("CopilotChat").setup {
+    model = 'claude-3.7-sonnet',
+    window = { layout = 'horizontal' },
+    pattern = 'copilot-*',
+    callback = function()
+        -- Set buffer-local options
+        vim.opt_local.relativenumber = false
+    end
+}
+EOF
+
+map <C-k> :CopilotChat<CR>
