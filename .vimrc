@@ -46,10 +46,11 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-clang'
 Plugin 'google/vim-jsonnet'
-Plugin 'ngg/vim-gn'
+Plugin 'https://gn.googlesource.com/gn', { 'rtp': 'misc/vim' }
 Plugin 'github/copilot.vim'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'CopilotC-Nvim/CopilotChat.nvim'
+Plugin 'cappyzawa/starlark.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
