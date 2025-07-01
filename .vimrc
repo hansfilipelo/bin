@@ -5,7 +5,6 @@ set encoding=utf-8
 set fileencoding=
 setglobal fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
-set termencoding=latin1
 
 
 " set the runtime path to include Vundle and initialize
