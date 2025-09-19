@@ -6,7 +6,6 @@ set fileencoding=
 setglobal fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -35,7 +34,6 @@ Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'jaxbot/semantic-highlight.vim'
-Plugin 'plasticboy/vim-markdown'
 Plugin 'danro/rename.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'roxma/nvim-yarp'
@@ -140,7 +138,7 @@ autocmd BufEnter *.cc,*.h,*.hpp,*.cpp,*.c setlocal cinoptions=(0,W4
 "autocmd BufWritePre *.cc,*.h,*.hpp,*.cpp,*.c ClangFormat
 "autocmd BufWritePost *.cc,*.h,*.hpp,*.cpp,*.c !git reformat
 "nnoremap <C-S> :ClangFormat<CR>:noa w<CR>
-nnoremap <C-S> :w<CR>:!git reformat<CR>:e<CR>
+nnoremap <C-S> :w<CR>:!git cl format --upstream HEAD~<CR>:e<CR>
 
 " Clangd completion
 "let g:LanguageClient_serverCommands = {
@@ -537,6 +535,7 @@ augroup END
 if has('nvim')
   let $GIT_EDITOR = 'nvr -cc split --remote-wait'
   autocmd FileType gitcommit,gitrebase,gitconfig set bufhidden=delete
+  "let $GIT_PAGER = 'nvr -o -'
 endif
 
 set number
