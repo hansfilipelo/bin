@@ -32,6 +32,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'chiedo/vim-case-convert'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+Plugin 'ibhagwan/fzf-lua'
 Plugin 'majutsushi/tagbar'
 Plugin 'jaxbot/semantic-highlight.vim'
 Plugin 'danro/rename.vim'
@@ -106,7 +107,7 @@ inoremap <c-c> <ESC>
         "\ })
 
 " IMPORTANT: :help Ncm2PopupOpen for more information
-"set completeopt=noinsert,menuone,noselect
+set completeopt=noinsert,menuone,noinsert,popup
 
 " NOTE: you need to install completion sources to get completions. Check
 " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
@@ -551,13 +552,20 @@ imap <silent><script><expr> <C-K> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
 
 lua << EOF
+require('fzf-lua').register_ui_select()
+
 require("CopilotChat").setup {
-    model = 'claude-3.7-sonnet',
-    window = { layout = 'horizontal' },
+    model = 'claude-opus-4.5',
+    window = {
+      layout = 'horizontal',
+      width = 0.5,
+    },
     pattern = 'copilot-*',
     callback = function()
         -- Set buffer-local options
         vim.opt_local.relativenumber = false
+        vim.opt_local.number = false
+        vim.opt_local.conceallevel = 0
     end
 }
 EOF
