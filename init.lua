@@ -28,17 +28,22 @@ require("lazy").setup({
   -- A.vim - Alternate files quickly
   { "vim-scripts/a.vim" },
 
-  -- YouCompleteMe
-  { "ycm-core/YouCompleteMe", build = "python3 install.py --all" },
+  -- LSP
+  { "neovim/nvim-lspconfig" },
+
+  -- Completion engine
+  { "hrsh7th/nvim-cmp" },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  { "L3MON4D3/LuaSnip" },
+  { "saadparwaiz1/cmp_luasnip" },
 
   -- Multiple cursors
   { "terryma/vim-multiple-cursors" },
 
   -- GLSL syntax
   { "tikhomirov/vim-glsl" },
-
-  -- YCM Generator
-  { "rdnetto/YCM-Generator" },
 
   -- Indent guides
   { "nathanaelkane/vim-indent-guides" },
@@ -89,10 +94,6 @@ require("lazy").setup({
 
   -- Syntastic
   { "vim-syntastic/syntastic" },
-
-  -- Deoplete
-  { "Shougo/deoplete.nvim" },
-  { "zchee/deoplete-clang" },
 
   -- Jsonnet
   { "google/vim-jsonnet" },
@@ -231,18 +232,57 @@ vim.opt.autoread = true
 -- Show command
 vim.opt.showcmd = true
 
--- YouCompleteMe settings
-vim.g.ycm_autoclose_preview_window_after_completion = 1
-vim.g.ycm_python_binary_path = 'python3'
-vim.keymap.set('n', '<C-f>', ':YcmCompleter FixIt<CR>')
-vim.keymap.set('n', '<C-d>', ':YcmCompleter GoTo<CR>')
-vim.g.ycm_semantic_triggers = {
-  cpp = { 're!.' },
-  tex = { '\\ref{', '\\cite{' }
-}
-vim.g.ycm_confirm_extra_conf = 0
-vim.g.ycm_use_clangd = 0
-vim.keymap.set('n', 'gd', ':YcmCompleter GoToDefinitionElseDeclaration<CR>')
+-- LSP + clangd setup
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+vim.lsp.config('clangd', {
+  capabilities = capabilities,
+  cmd = { 'clangd', '--background-index', '--clang-tidy' },
+})
+vim.lsp.enable('clangd')
+
+-- LSP key mappings (set on attach)
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gd',    vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<C-d>', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<C-f>', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'K',     vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gr',    vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  end,
+})
+
+-- nvim-cmp completion setup
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+cmp.setup({
+  snippet = {
+    expand = function(args) luasnip.lsp_expand(args.body) end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>']      = cmp.mapping.confirm({ select = true }),
+    ['<Tab>']     = cmp.mapping(function(fallback)
+      if cmp.visible() then cmp.confirm({ select = true })
+      elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
+      else fallback() end
+    end, { 'i', 's' }),
+    ['<S-Tab>']   = cmp.mapping(function(fallback)
+      if cmp.visible() then cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then luasnip.jump(-1)
+      else fallback() end
+    end, { 'i', 's' }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  }, {
+    { name = 'buffer' },
+    { name = 'path' },
+  }),
+})
 
 -- Clojure stuff
 vim.g.salve_auto_start_repl = 1
@@ -453,16 +493,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Airline configuration
 vim.g.airline_section_z = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v/%03{col("$")-1}'
-
--- YCM extra conf globlist
-vim.g.ycm_extra_conf_globlist = {
-  '/home/helo/src/tvsdk/.ycm_extra_conf.py',
-  '/media/helo/helo_storage/src/tvsdk/.ycm_extra_conf.py',
-  '/media/helo/helo_storage/src/tvsdk_2/.ycm_extra_conf.py',
-  '/media/helo/helo_storage/src/tvsdk_3/.ycm_extra_conf.py',
-  '/mnt/samsung_9100_pro_4tb/helo/src/tvsdk/.ycm_extra_conf.py',
-  '/mnt/samsung_9100_pro_4tb/helo/src/tvsdk_2/.ycm_extra_conf.py'
-}
 
 -- Colorscheme
 vim.cmd('colorscheme vim')
