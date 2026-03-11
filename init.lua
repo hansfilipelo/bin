@@ -238,6 +238,11 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.config('clangd', {
   capabilities = capabilities,
   cmd = { 'clangd', '--background-index', '--clang-tidy' },
+  on_init = function(client)
+    -- Disable semantic tokens to prevent clangd from incorrectly highlighting
+    -- the whole file as a comment when a completion is cancelled.
+    -- client.server_capabilities.semanticTokensProvider = nil
+  end,
 })
 vim.lsp.enable('clangd')
 
@@ -498,7 +503,7 @@ vim.g.airline_section_z = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%
 vim.cmd('colorscheme vim')
 
 -- Copilot
-vim.keymap.set('i', '<C-K>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, script = true })
+vim.keymap.set('i', '<C-K>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, replace_keycodes = false })
 vim.g.copilot_no_tab_map = true
 
 -- FZF-lua setup
