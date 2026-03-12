@@ -217,7 +217,7 @@ vim.opt.backspace = '2'
 vim.opt.mouse = 'nvi'
 
 function ToggleMouse()
-  if vim.opt.mouse:get() == 'nvi' then
+  if vim.o.mouse == 'nvi' then
     vim.opt.mouse = ''
   else
     vim.opt.mouse = 'nvi'
@@ -251,6 +251,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(ev)
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gd',    vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi',    vim.lsp.buf.implementation, opts)
     vim.keymap.set('n', '<C-d>', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', '<C-f>', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'K',     vim.lsp.buf.hover, opts)
