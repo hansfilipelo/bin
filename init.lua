@@ -157,7 +157,6 @@ vim.opt.ruler = true
 vim.opt.hlsearch = true
 
 -- No tabs, just spaces
-vim.cmd('retab')
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.expandtab = true
@@ -416,8 +415,8 @@ vim.api.nvim_create_user_command('PrettyJson', '%!python3 -m json.tool', {})
 vim.g.gitgutter_max_signs = 1000
 
 -- Easy comment toggle
-vim.keymap.set('n', '<C-Space>', 'v<leader>c<Space>')
-vim.keymap.set('v', '<C-Space>', '<leader>c<Space>')
+vim.keymap.set('n', '<C-Space>', 'v<leader>c<Space>', { remap = true })
+vim.keymap.set('v', '<C-Space>', '<leader>c<Space>', { remap = true })
 
 -- Yank current file path to clipboard
 vim.keymap.set('n', 'ä', ':let @" = expand("%")<CR>')
