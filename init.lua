@@ -31,6 +31,33 @@ require("lazy").setup({
   -- LSP
   { "neovim/nvim-lspconfig" },
 
+  -- Mason: LSP installer
+  { "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  { "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim", "neovim/nvim-lspconfig" },
+    config = function()
+      require("mason-lspconfig").setup({
+        -- mason-lspconfig uses lspconfig server names here.
+        -- 'gn' is excluded — not in Mason's registry (custom server).
+        ensure_installed = {
+          "clangd",
+          "pyright",
+          "jdtls",
+          "bashls",
+          "groovyls",
+          "ts_ls",
+          "rust_analyzer",
+        },
+        automatic_installation = true,
+      })
+    end,
+  },
+
   -- Completion engine
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
