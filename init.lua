@@ -302,6 +302,20 @@ vim.lsp.config('jdtls', {
 })
 vim.lsp.enable('jdtls')
 
+vim.lsp.config('bashls', {
+  capabilities = capabilities,
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'sh', 'bash', 'zsh' },
+})
+vim.lsp.enable('bashls')
+
+vim.lsp.config('groovyls', {
+  capabilities = capabilities,
+  cmd = { 'java', '-jar', vim.fn.expand('~/.local/share/groovy-language-server/groovy-language-server-all.jar') },
+  filetypes = { 'groovy' },
+})
+vim.lsp.enable('groovyls')
+
 vim.lsp.config('ts_ls', {
   capabilities = capabilities,
   cmd = { 'typescript-language-server', '--stdio' },
