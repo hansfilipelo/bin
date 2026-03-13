@@ -202,6 +202,9 @@ vim.g.ale_linters = {
   markdown = { 'markdownlint' },
   jinja    = { 'djlint' },
   json     = { 'jsonlint' },
+  javascript = { 'eslint' },
+  typescript = { 'eslint' },
+  groovy   = { 'npm-groovy-lint' },
   c        = {},
   cpp      = {},
   java     = {},
@@ -298,6 +301,13 @@ vim.lsp.config('jdtls', {
   filetypes = { 'java' },
 })
 vim.lsp.enable('jdtls')
+
+vim.lsp.config('ts_ls', {
+  capabilities = capabilities,
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+})
+vim.lsp.enable('ts_ls')
 
 vim.lsp.config('rust_analyzer', {
   capabilities = capabilities,
