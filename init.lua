@@ -213,6 +213,30 @@ vim.g.ale_list_window_size = 5
 vim.g.ale_sign_error   = '✗'
 vim.g.ale_sign_warning = '⚠'
 
+-- Close the ALE location list when the linted buffer's window is closed
+vim.api.nvim_create_autocmd("WinClosed", {
+  callback = function(ev)
+    local closed_win = tonumber(ev.match)
+    -- Identify associated loclist windows synchronously, while the relationship is still intact
+    local to_close = {}
+    for _, info in ipairs(vim.fn.getwininfo()) do
+      if info.loclist == 1 then
+        local loc = vim.fn.getloclist(info.winid, { filewinid = 0 })
+        if loc.filewinid == closed_win then
+          table.insert(to_close, info.winid)
+        end
+      end
+    end
+    vim.schedule(function()
+      for _, win in ipairs(to_close) do
+        if vim.api.nvim_win_is_valid(win) then
+          pcall(vim.api.nvim_win_close, win, true)
+        end
+      end
+    end)
+  end,
+})
+
 -- Toggle case sensitivity
 vim.keymap.set('n', '<F7>', ':set ignorecase! ignorecase?<CR>')
 vim.opt.ignorecase = true
@@ -252,6 +276,40 @@ vim.lsp.config('clangd', {
   end,
 })
 vim.lsp.enable('clangd')
+
+vim.lsp.config('pyright', {
+  capabilities = capabilities,
+  cmd = { 'pyright-langserver', '--stdio' },
+  filetypes = { 'python' },
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+})
+vim.lsp.enable('pyright')
+
+vim.lsp.config('jdtls', {
+  capabilities = capabilities,
+  cmd = { 'jdtls' },
+  filetypes = { 'java' },
+})
+vim.lsp.enable('jdtls')
+
+vim.lsp.config('rust_analyzer', {
+  capabilities = capabilities,
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  settings = {
+    ['rust-analyzer'] = {
+      checkOnSave = { command = 'clippy' },
+    },
+  },
+})
+vim.lsp.enable('rust_analyzer')
 
 -- LSP key mappings (set on attach)
 vim.api.nvim_create_autocmd('LspAttach', {
