@@ -343,6 +343,13 @@ vim.lsp.config('groovyls', {
 })
 vim.lsp.enable('groovyls')
 
+vim.lsp.config('gn', {
+  capabilities = capabilities,
+  cmd = { 'gn-language-server' },
+  filetypes = { 'gn' },
+})
+vim.lsp.enable('gn')
+
 vim.lsp.config('ts_ls', {
   capabilities = capabilities,
   cmd = { 'typescript-language-server', '--stdio' },
