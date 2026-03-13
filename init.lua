@@ -89,11 +89,8 @@ require("lazy").setup({
   -- Clang format
   { "rhysd/vim-clang-format" },
 
-  -- Flake8
-  { "nvie/vim-flake8" },
-
-  -- Syntastic
-  { "vim-syntastic/syntastic" },
+  -- ALE (Asynchronous Lint Engine)
+  { "dense-analysis/ale" },
 
   -- Jsonnet
   { "google/vim-jsonnet" },
@@ -194,17 +191,28 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.g.pyindent_continue = '&sw'
 vim.g.pyindent_open_paren = '&sw'
 
--- Syntastic settings
-vim.g.syntastic_mode_map = {
-  mode = 'passive',
-  active_filetypes = { 'python' },
-  passive_filetypes = { 'python' }
+-- ALE settings
+-- Only run linters explicitly listed below; C/C++/Java use their own tooling.
+vim.g.ale_linters_explicit = 1
+vim.g.ale_linters = {
+  python   = { 'flake8', 'pylint' },
+  sh       = { 'shellcheck' },
+  bash     = { 'shellcheck' },
+  zsh      = { 'shellcheck' },
+  ansible  = { 'ansible-lint' },
+  markdown = { 'markdownlint' },
+  jinja    = { 'djlint' },
+  json     = { 'jsonlint' },
+  c        = {},
+  cpp      = {},
+  java     = {},
 }
-vim.g.syntastic_auto_loc_list = 1
-vim.g.syntastic_python_checker_args = '--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
-vim.g.syntastic_python_flake8_post_args = '--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
-vim.g.syntastic_python_flake8_args = '--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
-vim.g.syntastic_python_pylint_args = '--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
+vim.g.ale_python_flake8_options = '--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
+vim.g.ale_python_pylint_options = '--disable=C0301 --max-line-length=80'
+vim.g.ale_open_list = 1
+vim.g.ale_list_window_size = 5
+vim.g.ale_sign_error   = '✗'
+vim.g.ale_sign_warning = '⚠'
 
 -- Toggle case sensitivity
 vim.keymap.set('n', '<F7>', ':set ignorecase! ignorecase?<CR>')
@@ -264,6 +272,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local cmp = require('cmp')
 local luasnip = require('luasnip')
 cmp.setup({
+  preselect = cmp.PreselectMode.Item,
   snippet = {
     expand = function(args) luasnip.lsp_expand(args.body) end,
   },
