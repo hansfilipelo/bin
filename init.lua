@@ -94,7 +94,7 @@ require("lazy").setup({
   { "chiedo/vim-case-convert" },
 
   -- FZF
-  { "junegunn/fzf", build = "./install --all", dir = "~/.fzf" },
+  { "junegunn/fzf", build = "./install --all" },
   { "junegunn/fzf.vim" },
   { "ibhagwan/fzf-lua" },
 
