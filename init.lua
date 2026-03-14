@@ -96,7 +96,6 @@ require("lazy").setup({
 
   -- FZF
   { "junegunn/fzf", build = "./install --all" },
-  { "junegunn/fzf.vim" },
   { "ibhagwan/fzf-lua" },
 
   -- Tagbar
@@ -159,10 +158,10 @@ require("lazy").setup({
 })
 
 -- Automatic reloading of init.lua
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = { "init.lua", "init.vim", ".vimrc" },
-  command = "source %"
-})
+--vim.api.nvim_create_autocmd("BufWritePost", {
+  --pattern = { "init.lua" },
+  --command = "source %"
+--})
 
 -- CTRL-C doesn't trigger the InsertLeave autocmd. Map to <ESC> instead.
 vim.keymap.set('i', '<C-c>', '<ESC>')
@@ -343,9 +342,6 @@ cmp.setup({
   }),
 })
 
--- Clojure stuff
-vim.g.salve_auto_start_repl = 1
-
 -- Remove trailing whitespace from files on save
 local blacklist = { 'mkd', 'md', 'cc', 'h', 'hpp', 'cpp', 'c' }
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -465,52 +461,6 @@ vim.keymap.set('v', '<C-Space>', '<leader>c<Space>', { remap = true })
 
 -- Yank current file path to clipboard
 vim.keymap.set('n', 'ä', ':let @" = expand("%")<CR>')
-
--- CSCOPE settings
-if vim.fn.has("cscope") == 1 then
-  vim.opt.cscopeverbose = false
-  vim.opt.cscopetag = true
-  vim.opt.csto = 0
-
-  -- Add cscope database
-  if vim.fn.filereadable("cscope.out") == 1 then
-    vim.cmd('cs add cscope.out')
-  elseif vim.env.CSCOPE_DB and vim.env.CSCOPE_DB ~= "" then
-    vim.cmd('cs add ' .. vim.env.CSCOPE_DB)
-  end
-
-  vim.opt.cscopeverbose = true
-
-  -- Cscope key mappings
-  vim.keymap.set('n', '<C-_>s', ':cs find s <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-_>g', ':cs find g <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-_>c', ':cs find c <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-_>t', ':cs find t <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-_>e', ':cs find e <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-_>f', ':cs find f <C-R>=expand("<cfile>")<CR><CR>')
-  vim.keymap.set('n', '<C-_>i', ':cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>')
-  vim.keymap.set('n', '<C-_>d', ':cs find d <C-R>=expand("<cword>")<CR><CR>')
-
-  -- Vertical split versions
-  vim.keymap.set('n', '<C-Space>s', ':vert scs find s <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-Space>g', ':vert scs find g <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-Space>c', ':vert scs find c <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-Space>t', ':vert scs find t <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-Space>e', ':vert scs find e <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-Space>f', ':vert scs find f <C-R>=expand("<cfile>")<CR><CR>')
-  vim.keymap.set('n', '<C-Space>i', ':vert scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>')
-  vim.keymap.set('n', '<C-Space>d', ':vert scs find d <C-R>=expand("<cword>")<CR><CR>')
-
-  -- Double Ctrl-Space versions
-  vim.keymap.set('n', '<C-@><C-@>s', ':scs find s <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-@><C-@>g', ':scs find g <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-@><C-@>c', ':scs find c <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-@><C-@>t', ':scs find t <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-@><C-@>e', ':scs find e <C-R>=expand("<cword>")<CR><CR>')
-  vim.keymap.set('n', '<C-@><C-@>f', ':scs find f <C-R>=expand("<cfile>")<CR><CR>')
-  vim.keymap.set('n', '<C-@><C-@>i', ':scs find i ^<C-R>=expand("<cfile>")<CR>$<CR>')
-  vim.keymap.set('n', '<C-@><C-@>d', ':scs find d <C-R>=expand("<cword>")<CR><CR>')
-end
 
 -- TMUX style splits
 vim.keymap.set('n', '<C-b>c', ':tabnew +terminal<CR>')
