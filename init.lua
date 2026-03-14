@@ -201,7 +201,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- Chromium formatting
-vim.keymap.set('n', '<C-S>', ':w<CR>:!git cl format --upstream HEAD~<CR>:e<CR>', { silent = true })
+vim.keymap.set('n', '<C-S>', ':w<CR>:!git cl format --upstream HEAD<CR>:e<CR>', { silent = true })
 
 -- Python/pep8 settings
 vim.api.nvim_create_autocmd("FileType", {
@@ -511,7 +511,10 @@ vim.keymap.set('i', '<C-K>', 'copilot#Accept("\\<CR>")', { silent = true, expr =
 vim.g.copilot_no_tab_map = true
 
 -- FZF-lua setup
-require('fzf-lua').register_ui_select()
+if not vim.g.fzf_lua_ui_select_registered then
+  require('fzf-lua').register_ui_select()
+  vim.g.fzf_lua_ui_select_registered = true
+end
 
 -- CopilotChat mapping
 vim.keymap.set('', '<C-k>', ':CopilotChat<CR>')
