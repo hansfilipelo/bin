@@ -43,17 +43,18 @@ require("lazy").setup({
     config = function()
       require("mason-lspconfig").setup({
         -- mason-lspconfig uses lspconfig server names here.
-        -- 'gn' is excluded — not in Mason's registry (custom server).
         ensure_installed = {
-          "clangd",
-          "pyright",
-          "jdtls",
           "bashls",
+          "clangd",
+          "gn-language-server",
           "groovyls",
+          "jdtls",
+          "pyright",
           "ts_ls",
           "rust_analyzer",
         },
         automatic_installation = true,
+        automatic_enable = true,
       })
     end,
   },
@@ -293,81 +294,9 @@ vim.opt.autoread = true
 -- Show command
 vim.opt.showcmd = true
 
--- LSP + clangd setup
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
-vim.lsp.config('clangd', {
-  capabilities = capabilities,
-  cmd = { 'clangd', '--background-index', '--clang-tidy' },
-  on_init = function(client)
-    -- Disable semantic tokens to prevent clangd from incorrectly highlighting
-    -- the whole file as a comment when a completion is cancelled.
-    -- client.server_capabilities.semanticTokensProvider = nil
-  end,
-})
-vim.lsp.enable('clangd')
-
-vim.lsp.config('pyright', {
-  capabilities = capabilities,
-  cmd = { 'pyright-langserver', '--stdio' },
-  filetypes = { 'python' },
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
-      },
-    },
-  },
-})
-vim.lsp.enable('pyright')
-
-vim.lsp.config('jdtls', {
-  capabilities = capabilities,
-  cmd = { 'jdtls' },
-  filetypes = { 'java' },
-})
-vim.lsp.enable('jdtls')
-
-vim.lsp.config('bashls', {
-  capabilities = capabilities,
-  cmd = { 'bash-language-server', 'start' },
-  filetypes = { 'sh', 'bash', 'zsh' },
-})
-vim.lsp.enable('bashls')
-
-vim.lsp.config('groovyls', {
-  capabilities = capabilities,
-  cmd = { 'java', '-jar', vim.fn.expand('~/.local/share/groovy-language-server/groovy-language-server-all.jar') },
-  filetypes = { 'groovy' },
-})
-vim.lsp.enable('groovyls')
-
-vim.lsp.config('gn', {
-  capabilities = capabilities,
-  cmd = { 'gn-language-server' },
-  filetypes = { 'gn' },
-})
-vim.lsp.enable('gn')
-
-vim.lsp.config('ts_ls', {
-  capabilities = capabilities,
-  cmd = { 'typescript-language-server', '--stdio' },
-  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
-})
-vim.lsp.enable('ts_ls')
-
-vim.lsp.config('rust_analyzer', {
-  capabilities = capabilities,
-  cmd = { 'rust-analyzer' },
-  filetypes = { 'rust' },
-  settings = {
-    ['rust-analyzer'] = {
-      checkOnSave = { command = 'clippy' },
-    },
-  },
-})
-vim.lsp.enable('rust_analyzer')
+-- LSP setup
+-- Apply cmp-nvim-lsp capabilities to all servers globally.
+vim.lsp.config('*', { capabilities = require('cmp_nvim_lsp').default_capabilities() })
 
 -- LSP key mappings (set on attach)
 vim.api.nvim_create_autocmd('LspAttach', {
