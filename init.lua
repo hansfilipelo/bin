@@ -44,32 +44,16 @@ require("lazy").setup({
       require("mason-lspconfig").setup({
         -- mason-lspconfig uses lspconfig server names here.
         -- 'gn' is excluded — not in Mason's registry (custom server).
-        -- 'tsserver' is the old name for ts_ls; kept for compatibility with
-        -- older mason-lspconfig versions that don't recognize ts_ls yet.
-        -- See: https://github.com/neovim/nvim-lspconfig/pull/3232#issuecomment-2331025714
         ensure_installed = {
           "clangd",
           "pyright",
           "jdtls",
           "bashls",
           "groovyls",
-          "tsserver",
+          "ts_ls",
           "rust_analyzer",
         },
         automatic_installation = true,
-      })
-
-      -- Workaround for tsserver → ts_ls rename: normalize the server name so
-      -- mason-lspconfig's handler uses the current lspconfig name on all versions.
-      require("mason-lspconfig").setup_handlers({
-        function(server_name)
-          if server_name == "tsserver" then
-            server_name = "ts_ls"
-          end
-          require("lspconfig")[server_name].setup({
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
-          })
-        end,
       })
     end,
   },
