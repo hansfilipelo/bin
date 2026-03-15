@@ -13,16 +13,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Basic settings
-vim.opt.compatible = false
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = ""
-vim.opt.fileencodings = "ucs-bom,utf-8,latin1"
-
--- Leader key
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
-
 -- Plugin setup
 require("lazy").setup({
   -- A.vim - Alternate files quickly
@@ -54,7 +44,6 @@ require("lazy").setup({
           "rust_analyzer",
         },
         automatic_installation = true,
-        automatic_enable = true,
       })
     end,
   },
@@ -96,7 +85,18 @@ require("lazy").setup({
 
   -- FZF
   { "junegunn/fzf", build = "./install --all" },
-  { "ibhagwan/fzf-lua" },
+  {
+    "ibhagwan/fzf-lua",
+    -- optional for icon support
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    -- or if using mini.icons/mini.nvim
+    -- dependencies = { "nvim-mini/mini.icons" },
+    ---@module "fzf-lua"
+    ---@type fzf-lua.Config|{}
+    ---@diagnostic disable: missing-fields
+    opts = {}
+    ---@diagnostic enable: missing-fields
+  },
 
   -- Tagbar
   { "majutsushi/tagbar" },
@@ -133,90 +133,137 @@ require("lazy").setup({
   -- Plenary (required for CopilotChat)
   { "nvim-lua/plenary.nvim" },
 
-  -- CopilotChat
-  { "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "main",
-    config = function()
-      require("CopilotChat").setup({
-        model = 'claude-sonnet-4.6',
-        window = {
-          layout = 'horizontal',
-          width = 0.5,
-        },
-        pattern = 'copilot-*',
-        callback = function()
-          vim.opt_local.relativenumber = false
-          vim.opt_local.number = false
-          vim.opt_local.conceallevel = 0
-        end
-      })
-    end
-  },
-
   -- Starlark
   { "cappyzawa/starlark.vim" },
 })
 
--- Automatic reloading of init.lua
---vim.api.nvim_create_autocmd("BufWritePost", {
-  --pattern = { "init.lua" },
-  --command = "source %"
---})
-
--- CTRL-C doesn't trigger the InsertLeave autocmd. Map to <ESC> instead.
-vim.keymap.set('i', '<C-c>', '<ESC>')
-
--- Completion options
-vim.opt.completeopt = "noinsert,menuone,noinsert,popup"
-
--- Required for operations modifying multiple buffers like rename
-vim.opt.hidden = true
-
--- Make Ctrl+C do copy to system clipboard
-vim.keymap.set('v', '<C-c>', '"+y')
-
--- Syntax highlighting
-vim.cmd('syntax on')
-
--- Numbered lines and highlight searches
-vim.opt.number = true
-vim.opt.ruler = true
-vim.opt.hlsearch = true
-
--- No tabs, just spaces
-vim.opt.shiftwidth = 2
-vim.opt.tabstop = 2
-vim.opt.expandtab = true
-vim.opt.smartcase = true
-vim.opt.autoindent = true
-vim.opt.smartindent = true
-vim.opt.smarttab = true
-
--- C/C++ indentation
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.cc", "*.h", "*.hpp", "*.cpp", "*.c" },
-  callback = function()
-    vim.opt_local.cinoptions = "(0,W4"
-  end
+-- LSP/autocomplete
+----------------------------------------------------------------------------------
+-- LSP key mappings (set on attach)
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gd',    vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi',    vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-d>', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<C-f>', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'K',     vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gr',    vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  end,
 })
 
--- Chromium formatting
-vim.keymap.set('n', '<C-S>', ':w<CR>:!git cl format --upstream HEAD<CR>:e<CR>', { silent = true })
-
--- Python/pep8 settings
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "python",
-  callback = function()
-    vim.opt_local.tabstop = 4
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.softtabstop = 4
-    vim.opt_local.expandtab = true
-  end
+-- nvim-cmp completion setup
+local cmp = require('cmp')
+local luasnip = require('luasnip')
+cmp.setup({
+  preselect = cmp.PreselectMode.Item,
+  snippet = {
+    expand = function(args) luasnip.lsp_expand(args.body) end,
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<CR>']      = cmp.mapping.confirm({ select = true }),
+    ['<Tab>']     = cmp.mapping(function(fallback)
+      if cmp.visible() then cmp.confirm({ select = true })
+      elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
+      else fallback() end
+    end, { 'i', 's' }),
+    ['<S-Tab>']   = cmp.mapping(function(fallback)
+      if cmp.visible() then cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then luasnip.jump(-1)
+      else fallback() end
+    end, { 'i', 's' }),
+  }),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    { name = 'luasnip' },
+  }, {
+    { name = 'buffer' },
+    { name = 'path' },
+  }),
 })
 
-vim.g.pyindent_continue = '&sw'
-vim.g.pyindent_open_paren = '&sw'
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+vim.lsp.config('clangd', {
+  capabilities = capabilities,
+  cmd = { 'clangd', '--background-index', '--clang-tidy' },
+  on_init = function(client)
+    -- Disable semantic tokens to prevent clangd from incorrectly highlighting
+    -- the whole file as a comment when a completion is cancelled.
+    -- client.server_capabilities.semanticTokensProvider = nil
+  end,
+})
+vim.lsp.enable('clangd')
+
+vim.lsp.config('pyright', {
+  capabilities = capabilities,
+  cmd = { 'pyright-langserver', '--stdio' },
+  filetypes = { 'python' },
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+      },
+    },
+  },
+})
+vim.lsp.enable('pyright')
+
+vim.lsp.config('jdtls', {
+  capabilities = capabilities,
+  cmd = { 'jdtls' },
+  filetypes = { 'java' },
+})
+vim.lsp.enable('jdtls')
+
+vim.lsp.config('bashls', {
+  capabilities = capabilities,
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'sh', 'bash', 'zsh' },
+})
+vim.lsp.enable('bashls')
+
+vim.lsp.config('groovyls', {
+  capabilities = capabilities,
+  --cmd = { 'java', '-jar', vim.fn.expand('~/.local/share/groovy-language-server/groovy-language-server-all.jar') },
+  filetypes = { 'groovy' },
+})
+vim.lsp.enable('groovyls')
+
+vim.lsp.config('gn', {
+  capabilities = capabilities,
+  cmd = { 'gn-language-server' },
+  filetypes = { 'gn' },
+})
+vim.lsp.enable('gn')
+
+vim.lsp.config('ts_ls', {
+  capabilities = capabilities,
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+})
+vim.lsp.enable('ts_ls')
+
+vim.lsp.config('rust_analyzer', {
+  capabilities = capabilities,
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  settings = {
+    ['rust-analyzer'] = {
+      checkOnSave = { command = 'clippy' },
+    },
+  },
+})
+vim.lsp.enable('rust_analyzer')
+
+-- Apply cmp-nvim-lsp capabilities to all servers globally.
+-- vim.lsp.config('*', { capabilities = require('cmp_nvim_lsp').default_capabilities() })
+
+-- Linting
+----------------------------------------------------------------------------------
 -- ALE settings
 -- Only run linters explicitly listed below; C/C++/Java use their own tooling.
 vim.g.ale_linters_explicit = 1
@@ -267,12 +314,43 @@ vim.api.nvim_create_autocmd("WinClosed", {
   end,
 })
 
+-- Basic settings
+--------------------------------------------------------
+vim.opt.fileencodings = "ucs-bom,utf-8,latin1"
+
+-- Leader key
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+
+-- Completion options
+vim.opt.completeopt = "noinsert,menuone,noinsert,popup"
+
+-- Syntax highlighting
+vim.cmd('syntax on')
+
+-- Numbered lines and highlight searches
+vim.opt.number = true
+vim.opt.hlsearch = true
+
+-- Make Ctrl+C do copy to system clipboard
+vim.keymap.set('v', '<C-c>', '"+y')
+
+-- Now CTRL-C doesn't trigger the InsertLeave autocmd in terminal. Map to <ESC>
+-- instead.
+vim.keymap.set('i', '<C-c>', '<ESC>')
+
+-- No tabs, just spaces
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.expandtab = true
+vim.opt.smartcase = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+
 -- Toggle case sensitivity
 vim.keymap.set('n', '<F7>', ':set ignorecase! ignorecase?<CR>')
 vim.opt.ignorecase = true
-
--- Make backspace work
-vim.opt.backspace = '2'
 
 -- Mouse integration
 vim.opt.mouse = 'nvi'
@@ -284,63 +362,45 @@ function ToggleMouse()
     vim.opt.mouse = 'nvi'
   end
 end
-
 vim.keymap.set('n', '<C-m>', ':lua ToggleMouse()<CR>')
+
+-- C/C++ indentation
+vim.api.nvim_create_autocmd("BufEnter", {
+  pattern = { "*.cc", "*.h", "*.hpp", "*.cpp", "*.c" },
+  callback = function()
+    vim.opt_local.cinoptions = "(0,W4"
+  end
+})
+
+-- Save with git cl format on Ctrl+S
+vim.keymap.set('n', '<C-S>', ':w<CR>:!git cl format --upstream HEAD<CR>:e<CR>', { silent = true })
+
+-- Pretty print json
+vim.keymap.set('n', '<C-j>', ':%!python3 -m json.tool<CR>')
+vim.api.nvim_create_user_command('PrettyJson', '%!python3 -m json.tool', {})
+
+-- Easy comment toggle
+vim.keymap.set({'n', 'v', 'i'}, '<C-Space>', 'v<leader>c<Space>', { remap = true })
+
+-- Yank current file path to clipboard
+vim.keymap.set('n', 'ä', ':let @" = expand("%")<CR>')
+
+-- Python/pep8 settings to not have 2 spaces as default for python
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    vim.opt_local.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.softtabstop = 4
+    vim.opt_local.expandtab = true
+  end
+})
+
+vim.g.pyindent_continue = '&sw'
+vim.g.pyindent_open_paren = '&sw'
 
 -- If file changed on disk, reload it
 vim.opt.autoread = true
-
--- Show command
-vim.opt.showcmd = true
-
--- LSP setup
--- Apply cmp-nvim-lsp capabilities to all servers globally.
-vim.lsp.config('*', { capabilities = require('cmp_nvim_lsp').default_capabilities() })
-
--- LSP key mappings (set on attach)
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gd',    vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gi',    vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-d>', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', '<C-f>', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'K',     vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gr',    vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-  end,
-})
-
--- nvim-cmp completion setup
-local cmp = require('cmp')
-local luasnip = require('luasnip')
-cmp.setup({
-  preselect = cmp.PreselectMode.Item,
-  snippet = {
-    expand = function(args) luasnip.lsp_expand(args.body) end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>']      = cmp.mapping.confirm({ select = true }),
-    ['<Tab>']     = cmp.mapping(function(fallback)
-      if cmp.visible() then cmp.confirm({ select = true })
-      elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
-      else fallback() end
-    end, { 'i', 's' }),
-    ['<S-Tab>']   = cmp.mapping(function(fallback)
-      if cmp.visible() then cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then luasnip.jump(-1)
-      else fallback() end
-    end, { 'i', 's' }),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  }, {
-    { name = 'buffer' },
-    { name = 'path' },
-  }),
-})
 
 -- Remove trailing whitespace from files on save
 local blacklist = { 'mkd', 'md', 'cc', 'h', 'hpp', 'cpp', 'c' }
@@ -368,32 +428,12 @@ vim.g.Tex_Folding = 0
 vim.opt.iskeyword:append(':')
 
 -- FZF mappings
-vim.keymap.set('n', '<C-P>', ':FZF<CR>')
-vim.keymap.set('n', '<C-Å>', ':GFiles<CR>')
-vim.keymap.set('n', '<C-H>', ':History<CR>')
-vim.keymap.set('n', '<C-T>', ':Tags<CR>')
-
--- Force removal of regular CtrlP
-vim.api.nvim_create_autocmd("VimEnter", {
-  pattern = "*",
-  callback = function()
-    vim.keymap.set('n', '<C-P>', ':FZF<CR>')
-    vim.keymap.set('n', '<C-Å>', ':GFiles<CR>')
-  end
-})
-
--- CtrlP delay
-vim.g.ctrlp_lazy_update = 150
-
--- ctags
-vim.opt.tags = 'tags;'
-vim.keymap.set('n', '<F8>', ':TagbarToggle<CR>')
-
--- Copy relative path
-vim.api.nvim_create_user_command('CopyRelPath', function()
-  vim.fn.setreg('+', vim.fn.expand('%'))
-end, {})
-vim.keymap.set('n', '<C-g>', ':CopyRelPath<CR>:echo expand("%")<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-p>', '<Cmd>FzfLua files<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-g>', '<Cmd>FzfLua live_grep<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-h>', '<Cmd>FzfLua history<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-t>', '<Cmd>FzfLua tabs<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-i>', '<Cmd>FzfLua lsp_finder<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-o>', '<Cmd>FzfLua lsp_references<CR>')
 
 -- Syntax highlighting for specific file types
 vim.api.nvim_create_autocmd("BufRead", {
@@ -447,20 +487,6 @@ vim.api.nvim_create_autocmd("FocusGained", {
 
 -- Disable folding in markdown
 vim.g.vim_markdown_folding_disabled = 1
-
--- Pretty print json
-vim.keymap.set('n', '<C-j>', ':%!python3 -m json.tool<CR>')
-vim.api.nvim_create_user_command('PrettyJson', '%!python3 -m json.tool', {})
-
--- Gitgutter max
-vim.g.gitgutter_max_signs = 1000
-
--- Easy comment toggle
-vim.keymap.set('n', '<C-Space>', 'v<leader>c<Space>', { remap = true })
-vim.keymap.set('v', '<C-Space>', '<leader>c<Space>', { remap = true })
-
--- Yank current file path to clipboard
-vim.keymap.set('n', 'ä', ':let @" = expand("%")<CR>')
 
 -- TMUX style splits
 vim.keymap.set('n', '<C-b>c', ':tabnew +terminal<CR>')
