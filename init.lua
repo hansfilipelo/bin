@@ -435,6 +435,12 @@ vim.keymap.set({'n', 'i', 'v'}, '<C-t>', '<Cmd>FzfLua tabs<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-i>', '<Cmd>FzfLua lsp_finder<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-o>', '<Cmd>FzfLua lsp_references<CR>')
 
+-- FZF-lua setup
+if not vim.g.fzf_lua_ui_select_registered then
+  require('fzf-lua').register_ui_select()
+  vim.g.fzf_lua_ui_select_registered = true
+end
+
 -- Syntax highlighting for specific file types
 vim.api.nvim_create_autocmd("BufRead", {
   pattern = { "*.fp", "*.vp", "*.gp", "*.sp", "*.hlsl" },
@@ -535,12 +541,3 @@ vim.cmd('colorscheme vim')
 -- Copilot
 vim.keymap.set('i', '<C-K>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, replace_keycodes = false })
 vim.g.copilot_no_tab_map = true
-
--- FZF-lua setup
-if not vim.g.fzf_lua_ui_select_registered then
-  require('fzf-lua').register_ui_select()
-  vim.g.fzf_lua_ui_select_registered = true
-end
-
--- CopilotChat mapping
-vim.keymap.set('', '<C-k>', ':CopilotChat<CR>')
