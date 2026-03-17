@@ -1,3 +1,7 @@
+-- Leader key
+vim.g.mapleader = ","
+vim.g.maplocalleader = ","
+
 -- Neovim configuration converted from .vimrc
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -139,20 +143,6 @@ require("lazy").setup({
 
 -- LSP/autocomplete
 ----------------------------------------------------------------------------------
--- LSP key mappings (set on attach)
-vim.api.nvim_create_autocmd('LspAttach', {
-  callback = function(ev)
-    local opts = { buffer = ev.buf }
-    vim.keymap.set('n', 'gd',    vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', 'gi',    vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-d>', vim.lsp.buf.definition, opts)
-    vim.keymap.set('n', '<C-f>', vim.lsp.buf.code_action, opts)
-    vim.keymap.set('n', 'K',     vim.lsp.buf.hover, opts)
-    vim.keymap.set('n', 'gr',    vim.lsp.buf.references, opts)
-    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-  end,
-})
-
 -- nvim-cmp completion setup
 local cmp = require('cmp')
 local luasnip = require('luasnip')
@@ -162,8 +152,6 @@ cmp.setup({
     expand = function(args) luasnip.lsp_expand(args.body) end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<CR>']      = cmp.mapping.confirm({ select = true }),
     ['<Tab>']     = cmp.mapping(function(fallback)
       if cmp.visible() then cmp.confirm({ select = true })
       elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
@@ -262,6 +250,19 @@ vim.lsp.enable('rust_analyzer')
 -- Apply cmp-nvim-lsp capabilities to all servers globally.
 -- vim.lsp.config('*', { capabilities = require('cmp_nvim_lsp').default_capabilities() })
 
+-- LSP key mappings (set on attach)
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gd',    vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'gi',    vim.lsp.buf.implementation, opts)
+    vim.keymap.set('n', '<C-d>', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', '<C-f>', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', 'K',     vim.lsp.buf.hover, opts)
+    vim.keymap.set('n', 'gr',    vim.lsp.buf.references, opts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
+  end,
+})
 -- Linting
 ----------------------------------------------------------------------------------
 -- ALE settings
@@ -318,10 +319,6 @@ vim.api.nvim_create_autocmd("WinClosed", {
 --------------------------------------------------------
 vim.opt.fileencodings = "ucs-bom,utf-8,latin1"
 
--- Leader key
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
-
 -- Completion options
 vim.opt.completeopt = "noinsert,menuone,noinsert,popup"
 
@@ -362,7 +359,10 @@ function ToggleMouse()
     vim.opt.mouse = 'nvi'
   end
 end
-vim.keymap.set('n', '<C-m>', ':lua ToggleMouse()<CR>')
+vim.keymap.set('n', '<C-l>', ':lua ToggleMouse()<CR>')
+
+-- NerdTree Toggle
+vim.keymap.set('n', '<C-m>', ':NERDTreeFind<CR>')
 
 -- C/C++ indentation
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -380,7 +380,7 @@ vim.keymap.set('n', '<C-j>', ':%!python3 -m json.tool<CR>')
 vim.api.nvim_create_user_command('PrettyJson', '%!python3 -m json.tool', {})
 
 -- Easy comment toggle
-vim.keymap.set({'n', 'v', 'i'}, '<C-Space>', 'v<leader>c<Space>', { remap = true })
+vim.keymap.set({'n', 'v'}, '<C-Space>', 'v<leader>c<Space>', { remap = true })
 
 -- Yank current file path to clipboard
 vim.keymap.set('n', 'ä', ':let @" = expand("%")<CR>')
@@ -428,12 +428,12 @@ vim.g.Tex_Folding = 0
 vim.opt.iskeyword:append(':')
 
 -- FZF mappings
-vim.keymap.set({'n', 'i', 'v'}, '<C-p>', '<Cmd>FzfLua files<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-p>', '<Cmd>FzfLua global<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-g>', '<Cmd>FzfLua live_grep<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-h>', '<Cmd>FzfLua history<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-t>', '<Cmd>FzfLua tabs<CR>')
-vim.keymap.set({'n', 'i', 'v'}, '<C-i>', '<Cmd>FzfLua lsp_finder<CR>')
-vim.keymap.set({'n', 'i', 'v'}, '<C-o>', '<Cmd>FzfLua lsp_references<CR>')
+--vim.keymap.set({'n', 'i', 'v'}, '<C-i>', '<Cmd>FzfLua lsp_finder<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-å>', '<Cmd>FzfLua lsp_references<CR>')
 
 -- FZF-lua setup
 if not vim.g.fzf_lua_ui_select_registered then
