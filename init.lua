@@ -61,7 +61,20 @@ require("lazy").setup({
   { "saadparwaiz1/cmp_luasnip" },
 
   -- Multiple cursors
-  { "terryma/vim-multiple-cursors" },
+  { "jake-stewart/multicursor.nvim",
+    branch = "1.0",
+    config = function()
+      local mc = require("multicursor-nvim")
+      mc.setup()
+      local set = vim.keymap.set
+      -- Select word under cursor / next instance (C-n)
+      set({"n", "x"}, "<C-n>", function() mc.matchAddCursor(1) end)
+      -- Skip current match, jump to next (C-x)
+      set({"n", "x"}, "<C-x>", function() mc.matchSkipCursor(1) end)
+      -- Jump back to previous selection and skip current (C-p)
+      set({"n", "x"}, "<C-p>", function() mc.matchSkipCursor(-1) end)
+    end,
+  },
 
   -- GLSL syntax
   { "tikhomirov/vim-glsl" },
