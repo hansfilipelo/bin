@@ -61,7 +61,101 @@ require("lazy").setup({
   { "saadparwaiz1/cmp_luasnip" },
 
   -- Multiple cursors
-  { "terryma/vim-multiple-cursors" },
+  {
+    "jake-stewart/multicursor.nvim",
+    branch = "1.0",
+    config = function()
+      local mc = require("multicursor-nvim")
+
+      mc.setup()
+
+      local function select_symbol_under_cursor()
+        local current = vim.fn.getline('.')
+        local col = vim.fn.col('.')
+        local char = current:sub(col, col)
+
+        if char == '' then
+          return false
+        end
+
+        local keyword = vim.fn.matchstr(char, [[\k]])
+        if keyword ~= '' then
+          vim.cmd.normal({ args = { 'viw' }, bang = true })
+          return true
+        end
+
+        vim.cmd.normal({ args = { 'v' }, bang = true })
+        return true
+      end
+
+      local function escape_search_text(text)
+        return text:gsub('\\', '\\\\')
+      end
+
+      local function get_selection_regex()
+        local visual_mode = vim.fn.visualmode()
+        if visual_mode == '' then
+          return nil
+        end
+
+        local selection = table.concat(vim.fn.getregion(
+          vim.fn.getpos("'<"),
+          vim.fn.getpos("'>"),
+          { type = visual_mode }
+        ), '\n')
+
+        if selection == '' then
+          return nil
+        end
+
+        local regex
+        if not selection:find('\n', 1, true) and vim.fn.match(selection, [[^\k\+$]]) ~= -1 then
+          regex = '\\v<\\C\\V' .. escape_search_text(selection) .. '\\v>'
+        else
+          regex = '\\C\\V' .. escape_search_text(selection)
+        end
+
+        return regex
+      end
+
+      local function all_matches_selected()
+        local regex = get_selection_regex()
+        if not regex then
+          return false
+        end
+
+        local search_count = vim.fn.searchcount({
+          pattern = regex,
+          maxcount = 0,
+          recompute = 1,
+        })
+
+        return search_count.total > 0 and mc.numCursors() >= search_count.total
+      end
+
+      vim.keymap.set({ 'n', 'x' }, '<C-n>', function()
+        if vim.api.nvim_get_mode().mode == 'n' then
+          if select_symbol_under_cursor() then
+            return
+          end
+        end
+        if all_matches_selected() then
+          return
+        end
+        mc.matchAddCursor(1)
+      end)
+      vim.keymap.set({ 'n', 'x' }, '<C-x>', function()
+        mc.matchSkipCursor(1)
+      end)
+      vim.keymap.set({ 'n', 'x' }, '<C-p>', function()
+        mc.matchAddCursor(-1)
+      end)
+
+      vim.keymap.set('n', '<C-LeftMouse>', mc.handleMouse)
+      vim.keymap.set('n', '<C-LeftDrag>', mc.handleMouseDrag)
+      vim.keymap.set('n', '<C-LeftRelease>', mc.handleMouseRelease)
+    end,
+  },
 
   -- GLSL syntax
   { "tikhomirov/vim-glsl" },
@@ -426,7 +520,7 @@ vim.g.Tex_Folding = 0
 vim.opt.iskeyword:append(':')
 
 -- FZF mappings
-vim.keymap.set({'n', 'i', 'v'}, '<C-p>', '<Cmd>FzfLua global<CR>')
+vim.keymap.set({'n', 'i'}, '<C-p>', '<Cmd>FzfLua global<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-g>', '<Cmd>FzfLua live_grep<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-h>', '<Cmd>FzfLua history<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-t>', '<Cmd>FzfLua tabs<CR>')
