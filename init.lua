@@ -426,7 +426,7 @@ vim.g.Tex_Folding = 0
 vim.opt.iskeyword:append(':')
 
 -- FZF mappings
-vim.keymap.set({'n', 'i', 'v'}, '<C-p>', '<Cmd>FzfLua global<CR>')
+vim.keymap.set({'n', 'i'}, '<C-p>', '<Cmd>FzfLua global<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-g>', '<Cmd>FzfLua live_grep<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-h>', '<Cmd>FzfLua history<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-t>', '<Cmd>FzfLua tabs<CR>')
