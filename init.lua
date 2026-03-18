@@ -286,8 +286,6 @@ vim.g.ale_linters = {
 }
 vim.g.ale_python_flake8_options = '--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
 vim.g.ale_python_pylint_options = '--disable=C0301 --max-line-length=80'
-vim.g.ale_open_list = 1
-vim.g.ale_list_window_size = 5
 vim.g.ale_sign_error   = '✗'
 vim.g.ale_sign_warning = '⚠'
 
