@@ -61,7 +61,12 @@ require("lazy").setup({
   { "saadparwaiz1/cmp_luasnip" },
 
   -- Multiple cursors
-  { "terryma/vim-multiple-cursors" },
+  {
+     "hansfilipelo/vim-multiple-cursors",
+     config = function()
+       require("multi-cursors").setup()
+     end,
+  },
 
   -- GLSL syntax
   { "tikhomirov/vim-glsl" },
