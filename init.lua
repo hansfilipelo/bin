@@ -1,6 +1,8 @@
 -- Leader key
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
+-- Colorscheme, some plugins are picky if it changes after load
+vim.cmd('colorscheme vim')
 
 -- Neovim configuration converted from .vimrc
 -- Bootstrap lazy.nvim
@@ -537,9 +539,6 @@ vim.api.nvim_create_autocmd("FileType", {
 
 -- Airline configuration
 vim.g.airline_section_z = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v/%03{col("$")-1}'
-
--- Colorscheme
-vim.cmd('colorscheme vim')
 
 -- Copilot
 vim.keymap.set('i', '<C-K>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, replace_keycodes = false })
