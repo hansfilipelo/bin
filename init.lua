@@ -156,6 +156,9 @@ local cmp = require('cmp')
 local luasnip = require('luasnip')
 cmp.setup({
   preselect = cmp.PreselectMode.Item,
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
+  },
   snippet = {
     expand = function(args) luasnip.lsp_expand(args.body) end,
   },
