@@ -269,7 +269,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Linting
 ----------------------------------------------------------------------------------
 -- ALE settings
--- Only run linters explicitly listed below; C/C++/Java use their own tooling.
+-- Only run linters explicitly listed below.
 vim.g.ale_linters_explicit = 1
 vim.g.ale_linters = {
   python   = { 'ruff' },
@@ -283,8 +283,8 @@ vim.g.ale_linters = {
   javascript = { 'eslint' },
   typescript = { 'eslint' },
   groovy   = { 'npm-groovy-lint' },
-  c        = {},
-  cpp      = {},
+  c        = { 'clangtidy' },
+  cpp      = { 'clangtidy' },
   java     = {},
 }
 vim.g.ale_python_ruff_options = '--line-length 80 --ignore E111,E114'
