@@ -45,9 +45,10 @@ require("lazy").setup({
           "gn-language-server",
           "groovyls",
           "jdtls",
-          "pyright",
           "ts_ls",
+          "ruff",
           "rust_analyzer",
+          "ty",
         },
         automatic_installation = true,
       })
@@ -192,20 +193,12 @@ vim.lsp.config('clangd', {
 })
 vim.lsp.enable('clangd')
 
-vim.lsp.config('pyright', {
+vim.lsp.config('ty', {
   capabilities = capabilities,
-  cmd = { 'pyright-langserver', '--stdio' },
+  cmd = { 'ty', 'server' },
   filetypes = { 'python' },
-  settings = {
-    python = {
-      analysis = {
-        autoSearchPaths = true,
-        useLibraryCodeForTypes = true,
-      },
-    },
-  },
 })
-vim.lsp.enable('pyright')
+vim.lsp.enable('ty')
 
 vim.lsp.config('jdtls', {
   capabilities = capabilities,
@@ -276,7 +269,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 -- Only run linters explicitly listed below; C/C++/Java use their own tooling.
 vim.g.ale_linters_explicit = 1
 vim.g.ale_linters = {
-  python   = { 'flake8', 'pylint' },
+  python   = { 'ruff' },
   sh       = { 'shellcheck' },
   bash     = { 'shellcheck' },
   zsh      = { 'shellcheck' },
@@ -291,8 +284,7 @@ vim.g.ale_linters = {
   cpp      = {},
   java     = {},
 }
-vim.g.ale_python_flake8_options = '--ignore=E501,E123,W504,W328,E111,E114 --max-line-length=80'
-vim.g.ale_python_pylint_options = '--disable=C0301 --max-line-length=80'
+vim.g.ale_python_ruff_options = '--line-length 80 --ignore E111,E114'
 vim.g.ale_sign_error   = '✗'
 vim.g.ale_sign_warning = '⚠'
 
