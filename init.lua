@@ -283,13 +283,36 @@ vim.g.ale_linters = {
   javascript = { 'eslint' },
   typescript = { 'eslint' },
   groovy   = { 'npm-groovy-lint' },
-  c        = { 'clangtidy' },
-  cpp      = { 'clangtidy' },
+  c        = {},
+  cpp      = {},
   java     = {},
 }
 vim.g.ale_python_ruff_options = '--line-length 80 --ignore E111,E114'
+
 vim.g.ale_sign_error   = '✗'
 vim.g.ale_sign_warning = '⚠'
+
+-- LSP diagnostics display (mirrors ALE sign style)
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '✗',
+      [vim.diagnostic.severity.WARN]  = '⚠',
+      [vim.diagnostic.severity.INFO]  = 'ℹ',
+      [vim.diagnostic.severity.HINT]  = '➤',
+    },
+  },
+  virtual_text = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+  float = { border = 'rounded', source = true },
+})
+-- Navigate diagnostics like ALE's ]a / [a
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next,  { desc = 'Next diagnostic' })
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,  { desc = 'Prev diagnostic' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Diagnostics to loclist' })
 
 -- Close the ALE location list when the linted buffer's window is closed
 vim.api.nvim_create_autocmd("WinClosed", {
