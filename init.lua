@@ -455,7 +455,7 @@ vim.keymap.set({'n', 'i'}, '<C-p>', '<Cmd>FzfLua global<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-g>', '<Cmd>FzfLua live_grep<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-h>', '<Cmd>FzfLua history<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-t>', '<Cmd>FzfLua tabs<CR>')
-vim.keymap.set({'n', 'i', 'v'}, '<C-i>', '<Cmd>FzfLua lsp_finder<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-i>', '<Cmd>FzfLua lsp_workspace_symbols<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-å>', '<Cmd>FzfLua lsp_references<CR>')
 
 -- FZF-lua setup
