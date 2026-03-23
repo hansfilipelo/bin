@@ -42,7 +42,7 @@ require("lazy").setup({
         ensure_installed = {
           "bashls",
           "clangd",
-          "gn-language-server",
+          "gn_language_server",
           "groovyls",
           "jdtls",
           "ts_ls",
@@ -224,12 +224,12 @@ vim.lsp.config('groovyls', {
 })
 vim.lsp.enable('groovyls')
 
-vim.lsp.config('gn', {
+vim.lsp.config('gn_language_server', {
   capabilities = capabilities,
   cmd = { 'gn-language-server' },
   filetypes = { 'gn' },
 })
-vim.lsp.enable('gn')
+vim.lsp.enable('gn_language_server')
 
 vim.lsp.config('ts_ls', {
   capabilities = capabilities,
