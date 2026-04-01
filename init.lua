@@ -70,6 +70,16 @@ require("lazy").setup({
        require("multi-cursors").setup()
      end,
   },
+  -- Snacks, many modern neovim plugins depend on this
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      input = {},
+      picker = { ui_select = false },
+    },
+  },
 
   -- GLSL syntax
   { "tikhomirov/vim-glsl" },
@@ -99,15 +109,14 @@ require("lazy").setup({
   { "junegunn/fzf", build = "./install --all" },
   {
     "ibhagwan/fzf-lua",
+    lazy = false,
     -- optional for icon support
     dependencies = { "nvim-tree/nvim-web-devicons" },
     -- or if using mini.icons/mini.nvim
     -- dependencies = { "nvim-mini/mini.icons" },
     ---@module "fzf-lua"
     ---@type fzf-lua.Config|{}
-    ---@diagnostic disable: missing-fields
-    opts = {}
-    ---@diagnostic enable: missing-fields
+    opts = { ui_select = true },
   },
 
   -- Tagbar
@@ -141,6 +150,42 @@ require("lazy").setup({
 
   -- Copilot
   { "github/copilot.vim" },
+
+  -- opencode
+  {
+    "sudo-tee/opencode.nvim",
+    config = function()
+      require("opencode").setup({
+        preferred_picker = 'fzf', -- 'telescope', 'fzf', 'mini.pick', 'snacks', 'select'
+        keymap = {
+          editor = {
+            ['<C-k>'] = { 'toggle' }, -- Open opencode. Close if opened
+            ['<C-q>'] = { 'quick_chat' }, -- Open opencode. Close if opened
+          }
+        },
+      })
+    end,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          anti_conceal = { enabled = false },
+          file_types = { 'markdown', 'opencode_output' },
+        },
+        ft = { 'markdown', 'Avante', 'copilot-chat', 'opencode_output' },
+      },
+      -- Optional, for file mentions and commands completion, pick only one
+      'saghen/blink.cmp',
+      -- 'hrsh7th/nvim-cmp',
+
+      -- Optional, for file mentions picker, pick only one
+      --'folke/snacks.nvim',
+      -- 'nvim-telescope/telescope.nvim',
+      'ibhagwan/fzf-lua',
+      -- 'nvim_mini/mini.nvim',
+    },
+  },
 
   -- Plenary (required for CopilotChat)
   { "nvim-lua/plenary.nvim" },
@@ -456,12 +501,6 @@ vim.keymap.set({'n', 'i', 'v'}, '<C-g>', '<Cmd>FzfLua live_grep<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-h>', '<Cmd>FzfLua history<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-t>', '<Cmd>FzfLua tabs<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-ö>', '<Cmd>FzfLua lsp_workspace_symbols<CR>')
-
--- FZF-lua setup
-if not vim.g.fzf_lua_ui_select_registered then
-  require('fzf-lua').register_ui_select()
-  vim.g.fzf_lua_ui_select_registered = true
-end
 
 -- Syntax highlighting for specific file types
 vim.api.nvim_create_autocmd("BufRead", {
