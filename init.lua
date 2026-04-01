@@ -518,7 +518,7 @@ vim.keymap.set({'n', 'i'}, '<C-p>', '<Cmd>FzfLua global<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-g>', '<Cmd>FzfLua live_grep<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-h>', '<Cmd>FzfLua history<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-t>', '<Cmd>FzfLua tabs<CR>')
-vim.keymap.set({'n', 'i', 'v'}, '<C-ö>', '<Cmd>FzfLua lsp_workspace_symbols<CR>')
+vim.keymap.set({'n', 'i', 'v'}, '<C-b>', '<Cmd>FzfLua lsp_workspace_symbols<CR>')
 
 -- Syntax highlighting for specific file types
 vim.api.nvim_create_autocmd("BufRead", {
