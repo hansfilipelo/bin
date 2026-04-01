@@ -242,10 +242,79 @@ vim.lsp.config('clangd', {
 })
 vim.lsp.enable('clangd')
 
+-- Auto-create a .venv from requirements.txt using uv.
+-- Returns the project root (directory containing requirements.txt) or nil.
+local _venv_creating = {}
+local function ensure_python_venv(bufnr)
+  local req = vim.fs.find('requirements.txt', {
+    upward = true,
+    path = vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr)),
+  })[1]
+  if not req then return nil end
+  local root = vim.fs.dirname(req)
+  local venv = root .. '/.venv'
+
+  if vim.uv.fs_stat(venv) then return root end
+  if _venv_creating[root] then return root end
+  _venv_creating[root] = true
+
+  vim.notify('Creating venv in ' .. root .. ' …', vim.log.levels.INFO)
+  vim.system(
+    { 'uv', 'venv', '--quiet', venv },
+    { text = true },
+    function(venv_result)
+      if venv_result.code ~= 0 then
+        vim.schedule(function()
+          vim.notify('uv venv failed: ' .. (venv_result.stderr or ''), vim.log.levels.ERROR)
+          _venv_creating[root] = nil
+        end)
+        return
+      end
+      vim.system(
+        { 'uv', 'pip', 'install', '--quiet', '-r', req },
+        { text = true, env = { VIRTUAL_ENV = venv } },
+        function(pip_result)
+          _venv_creating[root] = nil
+          vim.schedule(function()
+            if pip_result.code ~= 0 then
+              vim.notify('uv pip install failed: ' .. (pip_result.stderr or ''), vim.log.levels.ERROR)
+            else
+              vim.notify('venv ready: ' .. root, vim.log.levels.INFO)
+              -- Restart Python LSPs so they pick up the new venv
+              for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+                if client.name == 'ty' or client.name == 'ruff' then
+                  vim.cmd('LspRestart ' .. client.name)
+                end
+              end
+            end
+          end)
+        end
+      )
+    end
+  )
+  return root
+end
+
+local function python_root_dir(bufnr)
+  local req = vim.fs.find('requirements.txt', {
+    upward = true,
+    path = vim.fs.dirname(vim.api.nvim_buf_get_name(bufnr)),
+  })[1]
+  if req then return vim.fs.dirname(req) end
+  -- Fall back to common project markers
+  return vim.fs.root(bufnr, { '.git', 'pyproject.toml', 'setup.py', 'setup.cfg' })
+end
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'python',
+  callback = function(ev) ensure_python_venv(ev.buf) end,
+})
+
 vim.lsp.config('ty', {
   capabilities = capabilities,
   cmd = { 'ty', 'server' },
   filetypes = { 'python' },
+  root_dir = function(bufnr) return python_root_dir(bufnr) end,
 })
 vim.lsp.enable('ty')
 
@@ -300,6 +369,7 @@ vim.lsp.config('ruff', {
   capabilities = capabilities,
   cmd = { 'ruff', 'server' },
   filetypes = { 'python' },
+  root_dir = function(bufnr) return python_root_dir(bufnr) end,
   settings = {
     lineLength = 80,
     lint = {
