@@ -40,11 +40,15 @@ require("lazy").setup({
       require("mason-lspconfig").setup({
         -- mason-lspconfig uses lspconfig server names here.
         ensure_installed = {
+          "ansiblels",
           "bashls",
           "clangd",
+          "efm",
+          "eslint",
           "gn_language_server",
           "groovyls",
           "jdtls",
+          "jsonls",
           "ts_ls",
           "ruff",
           "rust_analyzer",
@@ -136,9 +140,6 @@ require("lazy").setup({
 
   -- Clang format
   { "rhysd/vim-clang-format" },
-
-  -- ALE (Asynchronous Lint Engine)
-  { "dense-analysis/ale" },
 
   -- Jsonnet
   { "google/vim-jsonnet" },
@@ -295,6 +296,71 @@ vim.lsp.config('rust_analyzer', {
 })
 vim.lsp.enable('rust_analyzer')
 
+vim.lsp.config('ruff', {
+  capabilities = capabilities,
+  cmd = { 'ruff', 'server' },
+  filetypes = { 'python' },
+  settings = {
+    lineLength = 80,
+    lint = {
+      ignore = { "E111", "E114" },
+    },
+  },
+  on_attach = function(client)
+    -- Disable hover in favor of ty
+    client.server_capabilities.hoverProvider = false
+  end,
+})
+vim.lsp.enable('ruff')
+
+vim.lsp.config('eslint', {
+  capabilities = capabilities,
+  cmd = { 'vscode-eslint-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+})
+vim.lsp.enable('eslint')
+
+vim.lsp.config('jsonls', {
+  capabilities = capabilities,
+  cmd = { 'vscode-json-language-server', '--stdio' },
+  filetypes = { 'json', 'jsonc' },
+})
+vim.lsp.enable('jsonls')
+
+vim.lsp.config('ansiblels', {
+  capabilities = capabilities,
+  cmd = { 'ansible-language-server', '--stdio' },
+  filetypes = { 'yaml.ansible' },
+})
+vim.lsp.enable('ansiblels')
+
+vim.lsp.config('efm', {
+  capabilities = capabilities,
+  cmd = { 'efm-langserver' },
+  filetypes = { 'markdown', 'jinja' },
+  init_options = { documentFormatting = false },
+  settings = {
+    rootMarkers = { '.git/' },
+    languages = {
+      markdown = {
+        {
+          lintCommand = 'markdownlint -s',
+          lintStdin = true,
+          lintFormats = { 'stdin:%l %m', 'stdin:%l:%c %m' },
+        },
+      },
+      jinja = {
+        {
+          lintCommand = 'djlint --linter-output-format "{line}:{col}: {code} {message}" --lint -',
+          lintStdin = true,
+          lintFormats = { '%l:%c: %m' },
+        },
+      },
+    },
+  },
+})
+vim.lsp.enable('efm')
+
 -- Apply cmp-nvim-lsp capabilities to all servers globally.
 -- vim.lsp.config('*', { capabilities = require('cmp_nvim_lsp').default_capabilities() })
 
@@ -313,31 +379,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 })
 -- Linting
 ----------------------------------------------------------------------------------
--- ALE settings
--- Only run linters explicitly listed below.
-vim.g.ale_linters_explicit = 1
-vim.g.ale_linters = {
-  python   = { 'ruff' },
-  sh       = { 'shellcheck' },
-  bash     = { 'shellcheck' },
-  zsh      = { 'shellcheck' },
-  ansible  = { 'ansible-lint' },
-  markdown = { 'markdownlint' },
-  jinja    = { 'djlint' },
-  json     = { 'jsonlint' },
-  javascript = { 'eslint' },
-  typescript = { 'eslint' },
-  groovy   = { 'npm-groovy-lint' },
-  c        = {},
-  cpp      = {},
-  java     = {},
-}
-vim.g.ale_python_ruff_options = '--line-length 80 --ignore E111,E114'
-
-vim.g.ale_sign_error   = '✗'
-vim.g.ale_sign_warning = '⚠'
-
--- LSP diagnostics display (mirrors ALE sign style)
+-- LSP diagnostics display, mirros how ALE shows diagnostics
 vim.diagnostic.config({
   signs = {
     text = {
@@ -353,35 +395,11 @@ vim.diagnostic.config({
   severity_sort = true,
   float = { border = 'rounded', source = true },
 })
--- Navigate diagnostics like ALE's ]a / [a
+-- Navigate diagnostics
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next,  { desc = 'Next diagnostic' })
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,  { desc = 'Prev diagnostic' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Diagnostics to loclist' })
-
--- Close the ALE location list when the linted buffer's window is closed
-vim.api.nvim_create_autocmd("WinClosed", {
-  callback = function(ev)
-    local closed_win = tonumber(ev.match)
-    -- Identify associated loclist windows synchronously, while the relationship is still intact
-    local to_close = {}
-    for _, info in ipairs(vim.fn.getwininfo()) do
-      if info.loclist == 1 then
-        local loc = vim.fn.getloclist(info.winid, { filewinid = 0 })
-        if loc.filewinid == closed_win then
-          table.insert(to_close, info.winid)
-        end
-      end
-    end
-    vim.schedule(function()
-      for _, win in ipairs(to_close) do
-        if vim.api.nvim_win_is_valid(win) then
-          pcall(vim.api.nvim_win_close, win, true)
-        end
-      end
-    end)
-  end,
-})
 
 -- Basic settings
 --------------------------------------------------------
