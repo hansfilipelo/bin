@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+    cat <<EOF
+Usage: $(basename "$0") [OPTIONS] <iso-file> <disk>
+
+Create a bootable USB drive from a Linux ISO file on macOS.
+
+Arguments:
+  iso-file    Path to the .iso file
+  disk        Target disk device (e.g. /dev/disk2)
+
+Options:
+  -h, --help  Show this help message and exit
+
+Steps performed:
+  1. Convert .iso to .img.dmg via hdiutil
+  2. Unmount the target disk
+  3. Write the image to the disk via dd
+EOF
+}
+
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -h|--help)
+            usage
+            exit 0
+            ;;
+        -*)
+            echo "Error: unknown option '$1'" >&2
+            echo >&2
+            usage >&2
+            exit 1
+            ;;
+        *)
+            break
+            ;;
+    esac
+done
+
+if [[ $# -ne 2 ]]; then
+    echo "Error: expected 2 arguments, got $#" >&2
+    echo >&2
+    usage >&2
+    exit 1
+fi
+
+iso_file="$1"
+disk="$2"
+
+if [[ ! -f "$iso_file" ]]; then
+    echo "Error: iso file '$iso_file' not found" >&2
+    exit 1
+fi
+
+if [[ ! -e "$disk" ]]; then
+    echo "Error: disk '$disk' does not exist" >&2
+    exit 1
+fi
+
+img_file="$(mktemp -t bootable-usb.XXXXXX).dmg"
+trap 'rm -f "$img_file"' EXIT
+
+echo "==> Converting '$iso_file' to '$img_file'..."
+hdiutil convert -format UDRW -o "${img_file%.dmg}" "$iso_file"
+
+echo "==> Unmounting '$disk'..."
+diskutil unmountDisk "$disk"
+
+echo "==> Writing '$img_file' to '$disk' (requires sudo)..."
+sudo dd if="$img_file" of="$disk" bs=1m
+
+echo "==> Done! You can now eject '$disk'."
