@@ -58,6 +58,17 @@ require("lazy").setup({
       })
     end,
   },
+  -- mason-tool-installer: auto-install non-LSP tools (linters, formatters)
+  { "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          "shellcheck",
+        },
+      })
+    end,
+  },
 
   -- Completion engine
   { "hrsh7th/nvim-cmp" },
