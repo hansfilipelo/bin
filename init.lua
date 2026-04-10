@@ -51,6 +51,7 @@ require("lazy").setup({
           "ts_ls",
           "ruff",
           "rust_analyzer",
+          "starpls",
           "ty",
         },
         automatic_installation = true,
@@ -428,6 +429,14 @@ vim.lsp.config('jsonnet_ls', {
   filetypes = { 'jsonnet', 'libsonnet' },
 })
 vim.lsp.enable('jsonnet_ls')
+
+-- StarLSP for starlark (bazel) files
+vim.lsp.config('starpls', {
+  capabilities = capabilities,
+  cmd = { 'starpls' },
+  filetypes = { 'star', 'bzl', 'BUILD' },
+})
+vim.lsp.enable('starpls')
 
 -- Apply cmp-nvim-lsp capabilities to all servers globally.
 -- vim.lsp.config('*', { capabilities = require('cmp_nvim_lsp').default_capabilities() })
