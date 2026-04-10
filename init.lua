@@ -94,29 +94,11 @@ require("lazy").setup({
     },
   },
 
-  -- GLSL syntax
-  { "tikhomirov/vim-glsl" },
-
-  -- Indent guides
-  { "nathanaelkane/vim-indent-guides" },
-
   -- Airline
   { "vim-airline/vim-airline" },
 
   -- NERDTree
   { "scrooloose/nerdtree" },
-
-  -- Rust support
-  { "rust-lang/rust.vim" },
-
-  -- Tabline
-  { "mkitt/tabline.vim" },
-
-  -- NERDCommenter
-  { "scrooloose/nerdcommenter" },
-
-  -- Case convert
-  { "chiedo/vim-case-convert" },
 
   -- FZF
   { "junegunn/fzf", build = "./install --all" },
@@ -132,31 +114,8 @@ require("lazy").setup({
     opts = { ui_select = true },
   },
 
-  -- Tagbar
-  { "majutsushi/tagbar" },
-
-  -- Semantic highlight
-  { "jaxbot/semantic-highlight.vim" },
-
   -- Rename
   { "danro/rename.vim" },
-
-  -- Vimproc
-  { "Shougo/vimproc.vim", build = "make" },
-
-  -- nvim-yarp
-  { "roxma/nvim-yarp" },
-
-  -- Clang format
-  { "rhysd/vim-clang-format" },
-
-  -- Jsonnet
-  { "google/vim-jsonnet" },
-
-  -- GN (Google build tool)
-  { "https://gn.googlesource.com/gn", dir = vim.fn.stdpath("data") .. "/lazy/gn", config = function()
-    vim.opt.rtp:append(vim.fn.stdpath("data") .. "/lazy/gn/misc/vim")
-  end },
 
   -- Copilot
   { "github/copilot.vim" },
@@ -196,12 +155,6 @@ require("lazy").setup({
       -- 'nvim_mini/mini.nvim',
     },
   },
-
-  -- Plenary (required for CopilotChat)
-  { "nvim-lua/plenary.nvim" },
-
-  -- Starlark
-  { "cappyzawa/starlark.vim" },
 })
 
 -- LSP/autocomplete
@@ -393,7 +346,7 @@ vim.lsp.config('rust_analyzer', {
   filetypes = { 'rust' },
   settings = {
     ['rust-analyzer'] = {
-      checkOnSave = { command = 'clippy' },
+      check = { command = 'clippy' },
     },
   },
 })
