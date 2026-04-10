@@ -47,6 +47,7 @@ require("lazy").setup({
           "groovyls",
           "jdtls",
           "jsonls",
+          "jsonnet_ls",
           "ts_ls",
           "ruff",
           "rust_analyzer",
@@ -116,6 +117,9 @@ require("lazy").setup({
 
   -- Rename
   { "danro/rename.vim" },
+
+  -- Jsonnet syntax
+  { "google/vim-jsonnet" },
 
   -- Copilot
   { "github/copilot.vim" },
@@ -417,6 +421,13 @@ vim.lsp.config('efm', {
   },
 })
 vim.lsp.enable('efm')
+
+vim.lsp.config('jsonnet_ls', {
+  capabilities = capabilities,
+  cmd = { 'jsonnet-language-server' },
+  filetypes = { 'jsonnet', 'libsonnet' },
+})
+vim.lsp.enable('jsonnet_ls')
 
 -- Apply cmp-nvim-lsp capabilities to all servers globally.
 -- vim.lsp.config('*', { capabilities = require('cmp_nvim_lsp').default_capabilities() })
