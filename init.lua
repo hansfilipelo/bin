@@ -42,6 +42,7 @@ require("lazy").setup({
           "clangd",
           "efm",
           "eslint",
+          "glsl_analyzer",
           "gn_language_server",
           "groovyls",
           "jdtls",
@@ -364,6 +365,13 @@ vim.lsp.config('groovyls', {
   filetypes = { 'groovy' },
 })
 vim.lsp.enable('groovyls')
+
+vim.lsp.config('glsl_analyzer', {
+  capabilities = capabilities,
+  cmd = { 'glsl_analyzer' },
+  filetypes = { 'glsl', 'vert', 'frag', 'geom', 'comp', 'tesc', 'tese' },
+})
+vim.lsp.enable('glsl_analyzer')
 
 vim.lsp.config('gn_language_server', {
   capabilities = capabilities,
