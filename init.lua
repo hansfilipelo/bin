@@ -99,8 +99,54 @@ require("lazy").setup({
   -- Airline
   { "vim-airline/vim-airline" },
 
-  -- NERDTree
-  { "scrooloose/nerdtree" },
+  -- Neo-tree
+  { "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
+    },
+    config = function()
+      require("neo-tree").setup({
+        sources = {
+          "filesystem",
+          "buffers",
+          "git_status",
+          "document_symbols",
+        },
+      })
+    end,
+  },
+  {
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neo-tree/neo-tree.nvim", -- makes sure that this loads after Neo-tree.
+    },
+    config = function()
+      require("lsp-file-operations").setup()
+    end,
+  },
+  {
+    "s1n7ax/nvim-window-picker",
+    version = "2.*",
+    config = function()
+      require("window-picker").setup({
+        filter_rules = {
+          include_current_win = false,
+          autoselect_one = true,
+          -- filter using buffer options
+          bo = {
+            -- if the file type is one of following, the window will be ignored
+            filetype = { "neo-tree", "neo-tree-popup", "notify" },
+            -- if the buffer type is one of following, the window will be ignored
+            buftype = { "terminal", "quickfix" },
+          },
+        },
+      })
+    end,
+  },
 
   -- FZF
   { "junegunn/fzf", build = "./install --all" },
@@ -524,19 +570,13 @@ function ToggleMouse()
 end
 vim.keymap.set('n', '<C-l>', ':lua ToggleMouse()<CR>')
 
--- NerdTree Toggle
-vim.keymap.set('n', '<C-m>', ':NERDTreeFind<CR>')
-
--- C/C++ indentation
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.cc", "*.h", "*.hpp", "*.cpp", "*.c" },
-  callback = function()
-    vim.opt_local.cinoptions = "(0,W4"
-  end
-})
+-- Neo-tree: reveal current file
+vim.keymap.set('n', '<C-m>', ':Neotree<CR>')
+-- Neo-tree: document_symbols
+vim.keymap.set('n', '<C-a>', ':Neotree document_symbols<CR>')
 
 -- Save with git cl format on Ctrl+S
-vim.keymap.set('n', '<C-S>', ':w<CR>:!git cl format --upstream HEAD<CR>:e<CR>', { silent = true })
+vim.keymap.set('n', '<C-s>', ':w<CR>:!git cl format --upstream HEAD<CR>:e<CR>', { silent = true })
 
 -- Pretty print json
 vim.keymap.set('n', '<C-j>', ':%!python3 -m json.tool<CR>')
