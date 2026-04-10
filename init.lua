@@ -21,9 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugin setup
 require("lazy").setup({
-  -- A.vim - Alternate files quickly
-  { "vim-scripts/a.vim" },
-
   -- LSP
   { "neovim/nvim-lspconfig" },
 
@@ -252,6 +249,24 @@ vim.lsp.config('clangd', {
   end,
 })
 vim.lsp.enable('clangd')
+
+-- Alternate file commands (replaces a.vim) using clangd's switch source/header
+local function switch_source_header(pre_cmd)
+  local params = { uri = vim.uri_from_bufnr(0) }
+  vim.lsp.buf_request(0, 'textDocument/switchSourceHeader', params, function(err, uri)
+    if err or not uri or uri == '' then
+      vim.notify('No alternate file found', vim.log.levels.WARN)
+      return
+    end
+    if pre_cmd then vim.cmd(pre_cmd) end
+    vim.cmd('edit ' .. vim.uri_to_fname(uri))
+  end)
+end
+
+vim.api.nvim_create_user_command('A',  function() switch_source_header() end, {})
+vim.api.nvim_create_user_command('AS', function() switch_source_header('split') end, {})
+vim.api.nvim_create_user_command('AV', function() switch_source_header('vsplit') end, {})
+vim.api.nvim_create_user_command('AT', function() switch_source_header('tabnew') end, {})
 
 -- Auto-create a .venv from requirements.txt using uv.
 -- Returns the project root (directory containing requirements.txt) or nil.
