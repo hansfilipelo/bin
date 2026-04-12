@@ -571,7 +571,7 @@ end
 vim.keymap.set('n', '<C-l>', ':lua ToggleMouse()<CR>')
 
 -- Neo-tree: reveal current file
-vim.keymap.set('n', '<C-m>', ':Neotree<CR>')
+vim.keymap.set('n', '<C-m>', ':Neotree reveal<CR>')
 -- Neo-tree: document_symbols
 vim.keymap.set('n', '<C-a>', ':Neotree document_symbols<CR>')
 
