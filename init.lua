@@ -73,6 +73,7 @@ require("lazy").setup({
       require("mason-tool-installer").setup({
         ensure_installed = {
           "shellcheck",
+          "tree-sitter-cli",
         },
       })
     end,
@@ -94,6 +95,16 @@ require("lazy").setup({
       input = {},
       picker = { ui_select = false },
     },
+  },
+
+  -- Treesitter for some syntax highlighting where LSPs don't support it
+  {
+    'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    build = ':TSUpdate',
+    config = function()
+      require('nvim-treesitter').install { 'gn', 'starlark' }
+    end,
   },
 
   -- Airline
@@ -638,6 +649,11 @@ vim.keymap.set({'n', 'i', 'v'}, '<C-t>', '<Cmd>FzfLua tabs<CR>')
 vim.keymap.set({'n', 'i', 'v'}, '<C-b>', '<Cmd>FzfLua lsp_workspace_symbols<CR>')
 
 -- Syntax highlighting for specific file types
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'gn', 'starlark' },
+  callback = function() vim.treesitter.start() end,
+})
+
 vim.api.nvim_create_autocmd("BufRead", {
   pattern = { "*.fp", "*.vp", "*.gp", "*.sp", "*.hlsl" },
   callback = function()
