@@ -594,7 +594,8 @@ vim.keymap.set('n', '<C-j>', ':%!python3 -m json.tool<CR>')
 vim.api.nvim_create_user_command('PrettyJson', '%!python3 -m json.tool', {})
 
 -- Easy comment toggle
-vim.keymap.set({'n', 'v'}, '<C-Space>', 'v<leader>c<Space>', { remap = true })
+vim.keymap.set('n', '<C-Space>', 'gcc', { remap = true })
+vim.keymap.set('v', '<C-Space>', 'gc', { remap = true })
 
 -- Yank current file path to clipboard
 vim.keymap.set('n', 'ä', ':let @" = expand("%")<CR>')
