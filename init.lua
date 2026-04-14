@@ -535,6 +535,16 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,  { desc = 'Prev diagnostic' 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Diagnostics to loclist' })
 
+-- Chromium Mojo is not available in nvim-treesitter
+local mojom_paths = { 'chromium/src/tools/vim/mojom', 'tools/vim/mojom' }
+for _, mojom_path in ipairs(mojom_paths) do
+  if vim.fn.isdirectory(mojom_path) == 1 then
+    vim.opt.runtimepath:append(mojom_path)
+    break
+  end
+end
+vim.filetype.add({ extension = { mojom = 'mojom' } })
+
 -- Basic settings
 --------------------------------------------------------
 vim.opt.fileencodings = "ucs-bom,utf-8,latin1"
