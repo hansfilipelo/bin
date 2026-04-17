@@ -608,7 +608,7 @@ vim.keymap.set('n', '<C-Space>', 'gcc', { remap = true })
 vim.keymap.set('v', '<C-Space>', 'gc', { remap = true })
 
 -- Yank current file path to clipboard
-vim.keymap.set('n', 'ä', ':let @" = expand("%")<CR>')
+vim.keymap.set('n', 'ä', ':let @" = expand("%") | echo @"<CR>')
 
 -- Python/pep8 settings to not have 2 spaces as default for python
 vim.api.nvim_create_autocmd("FileType", {
