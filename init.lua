@@ -505,7 +505,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local opts = { buffer = ev.buf }
     vim.keymap.set('n', 'gd',    vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'gi',    vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-d>', vim.lsp.buf.definition, opts)
+    -- vim.keymap.set('n', '<C-d>', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', '<C-f>', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', 'K',     vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gr',    vim.lsp.buf.references, opts)
@@ -593,7 +593,7 @@ end
 vim.keymap.set('n', '<C-l>', ':lua ToggleMouse()<CR>')
 
 -- Neo-tree: reveal current file
-vim.keymap.set('n', '<C-m>', ':Neotree reveal<CR>')
+vim.keymap.set('n', '<C-d>', ':Neotree reveal<CR>')
 -- Neo-tree: document_symbols
 vim.keymap.set('n', '<C-a>', ':Neotree document_symbols<CR>')
 
