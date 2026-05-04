@@ -207,8 +207,9 @@ require("lazy").setup({
         ft = { 'opencode_output' },
       },
       -- Optional, for file mentions and commands completion, pick only one
-      'saghen/blink.cmp',
-      -- 'hrsh7th/nvim-cmp',
+      -- 'saghen/blink.lib',
+      -- 'saghen/blink.cmp',
+      'hrsh7th/nvim-cmp',
 
       -- Optional, for file mentions picker, pick only one
       --'folke/snacks.nvim',
