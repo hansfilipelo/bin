@@ -126,6 +126,17 @@ require("lazy").setup({
           "git_status",
           "document_symbols",
         },
+        filesystem = {
+          follow_current_file = {
+            enabled = true,
+            leave_dirs_open = false,
+          },
+          hijack_netrw_behavior = "open_current",
+          cwd_target = {
+            sidebar = "none",
+            current = "none",
+          },
+        },
       })
     end,
   },
