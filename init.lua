@@ -188,6 +188,9 @@ require("lazy").setup({
     config = function()
       require("opencode").setup({
         preferred_picker = 'fzf', -- 'telescope', 'fzf', 'mini.pick', 'snacks', 'select'
+        quick_chat = {
+          default_model = 'github-copilot/claude-sonnet-4.6',
+        },
         keymap = {
           editor = {
             ['<C-k>'] = { 'toggle' }, -- Open opencode. Close if opened
