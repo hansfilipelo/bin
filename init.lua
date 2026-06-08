@@ -200,7 +200,7 @@ require("lazy").setup({
       require("opencode").setup({
         preferred_picker = 'fzf', -- 'telescope', 'fzf', 'mini.pick', 'snacks', 'select'
         quick_chat = {
-          default_model = 'github-copilot/claude-sonnet-4.6',
+          default_model = 'github-copilot/gpt-5.3-codex',
         },
         keymap = {
           editor = {
