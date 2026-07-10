@@ -21,6 +21,11 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugin setup
 require("lazy").setup({
+  -- Colorscheme
+  --{ 'ellisonleao/gruvbox.nvim' },
+  -- { "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = {
+  --  terminal_colors = true
+  -- }},
   -- Completion engine
   { "hrsh7th/nvim-cmp" },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -103,7 +108,7 @@ require("lazy").setup({
     lazy = false,
     build = ':TSUpdate',
     config = function()
-      require('nvim-treesitter').install { 'gn', 'starlark' }
+      require('nvim-treesitter').install { 'gn', 'starlark', 'markdown', 'markdown_inline' }
     end,
   },
 
@@ -214,11 +219,18 @@ require("lazy").setup({
       "nvim-lua/plenary.nvim",
       {
         "MeanderingProgrammer/render-markdown.nvim",
+            dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-mini/mini.nvim', 'https://github.com/nvim-mini/mini.icons', },            -- if you use the mini.nvim suite
         opts = {
-          anti_conceal = { enabled = false },
+          anti_conceal = { enabled = true },
           file_types = { 'opencode_output' },
+          -- Fallback for terminals without Nerd Font (e.g. macOS Terminal)
+          -- heading = { icons = { '# ', '## ', '### ', '#### ', '##### ', '###### ' } },
+          -- bullet = { icons = { '-', '-', '-', '-' } },
+          -- checkbox = { unchecked = { icon = '[ ]' }, checked = { icon = '[x]' } },
+          -- dash = { icon = '-' },
+          -- code = { border = 'thin', left_pad = 1, right_pad = 1 },
         },
-        ft = { 'opencode_output' },
+        ft = { 'markdown', 'Avante', 'copilot-chat', 'opencode_output' },
       },
       -- Optional, for file mentions and commands completion, pick only one
       -- 'saghen/blink.lib',
@@ -569,6 +581,14 @@ vim.opt.completeopt = "noinsert,menuone,noinsert,popup"
 
 -- Syntax highlighting
 vim.cmd('syntax on')
+vim.opt.termguicolors = true
+vim.opt.conceallevel = 0
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown" },
+  callback = function()
+    vim.opt_local.conceallevel = 2
+  end,
+})
 
 -- Numbered lines and highlight searches
 vim.opt.number = true
@@ -643,7 +663,8 @@ vim.g.pyindent_open_paren = '&sw'
 vim.opt.autoread = true
 
 -- Remove trailing whitespace from files on save
-local blacklist = { 'mkd', 'md', 'cc', 'h', 'hpp', 'cpp', 'c' }
+-- local blacklist = { 'mkd', 'md', 'cc', 'h', 'hpp', 'cpp', 'c' }
+local blacklist = {  }
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function()
@@ -677,8 +698,12 @@ vim.keymap.set({'n', 'i', 'v'}, '<C-b>', '<Cmd>FzfLua lsp_workspace_symbols<CR>'
 -- Syntax highlighting for specific file types
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'gn', 'starlark' },
-  callback = function() vim.treesitter.start() end,
+  callback = function()
+    vim.treesitter.start()
+    vim.bo.commentstring = '# %s'
+  end,
 })
+vim.filetype.add({ extension = { gni = 'gn' } })
 
 vim.api.nvim_create_autocmd("BufRead", {
   pattern = { "*.fp", "*.vp", "*.gp", "*.sp", "*.hlsl" },
