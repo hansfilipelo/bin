@@ -186,7 +186,7 @@ require("lazy").setup({
     -- dependencies = { "nvim-mini/mini.icons" },
     ---@module "fzf-lua"
     ---@type fzf-lua.Config|{}
-    opts = { ui_select = true },
+    opts = { ui_select = {} },
   },
 
   -- Rename

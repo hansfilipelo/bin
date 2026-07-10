@@ -9,7 +9,12 @@ mkdir -p "$sessions_dir"
 # Start a background nvim server the first time a session is opened in this
 # folder. Subsequent invocations just attach a UI to the existing server.
 if ! nvim --server "$socket" --remote-expr '1' &>/dev/null; then
-  setsid uv run --with neovim-remote --with pyright --with salt-lint --with flake8 --with pylint --no-project \
+  # macOS (BSD userland) has no `setsid` binary, unlike Linux. Use Python's
+  # os.setsid() (via the uv-managed interpreter, so no extra dependency is
+  # needed) to detach into a new session, then exec into nvim so it replaces
+  # the python process and keeps the same PID.
+  uv run --with neovim-remote --with pyright --with salt-lint --with flake8 --with pylint --no-project \
+    python3 -c 'import os, sys; os.setsid(); os.execvp(sys.argv[1], sys.argv[1:])' \
     nvim --listen "$socket" &>/dev/null </dev/null &
   disown
 
