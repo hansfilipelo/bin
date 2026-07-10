@@ -13,15 +13,21 @@ if ! nvim --server "$socket" --remote-expr '1' &>/dev/null; then
   # os.setsid() (via the uv-managed interpreter, so no extra dependency is
   # needed) to detach into a new session, then exec into nvim so it replaces
   # the python process and keeps the same PID.
+  # -p opens each file argument (if any) in its own tab.
   uv run --with neovim-remote --with pyright --with salt-lint --with flake8 --with pylint --no-project \
     python3 -c 'import os, sys; os.setsid(); os.execvp(sys.argv[1], sys.argv[1:])' \
-    nvim --listen "$socket" &>/dev/null </dev/null &
+    nvim --listen "$socket" -p "$@" &>/dev/null </dev/null &
   disown
 
   # Wait for the server socket to come up before attaching.
   for _ in $(seq 1 50); do
     [ -S "$socket" ] && break
     sleep 0.1
+  done
+else
+  # Server already running: open each requested file in a new tab.
+  for file in "$@"; do
+    nvim --server "$socket" --remote-tab "$file" &>/dev/null
   done
 fi
 
