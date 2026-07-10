@@ -2,6 +2,11 @@
 vim.g.mapleader = ","
 vim.g.maplocalleader = ","
 -- Colorscheme, some plugins are picky if it changes after load
+-- Explicitly set 'background', since headless servers (e.g. `nvim --listen`,
+-- used for detach/reattach sessions) have no TTY to auto-detect it from and
+-- default to 'dark', which makes the built-in `vim` colorscheme use pure
+-- yellow instead of the light-background brown for LineNr/Statement/etc.
+vim.o.background = 'light'
 vim.cmd('colorscheme vim')
 
 -- Neovim configuration converted from .vimrc
