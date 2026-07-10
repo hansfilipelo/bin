@@ -586,7 +586,10 @@ vim.opt.completeopt = "noinsert,menuone,noinsert,popup"
 
 -- Syntax highlighting
 vim.cmd('syntax on')
-vim.opt.termguicolors = true
+-- Keep termguicolors off so nvim uses the terminal's ANSI palette (defined in
+-- the Ghostty theme) instead of the colorscheme's hardcoded GUI hex colors.
+-- This way color/contrast tweaks only need to happen in one place.
+vim.opt.termguicolors = false
 vim.opt.conceallevel = 0
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown" },
