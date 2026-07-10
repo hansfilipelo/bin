@@ -1,12 +1,27 @@
 #!/bin/bash
 
 readonly folder_name="$(realpath . |tr '/' '_')"
-readonly session_name="nvim$folder_name"
+readonly sessions_dir="$HOME/.nvim-sessions"
+readonly socket="$sessions_dir/$folder_name.sock"
 
-abduco |grep "$session_name\$"
-if [ $? -ne 0 ]; then
-  abduco -e "^u" -c "$session_name" uv run --with neovim-remote --with pyright --with salt-lint --with flake8 --with pylint --no-project nvim
-else
-  abduco -e "^u" -a "$session_name"
+mkdir -p "$sessions_dir"
+
+# Start a background nvim server the first time a session is opened in this
+# folder. Subsequent invocations just attach a UI to the existing server.
+if ! nvim --server "$socket" --remote-expr '1' &>/dev/null; then
+  setsid uv run --with neovim-remote --with pyright --with salt-lint --with flake8 --with pylint --no-project \
+    nvim --listen "$socket" &>/dev/null </dev/null &
+  disown
+
+  # Wait for the server socket to come up before attaching.
+  for _ in $(seq 1 50); do
+    [ -S "$socket" ] && break
+    sleep 0.1
+  done
 fi
+
+# Attach a UI to the (possibly newly spawned) server. Closing this terminal
+# detaches the UI without killing the background nvim server; only quitting
+# from within nvim (:qa) stops the session.
+exec nvim --server "$socket" --remote-ui
 
