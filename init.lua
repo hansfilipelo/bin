@@ -235,7 +235,7 @@ require("lazy").setup({
           -- dash = { icon = '-' },
           -- code = { border = 'thin', left_pad = 1, right_pad = 1 },
         },
-        ft = { 'markdown', 'Avante', 'copilot-chat', 'opencode_output' },
+        ft = { 'Avante', 'copilot-chat', 'opencode_output' },
       },
       -- Optional, for file mentions and commands completion, pick only one
       -- 'saghen/blink.lib',
@@ -591,12 +591,6 @@ vim.cmd('syntax on')
 -- This way color/contrast tweaks only need to happen in one place.
 vim.opt.termguicolors = false
 vim.opt.conceallevel = 0
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "markdown" },
-  callback = function()
-    vim.opt_local.conceallevel = 2
-  end,
-})
 
 -- Numbered lines and highlight searches
 vim.opt.number = true
