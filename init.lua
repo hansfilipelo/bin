@@ -12,7 +12,7 @@ vim.cmd('colorscheme vim')
 -- Neovim configuration converted from .vimrc
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -72,7 +72,6 @@ require("lazy").setup({
           "starpls",
           "ty",
         },
-        automatic_installation = true,
       })
     end,
   },
@@ -562,8 +561,8 @@ vim.diagnostic.config({
   float = { border = 'rounded', source = true },
 })
 -- Navigate diagnostics
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next,  { desc = 'Next diagnostic' })
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,  { desc = 'Prev diagnostic' })
+vim.keymap.set('n', ']d', function() vim.diagnostic.jump({ count = 1, float = true }) end,  { desc = 'Next diagnostic' })
+vim.keymap.set('n', '[d', function() vim.diagnostic.jump({ count = -1, float = true }) end, { desc = 'Prev diagnostic' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Diagnostics to loclist' })
 
@@ -581,8 +580,9 @@ vim.filetype.add({ extension = { mojom = 'mojom' } })
 --------------------------------------------------------
 vim.opt.fileencodings = "ucs-bom,utf-8,latin1"
 
--- Completion options
-vim.opt.completeopt = "noinsert,menuone,noinsert,popup"
+-- Completion options for built-in completion (<C-n>, <C-x><C-o>, ...).
+-- nvim-cmp uses its own completion.completeopt above.
+vim.opt.completeopt = "menuone,noinsert,popup"
 
 -- Syntax highlighting
 vim.cmd('syntax on')
