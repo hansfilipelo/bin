@@ -199,8 +199,37 @@ require("lazy").setup({
   -- Jsonnet syntax
   { "google/vim-jsonnet" },
 
-  -- Copilot
-  { "github/copilot.vim" },
+  -- Local LLM code completion (Copilot replacement) via llama.cpp FIM.
+  -- Needs a running server: `llama-server --fim-qwen-3b-default`
+  -- (listens on 127.0.0.1:8012). Ghost text is independent of LSP/nvim-cmp.
+  -- All keys are insert mode and only active while a suggestion is shown.
+  -- Alt+letter is used since [ ] are awkward on a Swedish layout, and
+  -- llama.vim's <leader>/<Tab>/<S-Tab>/<C-L>/<C-H>/<Esc> defaults would
+  -- clash with ',' typing, nvim-cmp, backspace and existing mappings.
+  {
+    "ggml-org/llama.vim",
+    init = function()
+      vim.g.llama_config = {
+        endpoint_fim           = "http://127.0.0.1:8012/infill",
+        show_info              = 0,
+        keymap_fim_trigger     = "<M-c>",  -- manually request a completion
+        keymap_fim_accept_full = "<C-K>",  -- accept all (same as Copilot was)
+        keymap_fim_accept_line = "<M-k>",  -- accept first line
+        keymap_fim_accept_word = "<M-w>",  -- accept next word
+        keymap_fim_next        = "<M-n>",  -- cycle to next suggestion
+        keymap_fim_prev        = "<M-p>",  -- cycle to previous suggestion
+        -- Instruction-editing mode is disabled: FIM models aren't chat models
+        -- (use Claude Code for that), and its defaults map <Tab>/<Esc>
+        -- globally in normal mode.
+        keymap_inst_trigger    = "",
+        keymap_inst_rerun      = "",
+        keymap_inst_continue   = "",
+        keymap_inst_accept     = "",
+        keymap_inst_cancel     = "",
+        keymap_debug_toggle    = "",
+      }
+    end,
+  },
 
   -- opencode
   {
@@ -800,6 +829,5 @@ vim.api.nvim_create_autocmd("FileType", {
 -- Airline configuration
 vim.g.airline_section_z = '%3p%% %#__accent_bold#%{g:airline_symbols.linenr}%4l%#__restore__#%#__accent_bold#/%L%{g:airline_symbols.maxlinenr}%#__restore__# :%3v/%03{col("$")-1}'
 
--- Copilot
-vim.keymap.set('i', '<C-K>', 'copilot#Accept("\\<CR>")', { silent = true, expr = true, replace_keycodes = false })
-vim.g.copilot_no_tab_map = true
+-- llama.vim ghost text: grey like Copilot instead of the default orange
+vim.api.nvim_set_hl(0, 'llama_hl_fim_hint', { ctermfg = 244, fg = '#808080' })
