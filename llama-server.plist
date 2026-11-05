@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  llama.cpp FIM server for llama.vim autocomplete in init.lua.
+  Listens on 127.0.0.1:8012. Install with:
+    ln -s $HOME/src/bin/llama-server.plist ~/Library/LaunchAgents/
+    launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/llama-server.plist
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>local.llama-server</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/opt/homebrew/bin/llama-server</string>
+    <string>--fim-qwen-3b-default</string>
+  </array>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ProcessType</key>
+  <string>Interactive</string>
+  <key>StandardOutPath</key>
+  <string>/tmp/llama-server.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/llama-server.log</string>
+</dict>
+</plist>
